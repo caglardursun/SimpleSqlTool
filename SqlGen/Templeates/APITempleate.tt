@@ -1,0 +1,174 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="SqlGen" #>
+<#@ parameter name="_namespace" type="System.String" #>
+<#@ parameter name="tableName" type="System.String" #>
+<#@ parameter name="tableNameToLower" type="System.String" #>
+<#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
+<#@ parameter name="tableNameToPascal" type="System.String" #>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using AutoWrapper.Wrappers;
+using <#=_namespace #>.Contracts;
+using <#=_namespace #>.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using <#=_namespace #>.DTO.Response;
+using <#=_namespace #>.DTO.Request;
+using <#=_namespace #>.Data.DataManager;
+using Microsoft.Extensions.Configuration;
+using static Microsoft.AspNetCore.Http.StatusCodes;
+using <#=_namespace #>.Data.Entity;
+using System.Text.Json;
+using AutoWrapper.Extensions;
+
+namespace <#= _namespace #>.API.v1
+{
+    [Route("api/v1/[controller]")]
+    [ApiController]
+    //[Authorize]
+    public class <#=tableNameToPascal#>Controller : ControllerBase
+    {
+        private ILogger<<#=tableNameToPascal#>Controller> _logger;
+        private I<#=tableNameToPascal#>Manager _<#=tableName#>Manager;
+        private IMapper _mapper;
+
+        public <#=tableNameToPascal#>Controller(IConfiguration config, 
+        IMapper mapper,
+        I<#=tableNameToPascal#>Manager <#=tableName#>Manager,
+        ILogger<<#=tableNameToPascal#>Controller> logger)
+        {
+            _logger = logger;        
+            _mapper = mapper;
+            _<#=tableName#>Manager = <#=tableName#>Manager;
+        }
+
+
+
+        /// <summary>
+        /// <#=tableNameToPascal#> kayıt servisi
+        /// </summary>
+        /// <param name="dto">
+        /// <see cref="Create<#=tableNameToPascal#>Request"/>
+        /// </param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ApiResponse> Post([FromBody] Create<#=tableNameToPascal#>Request dto)
+        {
+
+            if (ModelState.IsValid)
+            {
+                
+                var data = _mapper.Map<<#=tableNameToPascal#>>(dto);
+                if (await  _<#=tableName#>Manager.ExistAsync(data.unique))
+                    throw new ApiException($"Record Already Exists", Status202Accepted);
+
+                return new ApiResponse("Record successfully created.", await _<#=tableName#>Manager.CreateAsync(data), Status201Created);
+            }
+            else
+                throw new ApiException(ModelState.AllErrors());
+        }
+        
+
+        /// <summary>
+        /// <#=tableNameToPascal#> güncelleme servisi
+        /// </summary>
+        /// <param name="id">
+        /// Kayıt Id si
+        /// </param>
+        /// <param name="dto">
+        /// Kayıt güncelleme bilgileri <see cref="Update<#=tableNameToPascal#>Request"/>
+        /// </param>
+        /// <returns></returns>
+        [Route("{id:long}")]
+        [HttpPut]
+        public async Task<ApiResponse> Put(long id, [FromBody] Update<#=tableNameToPascal#>Request dto)
+        {
+            if (ModelState.IsValid)
+            {
+                var data = _mapper.Map<<#=tableNameToPascal#>>(dto);
+                data.id = id;
+
+                if (await _<#=tableName#>Manager.UpdateAsync(data))
+                    return new ApiResponse($"Record with Id: {id} sucessfully updated.", true);
+                else
+                    throw new ApiException($"Record with Id: {id} does not exist.", Status404NotFound);
+            }
+            else
+                throw new ApiException(ModelState.AllErrors());
+        }
+
+        
+        /// <summary>
+        /// <#=tableNameToPascal#> silme servisi
+        /// </summary>
+        /// <param name="id">
+        /// Kayıt Id si
+        /// </param>
+        /// <returns>
+        /// <see cref="ApiResponse"/>
+        /// </returns>
+        [Route("{id:long}")]
+        [HttpDelete]
+        public async Task<ApiResponse> Delete(long id)
+        {
+            if (await _<#=tableName#>Manager.DeleteAsync(id))
+            {
+                _logger.LogInformation($"Record with Id: {id} sucessfully deleted.");
+                return new ApiResponse($"Record with Id: {id} sucessfully deleted.", true);
+            }                
+            else
+                throw new ApiException($"Record with id: {id} does not exist.", Status404NotFound);
+        }
+
+
+        [Route("{id:long}")]
+        [HttpGet]
+        public async Task<<#=tableNameToPascal#>Response> Get(long id)
+        {
+            var data = await  _<#=tableName#>Manager.GetByIdAsync(id);
+            if (data == null)
+            {
+                _logger.LogWarning($@"No records Found with CustomerID : {id}");
+                throw new ApiException($@"No records Found");
+            }
+
+            return _mapper.Map<<#=tableNameToPascal#>Response>(data);;
+        }
+
+        [Route("paged")]
+        [HttpGet]        
+        public async Task<IEnumerable<<#=tableNameToPascal#>Response>> Get([FromQuery] UrlQuerySearchParameters urlQueryParameters)
+        {
+
+            
+            var data = await _<#=tableName#>Manager.Search<#=tableNameToPascal#>Async(urlQueryParameters);
+            if (data.<#=tableNameToPascal#> == null)
+            {
+                throw new ApiException("No records Found");
+            }
+
+            var response = _mapper.Map<IEnumerable<<#=tableNameToPascal#>Response>>(data.<#=tableNameToPascal#>);
+
+            //4 reading header value of access pagination values
+            Response.Headers.Add("Access-Control-Expose-Headers", "X-Pagination");            
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(data.Pagination));
+
+            return response;
+        }
+
+        
+
+    }
+}

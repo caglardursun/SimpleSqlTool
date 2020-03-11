@@ -1,0 +1,130 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="SqlGen" #>
+<#@ parameter name="_namespace" type="System.String" #>
+<#@ parameter name="tableName" type="System.String" #>
+<#@ parameter name="tableNameToLower" type="System.String" #>
+<#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
+<#@ parameter name="tableNameToPascal" type="System.String" #>
+using Dapper;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using PenMail.Contracts;
+using PenMail.Data.Entity;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace <#= _namespace #>.Data.DataManager
+{
+    public class <#=tableNameToPascal#>Manager : DbFactoryBase, I<#=tableNameToPascal#>Manager
+    {
+        private ILogger<<#=tableNameToPascal#>Manager> _logger;
+
+        public <#=tableNameToPascal#>Manager(IConfiguration config 
+        ,ILogger<<#=tableNameToPascal#>Manager> logger) : base(config)
+        {
+            _logger = logger;        
+        }
+        
+
+        public async Task<long> CreateAsync(<#=tableNameToPascal#> entity)
+        {            
+            
+            string sqlQuery = $@"
+            INSERT INTO  public.<#=tableName#>
+            <#Write("\t");#>(
+                <#
+                int length = columns.Count();
+                foreach(var item in columns)
+                {
+                    length--;
+                #>
+                    <#=item.ColumnName#><# if(length != 0) Write(","); #>
+
+                <# 
+                }
+                #>
+                <#Write("\t");#>)VALUES(
+                 <#
+                 length = columns.Count();
+                 foreach(var item in columns)
+                 {
+                 length--;
+                 #>
+                   @<#=item.ColumnName#><# if(length != 0) Write(",\n"); #>
+                 <# 
+                 }
+                 #>
+            )";
+
+            return await DbQuerySingleAsync<long>(sqlQuery, entity);
+        }
+
+        public async Task<bool> DeleteAsync(object Id)
+        {
+            string query = $@"DELETE FROM public.<#=tableName#> WHERE id = @Id";
+
+            return await DbExecuteAsync<bool>(query, new { Id });
+        }
+
+        public async Task<bool> ExistAsync(object Id)
+        {            
+            if(Id.GetType() == typeof(string))
+                return await DbExecuteScalarAsync("SELECT COUNT(1) FROM public.<#=tableName#> WHERE string_criteria = @Id", new { Id });
+
+            return await DbExecuteScalarAsync("SELECT COUNT(1) FROM public.<#=tableName#> WHERE id = @Id", new { Id });
+        }
+
+
+        public async Task<IEnumerable<<#=tableNameToPascal#>>> GetAllAsync()
+        {
+            string query = $@"SELECT * FROM public.<#=tableName#>";
+
+            return await DbQueryAsync<<#=tableNameToPascal#>>(query);
+        }
+
+        public async Task<<#=tableNameToPascal#>> GetByIdAsync(object Id)
+        {
+            string query = $@"SELECT * FROM public.<#=tableName#>                                                    
+                           WHERE id = {Id}";
+
+           
+            return await DbQuerySingleAsync<<#=tableNameToPascal#>>(query,null);
+          
+        }
+
+        public async Task<bool> UpdateAsync(<#=tableNameToPascal#> entity)
+        {
+            string query = $@"                        
+                UPDATE public.<#=tableName#>
+                SET     
+                <#
+                 length = columns.Count();
+                 foreach(var item in columns)
+                 {
+                 length--;
+                 #>
+                   <#=item.ColumnName#> = @<#=item.ColumnName#> <# if(length != 0) Write(",\n"); #>
+                 <# 
+                 }
+                 #>
+
+            WHERE id = @id";
+
+                            
+
+            return await DbExecuteAsync<bool>(query, entity);
+        }
+
+        public async Task<(IEnumerable<<#=tableNameToPascal#>> <#=tableName#>, Pagination Pagination)> Search<#=tableNameToPascal#>Async(UrlQuerySearchParameters urlQueryParameters)
+        {
+            return await DbQueryPagedAsync<<#=tableNameToPascal#>>(urlQueryParameters, new SqlBuilder());
+        }
+
+    }
+}

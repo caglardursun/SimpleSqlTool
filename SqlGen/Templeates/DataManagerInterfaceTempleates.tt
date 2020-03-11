@@ -1,0 +1,28 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="SqlGen" #>
+
+<#@ parameter name="_namespace" type="System.String" #>
+<#@ parameter name="tableName" type="System.String" #>
+<#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
+
+using PenMail.Contracts;
+using PenMail.Data;
+using PenMail.Data.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace <#= _namespace #>.Contracts
+{
+    public interface I<#= tableName #>Manager : IRepository<<#= tableName #>> 
+    {        
+        Task<(IEnumerable<<#=tableName#>> <#=tableName#>, Pagination Pagination)> Search<#=tableName#>Async(UrlQuerySearchParameters urlQueryParameters);                  
+    }
+}
