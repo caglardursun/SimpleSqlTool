@@ -320,7 +320,7 @@ Write("\t");
             this.Write("> ");
             
             #line 124 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataManagerTempleates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden

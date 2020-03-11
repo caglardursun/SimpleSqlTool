@@ -316,7 +316,16 @@ namespace SqlGenUI
 
         private void dataManagerInterfaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string name = GetTableName();
+            string str = sqlTextBox.Text;
 
+            string sfd = RootPath + @"\Contracts\";
+            sfd += "I" + name + "Manager.cs";
+
+            using (StreamWriter writer = File.CreateText(sfd))
+            {
+                writer.Write(str);
+            }
         }
 
         private void aPICreateToolStripMenuItem_Click(object sender, EventArgs e)

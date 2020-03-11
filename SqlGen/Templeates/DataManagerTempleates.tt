@@ -121,7 +121,7 @@ namespace <#= _namespace #>.Data.DataManager
             return await DbExecuteAsync<bool>(query, entity);
         }
 
-        public async Task<(IEnumerable<<#=tableNameToPascal#>> <#=tableName#>, Pagination Pagination)> Search<#=tableNameToPascal#>Async(UrlQuerySearchParameters urlQueryParameters)
+        public async Task<(IEnumerable<<#=tableNameToPascal#>> <#=tableNameToPascal#>, Pagination Pagination)> Search<#=tableNameToPascal#>Async(UrlQuerySearchParameters urlQueryParameters)
         {
             return await DbQueryPagedAsync<<#=tableNameToPascal#>>(urlQueryParameters, new SqlBuilder());
         }

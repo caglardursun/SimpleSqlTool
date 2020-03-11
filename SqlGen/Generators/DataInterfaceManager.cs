@@ -11,10 +11,10 @@ namespace SqlGen.Generators
     {
         public override string Generate(Table table, GeneratorOptions options)
         {
-            string projectName = "PenCRM";
+            
             var interfaceCreator = new DataManagerInterfaceTempleates();
             interfaceCreator.Session = new Dictionary<string, object>();
-            interfaceCreator.Session.Add("_namespace", projectName);
+            interfaceCreator.Session.Add("_namespace", "PenMail");
             interfaceCreator.Session.Add("tableName", table.TableName.ToPascalCase());            
             interfaceCreator.Session.Add("columns", table.Columns);
 

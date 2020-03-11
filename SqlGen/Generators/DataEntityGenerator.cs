@@ -23,7 +23,7 @@ namespace SqlGen.Generators
             sft.Session.Add("columns", columns);
             sft.Initialize();
 
-            
+            string test = "DatTransferObject".ToUnderScoredCase();
 
             return sft.TransformText();
         }
