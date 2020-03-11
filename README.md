@@ -1,6 +1,6 @@
 # SqlGen
 
-Generate code from SQL Server tables - generator stored procs, table types, C# code
+Generate code from SQL Server tables - generator WebAPI, DataAccss etc
 
 Built in two parts:
 1. .NET library that does the code generation
