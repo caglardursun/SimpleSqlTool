@@ -304,8 +304,8 @@ namespace SqlGenUI
 
             string name = GetTableName();
             string content = sqlTextBox.Text;
-
-            string sfd = @"C:\Projects\PenMail\PenMail\src\Data\DataManager\";
+            
+            string sfd = RootPath+ @"\Data\DataManager\";
             sfd += "" + name + "Manager.cs";
 
             using (StreamWriter writer = File.CreateText(sfd))

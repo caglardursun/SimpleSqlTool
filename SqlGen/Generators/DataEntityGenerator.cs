@@ -22,8 +22,7 @@ namespace SqlGen.Generators
             var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
             sft.Session.Add("columns", columns);
             sft.Initialize();
-
-            string test = "DatTransferObject".ToUnderScoredCase();
+            
 
             return sft.TransformText();
         }
