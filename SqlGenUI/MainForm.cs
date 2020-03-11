@@ -48,6 +48,8 @@ namespace SqlGenUI
                 mi.Checked = false;
 
             var menu = (ToolStripMenuItem)sender;
+            string str = menu.Name;
+
             menu.Checked = true;
             databaseToolStripMenuItem.DropDownItems.Clear();
 
@@ -75,6 +77,11 @@ namespace SqlGenUI
 
             tableList.Items.Clear();
             var database = CheckedDatabase;
+
+            //Then update the name of database 
+            if(database != null)
+                RootPath = $@"C:\Projects\{database}\{database}\src\";
+
 
             if (database == null)
             {
