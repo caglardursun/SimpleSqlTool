@@ -1,4 +1,4 @@
-# SqlGen
+# Generator
 
 Generate code from SQL Server tables - generator WebAPI, DataAccss etc
 
