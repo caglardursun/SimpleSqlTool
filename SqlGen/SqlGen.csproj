@@ -48,7 +48,6 @@
     <Compile Include="Generators\DataEntityGenerator.cs" />
     <Compile Include="Generators\DataTransferObjects.cs" />
     <Compile Include="Generators\DataInterfaceManager.cs" />
-    <Compile Include="Generators\CsClassGenerator .cs" />
     <Compile Include="Generators\CsCallUpdateProcGenerator.cs" />
     <Compile Include="Generators\DataManagers.cs" />
     <Compile Include="Generators\SQLInsertGenerator.cs" />

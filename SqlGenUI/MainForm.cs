@@ -79,8 +79,8 @@ namespace SqlGenUI
             var database = CheckedDatabase;
 
             //Then update the name of database 
-            if(database != null)
-                RootPath = $@"C:\Projects\{database}\{database}\src\";
+            //if(database != null)
+            //    RootPath = $@"C:\Projects\{database}\{database}\src\";
 
 
             if (database == null)

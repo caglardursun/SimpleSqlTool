@@ -21,7 +21,7 @@ namespace SqlGen.Templeates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\EntityTempleates.tt"
+    #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\EntityTempleates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
     public partial class EntityTempleates : EntityTempleatesBase
     {
@@ -33,21 +33,21 @@ namespace SqlGen.Templeates
         {
             this.Write("\r\nnamespace ");
             
-            #line 17 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\EntityTempleates.tt"
+            #line 17 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\EntityTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".Data.Entity\r\n{\r\n    public class ");
             
-            #line 19 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\EntityTempleates.tt"
+            #line 19 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\EntityTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(" \r\n    {\r\n                \r\n        ");
             
-            #line 22 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\EntityTempleates.tt"
+            #line 22 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\EntityTempleates.tt"
 
         foreach (var c in columns)
         {
@@ -64,7 +64,7 @@ namespace SqlGen.Templeates
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\EntityTempleates.tt"
+        #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\EntityTempleates.tt"
 
 private string @__namespaceField;
 
