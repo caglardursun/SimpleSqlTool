@@ -1,6 +1,6 @@
 # SqlGen
 
-Generate code from SQL Server tables - generator api, datamanager, entities etc.
+Generate the code from SQL Server tables. Api, Data Managers, entities etc.
 
 
 ![screen shot](https://github.com/caglardursun/SimpleSqlTool/blob/master/screen-shot.png)
@@ -25,23 +25,6 @@ These options control code generation:
 * `Add Grant` to generate `GRANT` statements to a role
 * `ALTER stored procs` to generate `ALTER PROC` statements instead of `CREATE PROC`
 * `Include Audit columns` to include or exclude any columns starting with `AUDIT_` from the code generators
-
-### Keys list
-
-Some code generators support generation for a specific key, for example:
-
-* `Proc Get` code generator will create a proc to load rows for a specific key
-* `Proc Get by list` code generator will create a proc to load rows for a list of keys
-* `Table Merge` code generator will add a delete clause to remove rows matching the FK that do not match the supplied data, that is to say the proc call becomes "replace all the rows for the supplied key".
-
-### Multiple selection
-
-You can select multiple items on the tables, keys and code generators lists to create larger scripts.
-For example you may wish to:
-
-* create C# classes for multiple tables by selecting multiple tables and the `C# Class` code generator
-* create procedures to select data by the primary and foreign keys by selecting multiple keys and the `Proc Get` code generator
-* create multiple insert, update and delete procs by selecting a table and multiple code generators
 
 ### Generated code
 
