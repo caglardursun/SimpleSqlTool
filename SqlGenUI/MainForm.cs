@@ -15,7 +15,7 @@ namespace SqlGenUI
     public partial class MainForm : Form
     {
         List<Table> _allTables;
-        private string RootPath = @"C:\Projects\PenMail\PenMail\src\";
+        
         public MainForm()
         {
             InitializeComponent();
@@ -311,8 +311,11 @@ namespace SqlGenUI
 
             string name = GetTableName();
             string content = sqlTextBox.Text;
+
+            var settings = AppSettings.Instance;
+
+            string sfd = Path.Combine(settings.APIPath,@"\Data\DataManager\");
             
-            string sfd = RootPath+ @"\Data\DataManager\";
             sfd += "" + name + "Manager.cs";
 
             using (StreamWriter writer = File.CreateText(sfd))
@@ -326,7 +329,10 @@ namespace SqlGenUI
             string name = GetTableName();
             string str = sqlTextBox.Text;
 
-            string sfd = RootPath + @"\Contracts\";
+            var settings = AppSettings.Instance;
+
+            string sfd = Path.Combine(settings.APIPath, @"\Contracts\");
+
             sfd += "I" + name + "Manager.cs";
 
             using (StreamWriter writer = File.CreateText(sfd))
@@ -340,7 +346,9 @@ namespace SqlGenUI
             string name = GetTableName();
             string str = sqlTextBox.Text;
 
-            string sfd = RootPath + @"\API\v1\";
+            var settings = AppSettings.Instance;
+
+            string sfd = Path.Combine(settings.APIPath,@"\API\v1\");
             sfd += "" + name + "Controller.cs";
 
             using (StreamWriter writer = File.CreateText(sfd))
@@ -355,7 +363,9 @@ namespace SqlGenUI
             string name = GetTableName();
             string str = sqlTextBox.Text;
 
-            string sfd = RootPath + @"\DTO\Request\";
+            var settings = AppSettings.Instance;
+
+            string sfd = Path.Combine(settings.APIPath, @"\DTO\Request\");
             sfd += "" + name + "Request.cs";
 
             using (StreamWriter writer = File.CreateText(sfd))
@@ -369,8 +379,9 @@ namespace SqlGenUI
         {
             string name = GetTableName();
             string str = sqlTextBox.Text;
+            var settings = AppSettings.Instance;
 
-            string sfd = RootPath+ @"\Data\Entity\";
+            string sfd = Path.Combine(settings.APIPath, @"\Data\Entity\");
             sfd += "" + name + ".cs";
 
             using (StreamWriter writer = File.CreateText(sfd))
