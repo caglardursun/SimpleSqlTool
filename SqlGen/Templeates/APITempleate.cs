@@ -21,7 +21,7 @@ namespace SqlGen.Templeates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+    #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
     public partial class APITempleate : APITempleateBase
     {
@@ -31,17 +31,17 @@ namespace SqlGen.Templeates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sys" +
-                    "tem.Threading.Tasks;\r\nusing AutoMapper;\r\nusing AutoWrapper.Wrappers;\r\nusing ");
+            this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Syste" +
+                    "m.Threading.Tasks;\r\nusing AutoMapper;\r\nusing AutoWrapper.Wrappers;\r\nusing ");
             
-            #line 21 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 20 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".Contracts;\r\nusing ");
             
-            #line 22 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 21 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
@@ -50,21 +50,21 @@ namespace SqlGen.Templeates
                     "p;\r\nusing Microsoft.AspNetCore.Mvc;\r\nusing Microsoft.Extensions.Logging;\r\nusing " +
                     "");
             
-            #line 27 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".DTO.Response;\r\nusing ");
             
-            #line 28 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 27 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".DTO.Request;\r\nusing ");
             
-            #line 29 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 28 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
@@ -72,7 +72,7 @@ namespace SqlGen.Templeates
             this.Write(".Data.DataManager;\r\nusing Microsoft.Extensions.Configuration;\r\nusing static Micro" +
                     "soft.AspNetCore.Http.StatusCodes;\r\nusing ");
             
-            #line 32 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 31 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
@@ -80,7 +80,7 @@ namespace SqlGen.Templeates
             this.Write(".Data.Entity;\r\nusing System.Text.Json;\r\nusing AutoWrapper.Extensions;\r\n\r\nnamespac" +
                     "e ");
             
-            #line 36 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 35 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
@@ -88,56 +88,56 @@ namespace SqlGen.Templeates
             this.Write(".API.v1\r\n{\r\n    [Route(\"api/v1/[controller]\")]\r\n    [ApiController]\r\n    //[Autho" +
                     "rize]\r\n    public class ");
             
-            #line 41 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 40 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Controller : ControllerBase\r\n    {\r\n        private ILogger<");
             
-            #line 43 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 42 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Controller> _logger;\r\n        private I");
             
-            #line 44 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 43 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Manager _");
             
-            #line 44 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 43 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Manager;\r\n        private IMapper _mapper;\r\n\r\n        public ");
             
-            #line 47 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 46 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Controller(IConfiguration config, \r\n        IMapper mapper,\r\n        I");
             
-            #line 49 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 48 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Manager ");
             
-            #line 49 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 48 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Manager,\r\n        ILogger<");
             
-            #line 50 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 49 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -145,21 +145,21 @@ namespace SqlGen.Templeates
             this.Write("Controller> logger)\r\n        {\r\n            _logger = logger;        \r\n          " +
                     "  _mapper = mapper;\r\n            _");
             
-            #line 54 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 53 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Manager = ");
             
-            #line 54 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 53 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Manager;\r\n        }\r\n\r\n\r\n\r\n        /// <summary>\r\n        /// ");
             
-            #line 60 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 59 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -167,7 +167,7 @@ namespace SqlGen.Templeates
             this.Write(" kayıt servisi\r\n        /// </summary>\r\n        /// <param name=\"dto\">\r\n        /" +
                     "// <see cref=\"Create");
             
-            #line 63 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 62 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -175,7 +175,7 @@ namespace SqlGen.Templeates
             this.Write("Request\"/>\r\n        /// </param>\r\n        /// <returns></returns>\r\n        [HttpP" +
                     "ost]\r\n        public async Task<ApiResponse> Post([FromBody] Create");
             
-            #line 67 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 66 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -183,14 +183,14 @@ namespace SqlGen.Templeates
             this.Write("Request dto)\r\n        {\r\n\r\n            if (ModelState.IsValid)\r\n            {\r\n  " +
                     "              \r\n                var data = _mapper.Map<");
             
-            #line 73 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 72 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write(">(dto);\r\n                if (await  _");
             
-            #line 74 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 73 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -199,7 +199,7 @@ namespace SqlGen.Templeates
                     "cord Already Exists\", Status202Accepted);\r\n\r\n                return new ApiRespo" +
                     "nse(\"Record successfully created.\", await _");
             
-            #line 77 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 76 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -208,7 +208,7 @@ namespace SqlGen.Templeates
                     "               throw new ApiException(ModelState.AllErrors());\r\n        }\r\n     " +
                     "   \r\n\r\n        /// <summary>\r\n        /// ");
             
-            #line 85 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 84 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -217,7 +217,7 @@ namespace SqlGen.Templeates
                     "   /// Kayıt Id si\r\n        /// </param>\r\n        /// <param name=\"dto\">\r\n      " +
                     "  /// Kayıt güncelleme bilgileri <see cref=\"Update");
             
-            #line 91 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 90 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -226,7 +226,7 @@ namespace SqlGen.Templeates
                     "(\"{id:long}\")]\r\n        [HttpPut]\r\n        public async Task<ApiResponse> Put(lo" +
                     "ng id, [FromBody] Update");
             
-            #line 96 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 95 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -234,14 +234,14 @@ namespace SqlGen.Templeates
             this.Write("Request dto)\r\n        {\r\n            if (ModelState.IsValid)\r\n            {\r\n    " +
                     "            var data = _mapper.Map<");
             
-            #line 100 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 99 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write(">(dto);\r\n                data.id = id;\r\n\r\n                if (await _");
             
-            #line 103 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 102 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -259,7 +259,7 @@ namespace SqlGen.Templeates
         /// <summary>
         /// ");
             
-            #line 114 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 113 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -278,7 +278,7 @@ namespace SqlGen.Templeates
         {
             if (await _");
             
-            #line 126 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 125 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -297,14 +297,14 @@ namespace SqlGen.Templeates
         [HttpGet]
         public async Task<");
             
-            #line 138 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 137 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Response> Get(long id)\r\n        {\r\n            var data = await  _");
             
-            #line 140 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 139 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -318,7 +318,7 @@ namespace SqlGen.Templeates
 
             return _mapper.Map<");
             
-            #line 147 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 146 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -326,7 +326,7 @@ namespace SqlGen.Templeates
             this.Write("Response>(data);;\r\n        }\r\n\r\n        [Route(\"paged\")]\r\n        [HttpGet]      " +
                     "  \r\n        public async Task<IEnumerable<");
             
-            #line 152 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 151 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -334,21 +334,21 @@ namespace SqlGen.Templeates
             this.Write("Response>> Get([FromQuery] UrlQuerySearchParameters urlQueryParameters)\r\n        " +
                     "{\r\n\r\n            \r\n            var data = await _");
             
-            #line 156 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 155 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Manager.Search");
             
-            #line 156 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 155 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Async(urlQueryParameters);\r\n            if (data.");
             
-            #line 157 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 156 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -356,14 +356,14 @@ namespace SqlGen.Templeates
             this.Write(" == null)\r\n            {\r\n                throw new ApiException(\"No records Foun" +
                     "d\");\r\n            }\r\n\r\n            var response = _mapper.Map<IEnumerable<");
             
-            #line 162 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 161 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Response>>(data.");
             
-            #line 162 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+            #line 161 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -385,7 +385,7 @@ namespace SqlGen.Templeates
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\APITempleate.tt"
+        #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
 
 private string @__namespaceField;
 

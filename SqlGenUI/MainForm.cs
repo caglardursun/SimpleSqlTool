@@ -378,5 +378,21 @@ namespace SqlGenUI
                 writer.Write(str);
             }
         }
+
+        private void postgresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void msSqlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsForm = new SettingsForm();
+            settingsForm.Show();
+        }
     }
 }
