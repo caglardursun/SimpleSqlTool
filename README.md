@@ -3,7 +3,7 @@
 Generate the code from SQL Server tables. Api, Data Managers, entities etc.
 
 
-![screen shot](https://github.com/caglardursun/SimpleSqlTool/blob/master/screen-shot.png)
+
 
 ### Server menu
 
