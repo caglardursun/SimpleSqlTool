@@ -85,6 +85,8 @@ namespace SqlGenUI
 
             if (database == null)
             {
+                var settings = AppSettings.Instance;
+
                 _ = RunLoadDatabasesAsync(settings.ConnectionString);
                 _ = RunLoadTablesAsync(settings.ConnectionString);
             }

@@ -79,9 +79,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SqlGen\SqlGen.csproj">
       <Project>{4457e3c2-611d-4cf2-a444-b711bb29c4e3}</Project>
       <Name>SqlGen</Name>

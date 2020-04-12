@@ -30,6 +30,17 @@ namespace SqlGenUI
         [JsonIgnore]
         private static string fileSettingsPath { get; set; }
 
+
+        [JsonIgnore]
+        public string ConnectionString
+        {
+            get
+            {
+
+                return string.Format($"Data Source={ServerName};Initial Catalog={DefaultDB};User Id={UserName};Password={Password};Application Name=SqlGen;");
+            }
+        }
+
         [JsonProperty("Path")]
         public string APIPath { get; set; }
 
@@ -45,8 +56,10 @@ namespace SqlGenUI
         [JsonProperty("Password")]
         public string Password { get; set; }
 
+      
 
-        
+
+
         AppSettings()
         {
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), appName);
