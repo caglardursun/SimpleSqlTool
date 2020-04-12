@@ -292,7 +292,7 @@ namespace SqlGen.Templeates
                 throw new ApiException($""Record with id: {id} does not exist."", Status404NotFound);
         }
 
-
+  
         [Route(""{id:long}"")]
         [HttpGet]
         public async Task<");
@@ -323,10 +323,10 @@ namespace SqlGen.Templeates
             
             #line default
             #line hidden
-            this.Write("Response>(data);;\r\n        }\r\n\r\n        [Route(\"paged\")]\r\n        [HttpGet]      " +
-                    "  \r\n        public async Task<IEnumerable<");
+            this.Write("Response>(data);;\r\n        }\r\n\r\n\r\n\r\n        [Route(\"paged\")]\r\n        [HttpGet]  " +
+                    "      \r\n        public async Task<IEnumerable<");
             
-            #line 151 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 153 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -334,21 +334,21 @@ namespace SqlGen.Templeates
             this.Write("Response>> Get([FromQuery] UrlQuerySearchParameters urlQueryParameters)\r\n        " +
                     "{\r\n\r\n            \r\n            var data = await _");
             
-            #line 155 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 157 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Manager.Search");
             
-            #line 155 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 157 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Async(urlQueryParameters);\r\n            if (data.");
             
-            #line 156 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 158 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -356,14 +356,14 @@ namespace SqlGen.Templeates
             this.Write(" == null)\r\n            {\r\n                throw new ApiException(\"No records Foun" +
                     "d\");\r\n            }\r\n\r\n            var response = _mapper.Map<IEnumerable<");
             
-            #line 161 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 163 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Response>>(data.");
             
-            #line 161 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 163 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default

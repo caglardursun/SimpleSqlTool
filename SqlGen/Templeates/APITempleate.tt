@@ -131,7 +131,7 @@ namespace <#= _namespace #>.API.v1
                 throw new ApiException($"Record with id: {id} does not exist.", Status404NotFound);
         }
 
-
+  
         [Route("{id:long}")]
         [HttpGet]
         public async Task<<#=tableNameToPascal#>Response> Get(long id)
@@ -145,6 +145,8 @@ namespace <#= _namespace #>.API.v1
 
             return _mapper.Map<<#=tableNameToPascal#>Response>(data);;
         }
+
+
 
         [Route("paged")]
         [HttpGet]        

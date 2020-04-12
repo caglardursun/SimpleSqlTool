@@ -32,6 +32,7 @@ namespace SqlGenUI
 
             ResizeListHeaders();
             RefreshCodeGenerators();
+
             RefreshFromDb(ConfigurationManager.ConnectionStrings["local"]);
         }
 
@@ -77,27 +78,23 @@ namespace SqlGenUI
 
             tableList.Items.Clear();
             var database = CheckedDatabase;
-
-            //Then update the name of database 
-            //if(database != null)
-            //    RootPath = $@"C:\Projects\{database}\{database}\src\";
-
+            var _settings = AppSettings.Instance;
 
             if (database == null)
             {
-                var settings = AppSettings.Instance;
+                
 
-                _ = RunLoadDatabasesAsync(settings.ConnectionString);
-                _ = RunLoadTablesAsync(settings.ConnectionString);
+                _ = RunLoadDatabasesAsync(_settings.ConnectionString);
+                _ = RunLoadTablesAsync(_settings.ConnectionString);
             }
             else
             {
-                var b = new SqlConnectionStringBuilder(settings.ConnectionString);
+                var b = new SqlConnectionStringBuilder(_settings.ConnectionString);
                 b["Database"] = database;
                 _ = RunLoadTablesAsync(b.ToString());
             }
 
-            toolStripStatusLabel1.Text = new SqlConnectionStringBuilder(settings.ConnectionString) { Password = "xxx" }.ToString();
+            toolStripStatusLabel1.Text = new SqlConnectionStringBuilder(_settings.ConnectionString) { Password = "xxx" }.ToString();
         }
 
         async Task RunLoadDatabasesAsync(string connectionString)

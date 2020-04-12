@@ -6,11 +6,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SqlGenUI
 {
     public class AppSettings
     {
+        [JsonIgnore]
+        private static bool isInitialize = false;
         [JsonIgnore]
         private static AppSettings instance = null;
         [JsonIgnore]
@@ -62,6 +65,11 @@ namespace SqlGenUI
 
         AppSettings()
         {
+            if (!isInitialize)
+                isInitialize = true;
+            else
+                return;
+
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), appName);
             if (!Directory.Exists(folderPath))
                 Directory.CreateDirectory(folderPath);
@@ -70,14 +78,26 @@ namespace SqlGenUI
 
             if (File.Exists(fileSettingsPath))
             {
-                var settings = JsonConvert.DeserializeObject<AppSettings>(fileSettingsPath);
-                
+                try
+                {
+                    
+                    using (StreamReader sr = new StreamReader(fileSettingsPath))
+                    {
+                        
+                        var settings = JsonConvert.DeserializeObject<AppSettings>(sr.ReadToEnd());
+                        APIPath = settings.APIPath;
+                        DefaultDB = settings.DefaultDB;
+                        Password = settings.Password;
+                        UserName = settings.UserName;
+                        ServerName = settings.ServerName;
+                    }
+                     
+                }
+                catch (Exception exc)
+                {
 
-                APIPath = settings.APIPath;
-                DefaultDB = settings.DefaultDB;
-                Password = settings.Password;
-                UserName = settings.UserName;
-                ServerName = settings.ServerName;
+                    throw new Exception("Serialization error occured", exc);
+                }
             }
         }
 
