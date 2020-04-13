@@ -12,6 +12,7 @@ namespace SqlGenUI
 {
     public class AppSettings
     {
+        
         [JsonIgnore]
         private static bool isInitialize = false;
         [JsonIgnore]

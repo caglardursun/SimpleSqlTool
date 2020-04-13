@@ -50,6 +50,7 @@
     <Compile Include="Generators\DataInterfaceManager.cs" />
     <Compile Include="Generators\CsCallUpdateProcGenerator.cs" />
     <Compile Include="Generators\DataManagers.cs" />
+    <Compile Include="Generators\JSonGenerator.cs" />
     <Compile Include="Generators\SQLInsertGenerator.cs" />
     <Compile Include="Generators\MultiGenerator.cs" />
     <Compile Include="Generators\SqlGenerator.cs" />
@@ -95,6 +96,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityTempleates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templeates\JSonTempates.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JSonTempates.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -124,6 +130,10 @@
     <Content Include="Templeates\EntityTempleates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTempleates.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templeates\JSonTempates.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JSonTempates.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

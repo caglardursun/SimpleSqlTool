@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SqlGen.Templeates;
+
+namespace SqlGen.Generators
+{
+    public class JSonGenerator : Generator
+    {
+        public override string Generate(Table table, GeneratorOptions options)
+        {
+
+            try
+            {
+                var json = new JSonTempates();
+
+                json.Session = new Dictionary<string, object>();
+                json.Session.Add("columns", table.InsertableColumns);
+                json.Initialize();
+                return json.TransformText();
+            }
+            catch (Exception exc)
+            {
+
+                throw new Exception("Json generator error occured", exc.InnerException);
+            }
+        }
+
+        public override string ToString() => "JSon Generator";        
+    }
+}
