@@ -5,12 +5,6 @@ Generate the code from SQL Server tables. Api, Data Managers, entities etc.
 
 
 
-### Server menu
-
-This lists the SQL Server connections configured for the application.
-
-You can add your own connection strings to the application by editing the `SqlGenUi.exe.config` file
-
 ### Database menu
 
 Once connected to a server you can change the database via the `Database` menu
