@@ -28,6 +28,14 @@ namespace SqlGen
         public string DomainName { get; set; } //sysname
         public bool IsIdentity { get; set; }
 
+        
+        public string SourceTableName { get; set; }
+        public string ReferancedTableName { get; set; }
+        public string ReferancedColumnName { get; set; }
+
+        public Column ForegnReferanceColumn { get; set; } //foregn key
+        public Table ForegnReferanceTable { get; set; }
+
         public override string ToString() => ColumnName;
     }
 

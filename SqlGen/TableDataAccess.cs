@@ -76,10 +76,18 @@ namespace SqlGen
             var colsByFkName = LoadForeignKeyColumns(table.TableName, table.Schema);
             foreach (var fk in fks)
             {
-                fk.TableColumns = colsByFkName[fk.ConstraintName].Select(c => colMap[c.ColumnName]).ToList();                
-                    
+                //var columns = colsByFkName[fk.ConstraintName].Select(c => colMap[c.ColumnName]).ToList();
+                var columns = colsByFkName[fk.ConstraintName].ToList<Column>();
+
+                foreach (var item in columns)
+                {
+                    item.ForegnReferanceTable = GetTable(item.ReferancedTableName, item.TableSchema);
+                }
+
+                fk.TableColumns = columns;
             }
 
+            
             
             table.ForeignKeys = fks;
         }
@@ -123,11 +131,19 @@ namespace SqlGen
             where RefConst.CONSTRAINT_SCHEMA = @schema and KeyColumnUsage.TABLE_NAME = @table
 
 
-                    ";
+        ";        
 
         HashLookup<string, KeyColumn> LoadForeignKeyColumns(string table, string schema)
         {
             return connection.Query(foreignKeyColumnSql, new { table, schema }).ToLookup<string, KeyColumn>(c => c.ConstraintName);
+        }
+
+
+        public Table GetTable(string table, string schema)
+        {
+            Table t = connection.Query(tableSql).ToList<Table>().FirstOrDefault(h=>h.TableName.Equals(table));
+            t.Columns = LoadColumns(table, schema);
+            return t;
         }
 
         public async Task<List<string>> ListDatabases()
@@ -162,7 +178,7 @@ namespace SqlGen
     }
 
     public class ForeignKey : TableKey
-    {
+    {    
 
         public List<Column> TableColumns { get; set; }
         public override IEnumerator<Column> GetEnumerator() => TableColumns.GetEnumerator();
@@ -171,9 +187,6 @@ namespace SqlGen
     class KeyColumn : Column
     {
         public string ConstraintName { get; set; }
-        public string SourceTableName { get; set; }
-        public string ReferancedTableName { get; set; }
-        public string ReferancedColumnName { get; set; }        
 
     }
 
