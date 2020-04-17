@@ -21,7 +21,7 @@ namespace SqlGen.Templeates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
+    #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
     public partial class DataManagerInterfaceTempleates : DataManagerInterfaceTempleatesBase
     {
@@ -36,42 +36,42 @@ namespace SqlGen.Templeates
                     "g System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing System.T" +
                     "hreading.Tasks;\r\n\r\nnamespace ");
             
-            #line 22 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
+            #line 22 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".Contracts\r\n{\r\n    public interface I");
             
-            #line 24 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
+            #line 24 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Manager : IRepository<");
             
-            #line 24 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
+            #line 24 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("> \r\n    {        \r\n        Task<(IEnumerable<");
             
-            #line 26 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
+            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("> ");
             
-            #line 26 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
+            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(", Pagination Pagination)> Search");
             
-            #line 26 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
+            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -81,7 +81,7 @@ namespace SqlGen.Templeates
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
+        #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerInterfaceTempleates.tt"
 
 private string @__namespaceField;
 

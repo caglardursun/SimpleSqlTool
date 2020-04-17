@@ -4,8 +4,6 @@
 Generate the code from SQL Server tables. Apis, Data Managers, entities etc.
 
 
-
-
 ### Database menu
 
 Once connected to a server you can change the database via the `Database` menu

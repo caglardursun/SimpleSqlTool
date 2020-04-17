@@ -1,16 +1,17 @@
-﻿using System;
+﻿using BusterWood.Mapper;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
-using BusterWood.Mapper;
+
 
 namespace SqlGen
 {
     public class TableDataAccess
     {
-        readonly DbConnection connection;
+        private readonly DbConnection connection;
 
         public TableDataAccess(DbConnection connection)
         {
@@ -75,8 +76,11 @@ namespace SqlGen
             var colsByFkName = LoadForeignKeyColumns(table.TableName, table.Schema);
             foreach (var fk in fks)
             {
-                fk.TableColumns = colsByFkName[fk.ConstraintName].Select(c => colMap[c.ColumnName]).ToList();
+                fk.TableColumns = colsByFkName[fk.ConstraintName].Select(c => colMap[c.ColumnName]).ToList();                
+                    
             }
+
+            
             table.ForeignKeys = fks;
         }
 
@@ -89,17 +93,37 @@ namespace SqlGen
 			                                        AND KCU1.CONSTRAINT_SCHEMA = RC.CONSTRAINT_SCHEMA
 			                                        AND KCU1.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
 			                                        and TABLE_SCHEMA = @schema
-			                                        and TABLE_NAME = @table
-        )";
+			                                        and TABLE_NAME = @table)";
 
         List<ForeignKey> LoadForeignKeyContraints(string table, string schema)
         {
             return connection.Query(foreignKeySql, new { table, schema }).ToList<ForeignKey>();
         }
 
-        const string foreignKeyColumnSql = @"select *
-        from INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-        where TABLE_SCHEMA = @schema and TABLE_NAME = @table";
+        const string foreignKeyColumnSql = @"
+                    SELECT 
+	        KeyColumnUsage.*
+            ,KeyColumnUsage.TABLE_NAME AS  SourceTableName 
+            ,KeyColumnUsage.COLUMN_NAME AS SourceColumnName
+	        ,KeyColumnUsage2.TABLE_NAME AS  ReferancedTableName
+            ,KeyColumnUsage2.COLUMN_NAME AS ReferancedColumnName
+            FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS AS RefConst 
+
+            INNER JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS KeyColumnUsage 
+                ON KeyColumnUsage.CONSTRAINT_CATALOG = RefConst.CONSTRAINT_CATALOG  
+                AND KeyColumnUsage.CONSTRAINT_SCHEMA = RefConst.CONSTRAINT_SCHEMA 
+                AND KeyColumnUsage.CONSTRAINT_NAME = RefConst.CONSTRAINT_NAME 
+
+            INNER JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS KeyColumnUsage2 
+                ON KeyColumnUsage2.CONSTRAINT_CATALOG = RefConst.UNIQUE_CONSTRAINT_CATALOG  
+                AND KeyColumnUsage2.CONSTRAINT_SCHEMA = RefConst.UNIQUE_CONSTRAINT_SCHEMA 
+                AND KeyColumnUsage2.CONSTRAINT_NAME = RefConst.UNIQUE_CONSTRAINT_NAME 
+                AND KeyColumnUsage2.ORDINAL_POSITION = KeyColumnUsage.ORDINAL_POSITION 
+
+            where RefConst.CONSTRAINT_SCHEMA = @schema and KeyColumnUsage.TABLE_NAME = @table
+
+
+                    ";
 
         HashLookup<string, KeyColumn> LoadForeignKeyColumns(string table, string schema)
         {
@@ -139,6 +163,7 @@ namespace SqlGen
 
     public class ForeignKey : TableKey
     {
+
         public List<Column> TableColumns { get; set; }
         public override IEnumerator<Column> GetEnumerator() => TableColumns.GetEnumerator();
     }
@@ -146,6 +171,10 @@ namespace SqlGen
     class KeyColumn : Column
     {
         public string ConstraintName { get; set; }
+        public string SourceTableName { get; set; }
+        public string ReferancedTableName { get; set; }
+        public string ReferancedColumnName { get; set; }        
+
     }
 
 }

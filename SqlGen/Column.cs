@@ -26,13 +26,9 @@ namespace SqlGen
         public string DomainCatalog { get; set; } //Sysname
         public string DomainSchema { get; set; } //Sysname
         public string DomainName { get; set; } //sysname
-        public string ReferancedTable { get; set; } // 4 foregn key relation
-        public string ReferancedColumn { get; set; } // 4 foregn key relation
         public bool IsIdentity { get; set; }
 
         public override string ToString() => ColumnName;
     }
-
-    
 
 }

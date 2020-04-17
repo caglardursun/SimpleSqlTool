@@ -20,7 +20,7 @@ namespace SqlGen.Templeates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectResponseTempleates.tt"
+    #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectResponseTempleates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
     public partial class DataTransferObjectResponseTempleates : DataTransferObjectResponseTempleatesBase
     {
@@ -34,7 +34,7 @@ namespace SqlGen.Templeates
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectResponseTempleates.tt"
+        #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectResponseTempleates.tt"
 
 private string @__namespaceField;
 

@@ -21,7 +21,7 @@ namespace SqlGen.Templeates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+    #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
     public partial class DataTransferObjectTempleates : DataTransferObjectTempleatesBase
     {
@@ -33,21 +33,21 @@ namespace SqlGen.Templeates
         {
             this.Write("using FluentValidation;\r\n\r\nnamespace ");
             
-            #line 17 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 17 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".DTO.Request\r\n{\r\n    public class Update");
             
-            #line 19 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 19 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Request :  Create");
             
-            #line 19 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 19 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -55,14 +55,14 @@ namespace SqlGen.Templeates
             this.Write("Request\r\n    {                \r\n        public long id { get; set; }\r\n    }\r\n\r\n  " +
                     "  public class Create");
             
-            #line 24 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 24 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Request \r\n    {\r\n                \r\n        ");
             
-            #line 27 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 27 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
 foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
         {
                 var propName = c.ColumnName;
@@ -81,28 +81,28 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
             #line hidden
             this.Write("\r\n    }\r\n\r\n    public class Create");
             
-            #line 43 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 43 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestValidator : AbstractValidator<Create");
             
-            #line 43 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 43 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Request>\r\n    {\r\n       public Create");
             
-            #line 45 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 45 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestValidator()\r\n       {\r\n            ");
             
-            #line 47 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 47 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
 foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
             {
                     var propName = c.ColumnName;
@@ -121,28 +121,28 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
             #line hidden
             this.Write("       }\r\n    }\r\n\r\n    public class Update");
             
-            #line 63 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 63 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestValidator : AbstractValidator<Update");
             
-            #line 63 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 63 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Request>\r\n    {\r\n       public Update");
             
-            #line 65 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 65 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestValidator()\r\n       {\r\n            ");
             
-            #line 67 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+            #line 67 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
 foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
             {
                     var propName = c.ColumnName;
@@ -163,7 +163,7 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\USER\Desktop\SqlGen-master\SqlGen\Templeates\DataTransferObjectTempleates.tt"
+        #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataTransferObjectTempleates.tt"
 
 private string @__namespaceField;
 
