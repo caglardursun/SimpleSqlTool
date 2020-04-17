@@ -1,0 +1,36 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="SqlGen" #>
+<#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
+
+//rest sharp default url 4 create data ...
+var client = new RestClient("");
+client.Timeout = -1;
+var request = new RestRequest(Method.GET);
+request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+
+
+<#
+Write("\n");
+    foreach(var c in columns)
+    {
+    var propName = c.ColumnName;
+    var propType = c.ClrTypeName();                
+                
+    Write($"request.AddParameter(\"{propName}\",\"\");");Write("\n");
+
+    }
+Write("\n");
+#>
+
+IRestResponse response = client.Execute(request);
+Console.WriteLine(response.Content);
+
+
