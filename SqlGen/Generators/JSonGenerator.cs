@@ -13,11 +13,15 @@ namespace SqlGen.Generators
         {
 
             try
-            {                
+            {
 
                 var json = new JSonTempates();
-
                 json.Session = new Dictionary<string, object>();
+
+                var fk = table.ForeignKeys.ToForegnTableColumns();
+                json.Session.Add("foregnkeys", fk);
+                
+
                 json.Session.Add("columns", table.InsertableColumns);
                 json.Initialize();
                 return json.TransformText();

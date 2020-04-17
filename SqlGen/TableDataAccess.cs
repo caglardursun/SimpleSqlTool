@@ -178,8 +178,8 @@ namespace SqlGen
     }
 
     public class ForeignKey : TableKey
-    {    
-
+    {
+        public string ReferancedTableName { get; set; }
         public List<Column> TableColumns { get; set; }
         public override IEnumerator<Column> GetEnumerator() => TableColumns.GetEnumerator();
     }
