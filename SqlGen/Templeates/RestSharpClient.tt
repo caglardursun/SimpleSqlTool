@@ -13,8 +13,7 @@
 var client = new RestClient("");
 client.Timeout = -1;
 var request = new RestRequest(Method.GET);
-request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+request.AddHeader("Authorization", "Bearer ****");
 
 
 <#

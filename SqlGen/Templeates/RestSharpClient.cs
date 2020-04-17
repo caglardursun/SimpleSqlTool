@@ -31,18 +31,11 @@ namespace SqlGen.Templeates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write(@"
-//rest sharp default url 4 create data ...
-var client = new RestClient("""");
-client.Timeout = -1;
-var request = new RestRequest(Method.GET);
-request.AddHeader(""Content-Type"", ""application/x-www-form-urlencoded"");
-request.AddHeader(""Content-Type"", ""application/x-www-form-urlencoded"");
-
-
-");
+            this.Write("\r\n//rest sharp default url 4 create data ...\r\nvar client = new RestClient(\"\");\r\nc" +
+                    "lient.Timeout = -1;\r\nvar request = new RestRequest(Method.GET);\r\nrequest.AddHead" +
+                    "er(\"Authorization\", \"Bearer ****\");\r\n\r\n\r\n");
             
-            #line 20 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\RestSharpClient.tt"
+            #line 19 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\RestSharpClient.tt"
 
 Write("\n");
     foreach(var c in columns)
