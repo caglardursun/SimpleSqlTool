@@ -1,6 +1,7 @@
 ﻿<#@ template language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System" #>
+<#@ import namespace="System" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections" #>
@@ -17,8 +18,11 @@ Write("{\n");
         {
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
+                System.String str = "";
 
-                Write("\t");Write($@"{propName} : '' ");Write("\n");
+                if(propType.GetType() == Type.GetType(""))
+                    str = "\'\'";
+                Write("\t");Write($@"{propName} : {str} ");Write("\n");
         }
 Write("}");
 #>

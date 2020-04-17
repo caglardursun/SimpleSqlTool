@@ -34,15 +34,18 @@ namespace SqlGen.Templeates
             this.Write("\r\n");
             this.Write("\r\n\r\n");
             
-            #line 14 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\JSonTempates.tt"
+            #line 15 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\JSonTempates.tt"
 
 Write("{\n");
         foreach (var c in columns)
         {
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
+                System.String str = "";
 
-                Write("\t");Write($@"{propName} : '' ");Write("\n");
+                if(propType.GetType() == Type.GetType(""))
+                    str = "\'\'";
+                Write("\t");Write($@"{propName} : {str} ");Write("\n");
         }
 Write("}");
 

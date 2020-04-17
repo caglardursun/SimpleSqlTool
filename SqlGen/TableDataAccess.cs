@@ -18,9 +18,9 @@ namespace SqlGen
         }
 
         const string tableSql = @"select TABLE_SCHEMA, TABLE_NAME
-from INFORMATION_SCHEMA.TABLES
-where TABLE_NAME NOT LIKE '%_AUDIT'
-order by TABLE_SCHEMA, TABLE_NAME";
+                                from INFORMATION_SCHEMA.TABLES
+                                where TABLE_NAME NOT LIKE '%_AUDIT'
+                                order by TABLE_SCHEMA, TABLE_NAME";
 
         public Task<List<Table>> LoadNonAuditTable()
         {
@@ -81,16 +81,16 @@ order by TABLE_SCHEMA, TABLE_NAME";
         }
 
         const string foreignKeySql = @"select CONSTRAINT_NAME 
-from INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS as RC
-where exists (
-	select * 
-	from INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU1
-	where KCU1.CONSTRAINT_CATALOG = RC.CONSTRAINT_CATALOG
-			AND KCU1.CONSTRAINT_SCHEMA = RC.CONSTRAINT_SCHEMA
-			AND KCU1.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
-			and TABLE_SCHEMA = @schema
-			and TABLE_NAME = @table
-)";
+                                        from INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS as RC
+                                        where exists (
+	                                        select * 
+	                                        from INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU1
+	                                        where KCU1.CONSTRAINT_CATALOG = RC.CONSTRAINT_CATALOG
+			                                        AND KCU1.CONSTRAINT_SCHEMA = RC.CONSTRAINT_SCHEMA
+			                                        AND KCU1.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
+			                                        and TABLE_SCHEMA = @schema
+			                                        and TABLE_NAME = @table
+        )";
 
         List<ForeignKey> LoadForeignKeyContraints(string table, string schema)
         {
@@ -98,8 +98,8 @@ where exists (
         }
 
         const string foreignKeyColumnSql = @"select *
-from INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-where TABLE_SCHEMA = @schema and TABLE_NAME = @table";
+        from INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+        where TABLE_SCHEMA = @schema and TABLE_NAME = @table";
 
         HashLookup<string, KeyColumn> LoadForeignKeyColumns(string table, string schema)
         {

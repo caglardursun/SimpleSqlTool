@@ -13,13 +13,15 @@ namespace SqlGen.Generators
         {
 
             try
-            {
+            {                
+
                 var json = new JSonTempates();
 
                 json.Session = new Dictionary<string, object>();
                 json.Session.Add("columns", table.InsertableColumns);
                 json.Initialize();
                 return json.TransformText();
+                
             }
             catch (Exception exc)
             {

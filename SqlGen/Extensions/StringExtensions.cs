@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace SqlGen
 {
-    public static partial class Extensions
+    public static partial class StringExtensions
     {
         public static string ToPascalCase(this string sqlName)
         {

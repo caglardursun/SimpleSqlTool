@@ -23,7 +23,7 @@
         public bool Audit { get; set; }
     }
 
-    public static partial class Extensions
+    public static partial class StringExtensions
     {
         public static GeneratorOptions WithKey(this GeneratorOptions options, TableKey key)
         {
