@@ -1,6 +1,7 @@
 # SqlGen
+![screen shot](https://github.com/caglardursun/SimpleSqlTool/blob/master/screen-shot.png)
 
-Generate the code from SQL Server tables. Api, Data Managers, entities etc.
+Generate the code from SQL Server tables. Apis, Data Managers, entities etc.
 
 
 
