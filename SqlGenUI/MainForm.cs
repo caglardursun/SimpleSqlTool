@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,7 +16,7 @@ namespace SqlGenUI
     public partial class MainForm : Form
     {
         List<Table> _allTables;
-        
+
         public MainForm()
         {
             InitializeComponent();
@@ -26,8 +27,8 @@ namespace SqlGenUI
 
             List<string> connectionStrings = new List<string>();
             connectionStrings.Add(AppSettings.Instance.ServerName);
-            
-            
+
+
 
             //serverToolStripMenuItem.DropDownItems.AddRange(
             //        //ConfigurationManager.ConnectionStrings
@@ -54,7 +55,7 @@ namespace SqlGenUI
             codeList.Columns[0].Width = codeList.Width - 4 - SystemInformation.VerticalScrollBarWidth;
         }
 
-        
+
 
         private void RefreshCodeGenerators()
         {
@@ -81,7 +82,7 @@ namespace SqlGenUI
 
             if (database == null)
             {
-                
+
 
                 _ = RunLoadDatabasesAsync(_settings.ConnectionString);
                 _ = RunLoadTablesAsync(_settings.ConnectionString);
@@ -193,7 +194,7 @@ namespace SqlGenUI
 
         string CheckedDatabase
         {
-            get { return databaseToolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>().FirstOrDefault(mi => mi.Checked)?.Text;  }
+            get { return databaseToolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>().FirstOrDefault(mi => mi.Checked)?.Text; }
             set
             {
                 foreach (var mi in databaseToolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>())
@@ -205,7 +206,7 @@ namespace SqlGenUI
 
         string CheckedSchema
         {
-            get { return schemaToolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>().FirstOrDefault(mi => mi.Checked)?.Text;  }
+            get { return schemaToolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>().FirstOrDefault(mi => mi.Checked)?.Text; }
             set
             {
                 foreach (var mi in schemaToolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>())
@@ -221,7 +222,7 @@ namespace SqlGenUI
 
         private IEnumerable<TableKey> SelectedKeys() => fkList.SelectedItems.Cast<ListViewItem>().Select(lvi => (TableKey)lvi.Tag);
 
-        
+
 
         private void sqlTextBox_MouseDown(object sender, MouseEventArgs e)
         {
@@ -243,7 +244,7 @@ namespace SqlGenUI
                 return;
 
             await Task.Yield();
-           // ConnectionStringSettings connectionSettings = CheckedConnectionString();
+            // ConnectionStringSettings connectionSettings = CheckedConnectionString();
             table.EnsureFullyPopulated(AppSettings.Instance.ConnectionString);
             BeginInvoke((Action<Table>)PopulateForeignKeyList, table);
         }
@@ -251,7 +252,7 @@ namespace SqlGenUI
         void PopulateForeignKeyList(Table table)
         {
             fkList.Items.Clear();
-            fkList.Items.Add(new ListViewItem { Text = table.PrimaryKey.ConstraintName, Tag=table.PrimaryKey });
+            fkList.Items.Add(new ListViewItem { Text = table.PrimaryKey.ConstraintName, Tag = table.PrimaryKey });
             fkList.Items.AddRange(table.ForeignKeys.Select(fk => new ListViewItem { Text = fk.ConstraintName, Tag = fk }).ToArray());
             Cursor = Cursors.Default;
         }
@@ -291,98 +292,152 @@ namespace SqlGenUI
         }
 
         private string GetTableName()
-        {                        
+        {
             return tableList.SelectedItems[0].Text.Split('.')[1].ToPascalCase();
         }
 
-        
+
 
         private void dataManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //file 2 save
-            
-            //SaveFileDialog sfd = new SaveFileDialog();
+            //string name = GetTableName();
+            //string content = sqlTextBox.Text;
 
-            string name = GetTableName();
-            string content = sqlTextBox.Text;
+            //var settings = AppSettings.Instance;
 
-            var settings = AppSettings.Instance;
+            //string sfd = Path.Combine(settings.APIPath, @"\Data\DataManager\");
 
-            string sfd = Path.Combine(settings.APIPath,@"\Data\DataManager\");
-            
-            sfd += "" + name + "Manager.cs";
+            //sfd += "" + name + "Manager.cs";
 
-            using (StreamWriter writer = File.CreateText(sfd))
-            {
-                writer.Write(content);
-            }
+            //using (StreamWriter writer = File.CreateText(sfd))
+            //{
+            //    writer.Write(content);
+            //}
+            //MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+            Save();
         }
 
         private void dataManagerInterfaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string name = GetTableName();
-            string str = sqlTextBox.Text;
+            //string name = GetTableName();
+            //string str = sqlTextBox.Text;
 
-            var settings = AppSettings.Instance;
+            //var settings = AppSettings.Instance;
 
-            string sfd = Path.Combine(settings.APIPath, @"\Contracts\");
+            //string sfd = Path.Combine(settings.APIPath, @"\Contracts\");
 
-            sfd += "I" + name + "Manager.cs";
+            //sfd += "I" + name + "Manager.cs";
 
-            using (StreamWriter writer = File.CreateText(sfd))
-            {
-                writer.Write(str);
-            }
+            //using (StreamWriter writer = File.CreateText(sfd))
+            //{
+            //    writer.Write(str);
+            //}
+
+            //MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+            Save();
         }
 
         private void aPICreateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string name = GetTableName();
-            string str = sqlTextBox.Text;
-
-            var settings = AppSettings.Instance;
-
-            string sfd = Path.Combine(settings.APIPath,@"\API\v1\");
-            sfd += "" + name + "Controller.cs";
-
-            using (StreamWriter writer = File.CreateText(sfd))
-            {
-                writer.Write(str);
-            }
+            //string name = GetTableName();
+            //string str = sqlTextBox.Text;
+            //var settings = AppSettings.Instance;
+            //string sfd = Path.Combine(settings.APIPath, @"\API\v1\");
+            //sfd += "" + name + "Controller.cs";
+            //using (StreamWriter writer = File.CreateText(sfd))
+            //{
+            //    writer.Write(str);
+            //}
+            //MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+            Save();
         }
 
         private void dTOCreateToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            string name = GetTableName();
-            string str = sqlTextBox.Text;
+            //string name = GetTableName();
+            //string str = sqlTextBox.Text;
 
-            var settings = AppSettings.Instance;
+            //var settings = AppSettings.Instance;
 
-            string sfd = Path.Combine(settings.APIPath, @"\DTO\Request\");
-            sfd += "" + name + "Request.cs";
+            //string sfd = Path.Combine(settings.APIPath, @"\DTO\Request\");
+            //sfd += "" + name + "Request.cs";
 
-            using (StreamWriter writer = File.CreateText(sfd))
-            {
-                writer.Write(str);
-            }
-
+            //using (StreamWriter writer = File.CreateText(sfd))
+            //{
+            //    writer.Write(str);
+            //}
+            //MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+            Save();
         }
 
         private void dataEntityToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //string name = GetTableName();
+            //string str = sqlTextBox.Text;
+            //var settings = AppSettings.Instance;
+
+            //string sfd = Path.Combine(settings.APIPath, @"\Data\Entity\");
+            //sfd += "" + name + ".cs";
+
+            //using (StreamWriter writer = File.CreateText(sfd))
+            //{
+            //    writer.Write(str);
+            //}
+            //MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+            Save();
+        }
+
+        private void Save([CallerMemberName] string memberName = "",
+                        [CallerFilePath] string sourceFilePath = "",
+                        [CallerLineNumber] int sourceLineNumber = 0)
+        {
             string name = GetTableName();
             string str = sqlTextBox.Text;
             var settings = AppSettings.Instance;
+            string sfd = "";
+            switch (memberName)
+            {
+                case "dataEntityToolStripMenuItem_Click":
+                    {
+                        
+                        sfd = Path.Combine(settings.APIPath, @"\Data\Entity\", string.Format("{0}.cs", name));
+                        break;
+                    }
+                case "dTOCreateToolStripMenuItem_Click":
+                    {
+                        sfd = Path.Combine(settings.APIPath, @"\DTO\Request\", string.Format("{0}Request.cs", name));
 
-            string sfd = Path.Combine(settings.APIPath, @"\Data\Entity\");
-            sfd += "" + name + ".cs";
+                        break;
+                    }
+                case "aPICreateToolStripMenuItem_Click":
+                    {
+                        
+                        sfd = Path.Combine(settings.APIPath, @"\API\v1\", string.Format("{0}Controller.cs", name));
+                        break;
+                    }
+                case "dataManagerInterfaToolStripMenuItem_Click":
+                    {
+                        
+                        sfd = Path.Combine(settings.APIPath, @"\Contracts\", string.Format("I{0}Manager.cs", name));
+                        break;
+                    }
+                case "dataManagerToolStripMenuItem_Click":
+                    {
+                        
+                        sfd = Path.Combine(settings.APIPath, @"\Data\DataManager\", string.Format("{0}Manager.cs", name));
+                        break;
+                    }
+            }
 
             using (StreamWriter writer = File.CreateText(sfd))
             {
                 writer.Write(str);
             }
+            MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+
         }
+
 
         private void postgresToolStripMenuItem_Click(object sender, EventArgs e)
         {
