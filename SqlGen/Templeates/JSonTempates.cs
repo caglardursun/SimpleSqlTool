@@ -45,7 +45,7 @@ Write("{\n");
 
                 if(propType.GetType() == Type.GetType(""))
                     str = "\'\'";
-                Write("\t");Write($@"{propName} : {str} ,");Write("\n");
+                Write("\t");Write($"\"{propName}\" : {str} ,");Write("\n");
 
         }
     if(foregnkeys.Count > 0)
@@ -53,18 +53,18 @@ Write("{\n");
          
          foreach (var fk in foregnkeys)
          {
-                Write($"\t {fk.TableName} : [ \n");
-                Write("\t{\n");
+                Write($"\t \"{fk.TableName}\" : [ \n");
+                Write("\t\t{\n");
 
                 foreach(var f in fk.columns)
                 {
 
                     var propName = f.ColumnName;
-                    Write("\t");Write($@"{propName} : , ");Write("\n");
+                    Write("\t\t");Write($"\t{propName} : \" \", ");Write("\n");
 
                 }
-                Write("\t}");
-                Write("\n]\n");
+                Write("\t\t}");
+                Write("\n\t]\n");
          }            
         
     }

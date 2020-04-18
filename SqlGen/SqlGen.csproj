@@ -34,6 +34,9 @@
     <Reference Include="BusterWood.Mapper, Version=7.0.0.0, Culture=neutral, PublicKeyToken=6bfcca4f2e08fc6b, processorArchitecture=MSIL">
       <HintPath>..\packages\BusterWood.Mapper.7.5.2\lib\net45\BusterWood.Mapper.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,6 +64,7 @@
     <Compile Include="Generators\Generator.cs" />
     <Compile Include="Column.cs" />
     <Compile Include="Helper\ForegnKeyHelper.cs" />
+    <Compile Include="Helper\QueryHelper.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="TableDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -60,8 +60,12 @@ namespace SqlGenUI
         [JsonProperty("Password")]
         public string Password { get; set; }
 
-      
 
+        [JsonProperty("ConnectionStrings")]
+        public string[] ConnectionStrings
+        {
+            get; set;            
+        }
 
 
         AppSettings()

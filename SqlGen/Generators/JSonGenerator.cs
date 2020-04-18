@@ -19,6 +19,7 @@ namespace SqlGen.Generators
                 json.Session = new Dictionary<string, object>();
 
                 var fk = table.ForeignKeys.ToForegnTableColumns();
+                
                 json.Session.Add("foregnkeys", fk);
                 
 
