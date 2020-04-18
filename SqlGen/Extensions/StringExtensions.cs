@@ -16,5 +16,10 @@ namespace SqlGen
 
             return result.ToLowerInvariant();       
         }
+
+        public static string EmptyCheck(this string variable)
+        {
+            return variable == null ? "" : variable;
+        }
     }
 }
