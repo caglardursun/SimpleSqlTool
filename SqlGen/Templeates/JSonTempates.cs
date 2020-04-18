@@ -53,18 +53,23 @@ Write("{\n");
          
          foreach (var fk in foregnkeys)
          {
-                Write($"\t \"{fk.TableName}\" : [ \n");
+
+                string addition = (fk.FKey.IsIdentity) ? "" : "[";
+               
+
+                Write($"\t \"{fk.TableName}\" : {addition} \n");
                 Write("\t\t{\n");
 
                 foreach(var f in fk.columns)
                 {
 
                     var propName = f.ColumnName;
-                    Write("\t\t");Write($"\t{propName} : \" \", ");Write("\n");
+                    Write("\t\t");Write($"\t{propName} : '', ");Write("\n");
 
                 }
                 Write("\t\t}");
-                Write("\n\t]\n");
+                addition = (fk.FKey.IsIdentity) ? "" : "]";
+                Write($"\n\t{addition}\n");
          }            
         
     }
