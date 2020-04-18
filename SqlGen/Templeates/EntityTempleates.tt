@@ -13,20 +13,43 @@
 <#@ parameter name="table" type="SqlGen.Table" #>
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
+<#@ parameter name="foregnkeys" type="System.Collections.Generic.List<FkModel>" #>
 
 namespace <#=_namespace#>.Data.Entity
 {
     public class <#=tableName#> 
     {
-                
         <#
         foreach (var c in columns)
         {
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
-
                 Write("\t");Write($@"public {propType} {propName} {{ get; set; }}");Write("\n");
         }
+
+       
+        
+        if(foregnkeys.Count > 0)
+        {
+
+            foreach (var fk in foregnkeys)
+            {
+                Write("\t");
+                if(fk.FKey.IsIdentity)
+                {
+                    Write($@"public {fk.TableName} _{fk.FKey.TableName} {{ get; set; }}");Write("\n");
+                    
+                }else{
+                
+                    Write($@"public List<{fk.TableName}> {fk.FKey.TableName}s {{ get; set; }}");Write("\n");
+                }
+               
+                
+                
+            }    
+        
+        }
+        
         #>
     }
 

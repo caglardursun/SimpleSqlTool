@@ -33,19 +33,19 @@ namespace SqlGen.Templeates
         {
             this.Write("\r\nnamespace ");
             
-            #line 17 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\EntityTempleates.tt"
+            #line 18 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\EntityTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".Data.Entity\r\n{\r\n    public class ");
             
-            #line 19 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\EntityTempleates.tt"
+            #line 20 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\EntityTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write(" \r\n    {\r\n                \r\n        ");
+            this.Write(" \r\n    {\r\n        ");
             
             #line 22 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\EntityTempleates.tt"
 
@@ -53,9 +53,32 @@ namespace SqlGen.Templeates
         {
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
-
                 Write("\t");Write($@"public {propType} {propName} {{ get; set; }}");Write("\n");
         }
+
+       
+        
+        if(foregnkeys.Count > 0)
+        {
+
+            foreach (var fk in foregnkeys)
+            {
+                Write("\t");
+                if(fk.FKey.IsIdentity)
+                {
+                    Write($@"public {fk.TableName} _{fk.FKey.TableName} {{ get; set; }}");Write("\n");
+                    
+                }else{
+                
+                    Write($@"public List<{fk.TableName}> {fk.FKey.TableName}s {{ get; set; }}");Write("\n");
+                }
+               
+                
+                
+            }    
+        
+        }
+        
         
             
             #line default
@@ -141,6 +164,19 @@ private global::System.Collections.Generic.IEnumerable<Column> columns
     get
     {
         return this._columnsField;
+    }
+}
+
+private global::System.Collections.Generic.List<FkModel> _foregnkeysField;
+
+/// <summary>
+/// Access the foregnkeys parameter of the template.
+/// </summary>
+private global::System.Collections.Generic.List<FkModel> foregnkeys
+{
+    get
+    {
+        return this._foregnkeysField;
     }
 }
 
@@ -234,6 +270,20 @@ if ((columnsValueAcquired == false))
     if ((data != null))
     {
         this._columnsField = ((global::System.Collections.Generic.IEnumerable<Column>)(data));
+    }
+}
+bool foregnkeysValueAcquired = false;
+if (this.Session.ContainsKey("foregnkeys"))
+{
+    this._foregnkeysField = ((global::System.Collections.Generic.List<FkModel>)(this.Session["foregnkeys"]));
+    foregnkeysValueAcquired = true;
+}
+if ((foregnkeysValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("foregnkeys");
+    if ((data != null))
+    {
+        this._foregnkeysField = ((global::System.Collections.Generic.List<FkModel>)(data));
     }
 }
 

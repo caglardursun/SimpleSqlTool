@@ -110,10 +110,10 @@ namespace <#= _namespace #>.API.v1
 
         
         /// <summary>
-        /// <#=tableNameToPascal#> silme servisi
+        /// <#=tableNameToPascal#> delete service
         /// </summary>
         /// <param name="id">
-        /// Kayıt Id si
+        /// Record Id si
         /// </param>
         /// <returns>
         /// <see cref="ApiResponse"/>
@@ -131,10 +131,17 @@ namespace <#= _namespace #>.API.v1
                 throw new ApiException($"Record with id: {id} does not exist.", Status404NotFound);
         }
 
-  
+        /// <summary>
+        /// <#=tableNameToPascal#> get service
+        /// </summary>
+        /// <param name="id">
+        /// Record Id 
+        /// </param>
+        /// <returns>
+        /// <see cref="<#=tableNameToPascal#>Response>"/>
         [Route("{id:long}")]
         [HttpGet]
-        public async Task<<#=tableNameToPascal#>Response> Get(long id)
+        public async Task<<#=tableNameToPascal#>Response>> Get(long id)
         {
             var data = await  _<#=tableName#>Manager.GetByIdAsync(id);
             if (data == null)
@@ -147,7 +154,14 @@ namespace <#= _namespace #>.API.v1
         }
 
 
-
+        /// <summary>
+        /// <#=tableNameToPascal#> get pagination service
+        /// </summary>
+        /// <param name="UrlQuerySearchParameters">
+        ///  search parameter
+        /// </param>
+        /// <returns>
+        /// <see cref="IEnumerable<<#=tableNameToPascal#>Response>"/>
         [Route("paged")]
         [HttpGet]        
         public async Task<IEnumerable<<#=tableNameToPascal#>Response>> Get([FromQuery] UrlQuerySearchParameters urlQueryParameters)

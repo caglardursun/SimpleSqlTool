@@ -12,19 +12,23 @@ namespace SqlGen.Generators
         public override string Generate(Table table, GeneratorOptions options)
         {
             
-            var sft = new EntityTempleates();   
-            sft.Session = new Dictionary<string, object>();
-            sft.Session.Add("_namespace", "PenMail");
-            sft.Session.Add("table", table);
-            sft.Session.Add("tableName", table.TableName.ToPascalCase());
-            sft.Session.Add("tableNameToLower", table.TableName);
-            
+            var dataEntity = new EntityTempleates();   
+            dataEntity.Session = new Dictionary<string, object>();
+            dataEntity.Session.Add("_namespace", "PenMail");
+            dataEntity.Session.Add("table", table);
+            dataEntity.Session.Add("tableName", table.TableName.ToPascalCase());
+            dataEntity.Session.Add("tableNameToLower", table.TableName);
+
+            var fk = table.ForeignKeys.ToForegnTableColumns();
+
+            dataEntity.Session.Add("foregnkeys", fk);
+
             var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
-            sft.Session.Add("columns", columns);
-            sft.Initialize();
+            dataEntity.Session.Add("columns", columns);
+            dataEntity.Initialize();
             
 
-            return sft.TransformText();
+            return dataEntity.TransformText();
         }
 
 
