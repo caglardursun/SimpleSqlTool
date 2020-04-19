@@ -362,24 +362,30 @@ namespace SqlGen.Templeates
             
             #line default
             #line hidden
-            this.Write("Response>> Get([FromQuery] UrlQuerySearchParameters urlQueryParameters)\r\n        " +
-                    "{\r\n\r\n            \r\n            var data = await _");
+            this.Write(@"Response>> Get([FromQuery] UrlQuerySearchParameters urlQueryParameters)
+        {
+
+            var parameters = _mapper.Map<QuerySearchParameters>(urlQueryParameters);
+            parameters.PersonID = User.Claims.ToUserId();            
+            parameters.IsAdmin = User.Claims.IsAdmin();            
+
+            var data = await _");
             
-            #line 171 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 174 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Manager.Search");
             
-            #line 171 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 174 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Async(urlQueryParameters);\r\n            if (data.");
             
-            #line 172 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 175 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -387,14 +393,14 @@ namespace SqlGen.Templeates
             this.Write(" == null)\r\n            {\r\n                throw new ApiException(\"No records Foun" +
                     "d\");\r\n            }\r\n\r\n            var response = _mapper.Map<IEnumerable<");
             
-            #line 177 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 180 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Response>>(data.");
             
-            #line 177 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
+            #line 180 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\APITempleate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default

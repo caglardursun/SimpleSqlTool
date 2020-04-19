@@ -11,6 +11,7 @@
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
 <#@ parameter name="tableNameToPascal" type="System.String" #>
+<#@ parameter name="foregnkeys" type="System.Collections.Generic.List<FkModel>" #>
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -121,9 +122,43 @@ namespace <#= _namespace #>.Data.DataManager
             return await DbExecuteAsync<bool>(query, entity);
         }
 
-        public async Task<(IEnumerable<<#=tableNameToPascal#>> <#=tableNameToPascal#>, Pagination Pagination)> Search<#=tableNameToPascal#>Async(UrlQuerySearchParameters urlQueryParameters)
+
+        public async Task<(IEnumerable<<#=tableNameToPascal#>> <#=tableNameToPascal#>, Pagination Pagination)> Search<#=tableNameToPascal#>Async(QuerySearchParameters searchParameters)
         {
-            return await DbQueryPagedAsync<<#=tableNameToPascal#>>(urlQueryParameters, new SqlBuilder());
+            
+            <#
+                if(foregnkeys.Count == 0)
+                {
+                    Write($"return await DbQueryPagedAsync<{tableNameToPascal}>(urlQueryParameters, new SqlBuilder())");
+                }else
+                {
+                    #>
+                    if(!searchParameters.IsAdmin)
+                     {
+                        //builder.Where($@"id = {searchParameters.UserID}");
+                     }
+                     
+                    
+                     IEnumerable<<#=tableNameToPascal#>> data = null;
+
+                      long recordCount = 0;
+
+                        var param = new DynamicParameters();
+                        param.Add("Limit", searchParameters.PageSize);
+                        param.Add("Offset", searchParameters.PageNumber);
+                        string tableName = typeof(<#=tableNameToPascal#>).Name;
+
+                        /* string sql = @"select * from <#=tableName#> 
+                                       left join 
+                                     "
+                        */
+                        //!! You will keep going on from here !!
+
+                    <#
+                
+                }
+            #>
+                        
         }
 
     }

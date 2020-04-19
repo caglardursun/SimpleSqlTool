@@ -167,7 +167,10 @@ namespace <#= _namespace #>.API.v1
         public async Task<IEnumerable<<#=tableNameToPascal#>Response>> Get([FromQuery] UrlQuerySearchParameters urlQueryParameters)
         {
 
-            
+            var parameters = _mapper.Map<QuerySearchParameters>(urlQueryParameters);
+            parameters.PersonID = User.Claims.ToUserId();            
+            parameters.IsAdmin = User.Claims.IsAdmin();            
+
             var data = await _<#=tableName#>Manager.Search<#=tableNameToPascal#>Async(urlQueryParameters);
             if (data.<#=tableNameToPascal#> == null)
             {

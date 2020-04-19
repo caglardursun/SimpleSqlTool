@@ -14,18 +14,21 @@ namespace SqlGen.Generators
         public override string Generate(Table table, GeneratorOptions options)
         {
 
-            DataManagerTempleates sft = new DataManagerTempleates();
-            sft.Session = new Dictionary<string, object>();
-            sft.Session.Add("_namespace","PenMail");
-            sft.Session.Add("table", table);
-            sft.Session.Add("tableName", table.TableName);
-            sft.Session.Add("tableNameToLower", table.TableName);
-            sft.Session.Add("tableNameToPascal", table.TableName.ToPascalCase());
-            sft.Session.Add("columns", table.InsertableColumns);
-            
-            sft.Initialize();            
+            DataManagerTempleates dMT = new DataManagerTempleates();
+            dMT.Session = new Dictionary<string, object>();
+            dMT.Session.Add("_namespace","PenMail");
+            dMT.Session.Add("table", table);
+            dMT.Session.Add("tableName", table.TableName);
+            dMT.Session.Add("tableNameToLower", table.TableName);
+            dMT.Session.Add("tableNameToPascal", table.TableName.ToPascalCase());
+            dMT.Session.Add("columns", table.InsertableColumns);
 
-            return sft.TransformText();                        
+            var fk = table.ForeignKeys.ToForegnTableColumns();
+            dMT.Session.Add("foregnkeys", fk);
+
+            dMT.Initialize();            
+
+            return dMT.TransformText();                        
         }
 
 
