@@ -107,7 +107,7 @@ namespace SqlGen
                     return c.IsNullable() ? "DateTime?" : "DateTime";
                 case "binary":
                 case "varbinary":
-                    return "byte[]";
+                    return "byte[]";                
                 default:
                     return c.DataType;
             }

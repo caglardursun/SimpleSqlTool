@@ -106,13 +106,13 @@ namespace SqlGen
 
         public async Task<List<string>> ListDatabases()
         {
-            var dbs = await connection.QueryAsync("select name from sys.databases where state = 0").ToListAsync<Database>();
+            var dbs = await connection.QueryAsync(QueryHelper.ListDBSql).ToListAsync<Database>();
             return dbs.Select(db => db.Name).ToList();
         }
 
         public async Task<string> CurrentDatabase()
         {
-            var db = await connection.QueryAsync("select DB_NAME() as Name").SingleAsync<Database>();
+            var db = await connection.QueryAsync(QueryHelper.CurrentDbNameSql).SingleAsync<Database>();
             return db.Name;
         }
     }

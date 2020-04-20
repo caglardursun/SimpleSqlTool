@@ -59,7 +59,16 @@ namespace SqlGen.Helper
         private static string tableSql = @"select TABLE_SCHEMA, TABLE_NAME
                                 from INFORMATION_SCHEMA.TABLES
                                 where TABLE_NAME NOT LIKE '%_AUDIT'
-                                order by TABLE_SCHEMA, TABLE_NAME"; 
+                                order by TABLE_SCHEMA, TABLE_NAME";
+
+        private static string listDBSql = @"
+            select name from sys.databases where state = 0
+        ";
+
+        private static string currentDbNameSql = @"
+            select DB_NAME() as Name
+        ";
+
         #endregion
 
         public static string ForeignKeyColumnSql { get { return foreignKeyColumnSql; }  }
@@ -70,6 +79,10 @@ namespace SqlGen.Helper
         public static string PrimaryKeySql { get { return primaryKeySql; }  }
 
         public static string TableSql { get { return tableSql; } }
+
+        public static string ListDBSql { get { return listDBSql; } }
+
+        public static string CurrentDbNameSql { get { return currentDbNameSql; } }
 
     }
 }

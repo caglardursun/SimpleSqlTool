@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\FkModel.cs" />
+    <Compile Include="Extensions\ForegnKeyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\ColumnExtensions.cs" />
     <Compile Include="Generators\ApiGenerator.cs" />
@@ -62,11 +64,10 @@
     <Compile Include="Generators\TableAuditInsertProcGenerator.cs" />
     <Compile Include="Generators\SQLUpdateGenerator.cs" />
     <Compile Include="Generators\Generator.cs" />
-    <Compile Include="Column.cs" />
-    <Compile Include="Helper\ForegnKeyHelper.cs" />
+    <Compile Include="Core\Column.cs" />
     <Compile Include="Helper\QueryHelper.cs" />
-    <Compile Include="Table.cs" />
-    <Compile Include="TableDataAccess.cs" />
+    <Compile Include="Core\Table.cs" />
+    <Compile Include="Data\TableDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templeates\APITempleate.cs">
       <AutoGen>True</AutoGen>
