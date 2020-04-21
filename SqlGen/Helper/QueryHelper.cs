@@ -9,6 +9,7 @@ namespace SqlGen.Helper
     public static class QueryHelper
     {
         #region queries ...
+
         private static string foreignKeyColumnSql = @"
                     SELECT KeyColumnUsage.*
             ,KeyColumnUsage.TABLE_NAME AS  SourceTableName 
@@ -26,9 +27,6 @@ namespace SqlGen.Helper
                 AND KeyColumnUsage2.CONSTRAINT_NAME = RefConst.UNIQUE_CONSTRAINT_NAME 
                 AND KeyColumnUsage2.ORDINAL_POSITION = KeyColumnUsage.ORDINAL_POSITION 
             where RefConst.CONSTRAINT_SCHEMA = @schema and KeyColumnUsage.TABLE_NAME = @table";
-
-
-
 
         private static string foreignKeySql = @"select CONSTRAINT_NAME 
                                         from INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS as RC

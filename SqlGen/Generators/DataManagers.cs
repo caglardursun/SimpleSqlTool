@@ -26,6 +26,8 @@ namespace SqlGen.Generators
             var fk = table.ForeignKeys.ToForegnTableColumns();
             dMT.Session.Add("foregnkeys", fk);
 
+            
+
             dMT.Initialize();            
 
             return dMT.TransformText();                        

@@ -43,5 +43,27 @@ namespace SqlGen
             return fkModel;
         }
 
+        public static string ToLeftJoins(this List<ForeignKey> foreignKeys)
+        {
+            string response = null;
+
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (ForeignKey fk in foreignKeys)
+            {
+
+                foreach (Column item in fk)
+                {                                        
+                    string sourceTableName = item.SourceTableName;
+                    string sourceColumnName = item.ColumnName;
+                    string targetColumnName = item.ReferancedColumnName;
+                    string targetTableName = item.ForegnReferanceTable.TableName;
+                    stringBuilder.Append($"left join {targetTableName} on {sourceColumnName} = {targetColumnName}\n");
+                }
+            }
+
+
+
+            return stringBuilder.ToString();
+        }
     }
 }

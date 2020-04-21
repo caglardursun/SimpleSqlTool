@@ -7,6 +7,7 @@
 <#@ import namespace="System.Xml" #>
 <#@ import namespace="SqlGen" #>
 <#@ parameter name="_namespace" type="System.String" #>
+<#@ parameter name="table" type="SqlGen.Table" #>
 <#@ parameter name="tableName" type="System.String" #>
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
@@ -148,11 +149,11 @@ namespace <#= _namespace #>.Data.DataManager
                         param.Add("Offset", searchParameters.PageNumber);
                         string tableName = typeof(<#=tableNameToPascal#>).Name;
 
-                        /* string sql = @"select * from <#=tableName#> 
-                                       left join 
-                                     "
+                        /* 
+                                string sql = @"select * from <#=tableName#>                                        
+                                       <#=table.ForeignKeys.ToLeftJoins()#>";
                         */
-                        //!! You will keep going on from here !!
+                        
 
                     <#
                 
