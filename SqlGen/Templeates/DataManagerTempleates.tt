@@ -126,35 +126,34 @@ namespace <#= _namespace #>.Data.DataManager
 
         public async Task<(IEnumerable<<#=tableNameToPascal#>> <#=tableNameToPascal#>, Pagination Pagination)> Search<#=tableNameToPascal#>Async(QuerySearchParameters searchParameters)
         {
+
             
-            <#
+<#
                 if(foregnkeys.Count == 0)
                 {
+
                     Write($"return await DbQueryPagedAsync<{tableNameToPascal}>(urlQueryParameters, new SqlBuilder())");
+
                 }else
                 {
-                    #>
-                    if(!searchParameters.IsAdmin)
-                     {
+#>
+                    if(!searchParameters.IsAdmin){
                         //builder.Where($@"id = {searchParameters.UserID}");
-                     }
+                    }
                      
                     
-                     IEnumerable<<#=tableNameToPascal#>> data = null;
+                    IEnumerable<<#=tableNameToPascal#>> data = null;
+                    long recordCount = 0;
 
-                      long recordCount = 0;
-
-                        var param = new DynamicParameters();
-                        param.Add("Limit", searchParameters.PageSize);
-                        param.Add("Offset", searchParameters.PageNumber);
-                        string tableName = typeof(<#=tableNameToPascal#>).Name;
-
-                        /* 
-                                string sql = @"select * from <#=tableName#>                                        
-                                       <#=table.ForeignKeys.ToLeftJoins()#>";
-                        */
-                        
-
+                    var param = new DynamicParameters();
+                    param.Add("Limit", searchParameters.PageSize);
+                    param.Add("Offset", searchParameters.PageNumber);
+                    string tableName = typeof(<#=tableNameToPascal#>).Name;
+                    
+                    
+                    string sql = @"select * from <#=tableName#>                                        
+                    <#=table.ForeignKeys.ToLeftJoins()#>";
+                    
                     <#
                 
                 }

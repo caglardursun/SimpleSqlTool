@@ -331,63 +331,61 @@ Write("\t");
             
             #line default
             #line hidden
-            this.Write("Async(QuerySearchParameters searchParameters)\r\n        {\r\n            \r\n         " +
-                    "   ");
+            this.Write("Async(QuerySearchParameters searchParameters)\r\n        {\r\n\r\n            \r\n");
             
-            #line 130 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
+            #line 131 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
 
                 if(foregnkeys.Count == 0)
                 {
+
                     Write($"return await DbQueryPagedAsync<{tableNameToPascal}>(urlQueryParameters, new SqlBuilder())");
+
                 }else
                 {
-                    
+
             
             #line default
             #line hidden
-            this.Write("                    if(!searchParameters.IsAdmin)\r\n                     {\r\n      " +
-                    "                  //builder.Where($@\"id = {searchParameters.UserID}\");\r\n        " +
-                    "             }\r\n                     \r\n                    \r\n                   " +
-                    "  IEnumerable<");
+            this.Write("                    if(!searchParameters.IsAdmin){\r\n                        //bui" +
+                    "lder.Where($@\"id = {searchParameters.UserID}\");\r\n                    }\r\n        " +
+                    "             \r\n                    \r\n                    IEnumerable<");
             
-            #line 143 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
+            #line 145 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write(@"> data = null;
+                    long recordCount = 0;
 
-                      long recordCount = 0;
-
-                        var param = new DynamicParameters();
-                        param.Add(""Limit"", searchParameters.PageSize);
-                        param.Add(""Offset"", searchParameters.PageNumber);
-                        string tableName = typeof(");
+                    var param = new DynamicParameters();
+                    param.Add(""Limit"", searchParameters.PageSize);
+                    param.Add(""Offset"", searchParameters.PageNumber);
+                    string tableName = typeof(");
             
-            #line 150 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
+            #line 151 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
-            this.Write(").Name;\r\n\r\n                        /* \r\n                                string sq" +
-                    "l = @\"select * from ");
+            this.Write(").Name;\r\n                    \r\n                    \r\n                    string s" +
+                    "ql = @\"select * from ");
             
-            #line 153 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
+            #line 154 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("                                        \r\n                                       " +
-                    "");
+            this.Write("                                        \r\n                    ");
             
-            #line 154 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
+            #line 155 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.ForeignKeys.ToLeftJoins()));
             
             #line default
             #line hidden
-            this.Write("\";\r\n                        */\r\n                        \r\n\r\n                    ");
+            this.Write("\";\r\n                    \r\n                    ");
             
-            #line 158 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
+            #line 157 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templeates\DataManagerTempleates.tt"
 
                 
                 }

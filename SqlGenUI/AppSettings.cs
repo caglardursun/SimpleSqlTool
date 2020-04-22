@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SqlGenUI
 {
-    public class AppSettings
+    public class AppSettings : INotifyPropertyChanged
     {
         
         [JsonIgnore]
@@ -31,6 +32,10 @@ namespace SqlGenUI
         private const string appName = "SqlGenUI";
         [JsonIgnore]
         private const string settingFileName = "Settings.json";
+
+        [JsonIgnore]
+        public event PropertyChangedEventHandler PropertyChanged;
+
         [JsonIgnore]
         private static string fileSettingsPath { get; set; }
 
