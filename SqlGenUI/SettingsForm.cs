@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SqlGen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,7 +35,15 @@ namespace SqlGenUI
             textBoxUserName.Text = settings.UserName.EmptyCheck();
             textBoxServer.Text = settings.ServerName.EmptyCheck();
 
-            comboBoxDB.SelectedIndex = 0;
+            switch (settings.DBType)
+            {
+                case SqlGenDbType.MsSql:
+                    comboBoxDB.SelectedIndex = 0;
+                    break;
+                case SqlGenDbType.PostgreSQL:
+                    comboBoxDB.SelectedIndex = 1;
+                    break;                
+            }            
         }
 
 
@@ -55,7 +64,7 @@ namespace SqlGenUI
             settings.Password= textBoxPassword.Text;
             settings.UserName= textBoxUserName.Text;
             settings.ServerName= textBoxServer.Text;
-            settings.DBType = (string) comboBoxDB.SelectedItem;
+            settings.DBType = (SqlGenDbType) comboBoxDB.SelectedIndex;
             settings.Save();
             
             Close();

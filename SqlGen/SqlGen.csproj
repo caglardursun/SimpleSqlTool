@@ -81,6 +81,7 @@
     <Compile Include="Core\FkModel.cs" />
     <Compile Include="Core\Keys.cs" />
     <Compile Include="Data\Database.cs" />
+    <Compile Include="Core\DbType.cs" />
     <Compile Include="Extensions\ForegnKeyExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\ColumnExtensions.cs" />

@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
+using SqlGen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,6 +13,9 @@ using System.Windows.Forms;
 
 namespace SqlGenUI
 {
+
+    
+
     public class AppSettings
     {
         
@@ -64,11 +69,10 @@ namespace SqlGenUI
         [JsonProperty("Password")]
         public string Password { get; set; }
 
-        [JsonIgnore]
-        public string[] DBTypes { get { return new string[] { "MsSQL", "PostgreSQL" };  } }
+     
 
         [JsonProperty("DBType")]
-        public string DBType { get; set; }
+        public SqlGenDbType DBType { get; set; }
         /// <summary>
         /// May be we can support multiple connection one day
         /// </summary>
