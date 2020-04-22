@@ -42,11 +42,13 @@
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxDB = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(271, 199);
+            this.buttonSave.Location = new System.Drawing.Point(275, 250);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 0;
@@ -56,12 +58,13 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(352, 199);
+            this.buttonCancel.Location = new System.Drawing.Point(356, 250);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // label1
             // 
@@ -161,11 +164,33 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Password";
             // 
+            // comboBoxDB
+            // 
+            this.comboBoxDB.FormattingEnabled = true;
+            this.comboBoxDB.Items.AddRange(new object[] {
+            "MsSQL",
+            "PostgreSQL"});
+            this.comboBoxDB.Location = new System.Drawing.Point(72, 137);
+            this.comboBoxDB.Name = "comboBoxDB";
+            this.comboBoxDB.Size = new System.Drawing.Size(143, 21);
+            this.comboBoxDB.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 145);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "DB Type";
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 245);
+            this.ClientSize = new System.Drawing.Size(446, 285);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.comboBoxDB);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.label3);
@@ -180,6 +205,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SettingsForm";
             this.Text = "Settings";
             this.ResumeLayout(false);
@@ -203,5 +230,7 @@
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBoxDB;
+        private System.Windows.Forms.Label label6;
     }
 }

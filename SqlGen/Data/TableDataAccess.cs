@@ -77,8 +77,6 @@ namespace SqlGen
                 fk.TableColumns = columns;
             }
 
-            
-            
             table.ForeignKeys = fks;
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SqlGen.Helper
 {
-    public static class QueryHelper
+    public class QueryHelper
     {
         #region queries ...
 

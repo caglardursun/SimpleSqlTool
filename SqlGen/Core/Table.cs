@@ -17,7 +17,7 @@ namespace SqlGen
         public void EnsureFullyPopulated(string connectionString)
         {
             if (Columns != null && ForeignKeys != null)
-                return;
+                return;            
 
             using (var cnn = new SqlConnection(connectionString))
             {

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SqlGenUI
 {
-    public class AppSettings : INotifyPropertyChanged
+    public class AppSettings
     {
         
         [JsonIgnore]
@@ -33,8 +33,7 @@ namespace SqlGenUI
         [JsonIgnore]
         private const string settingFileName = "Settings.json";
 
-        [JsonIgnore]
-        public event PropertyChangedEventHandler PropertyChanged;
+    
 
         [JsonIgnore]
         private static string fileSettingsPath { get; set; }
@@ -65,7 +64,14 @@ namespace SqlGenUI
         [JsonProperty("Password")]
         public string Password { get; set; }
 
+        [JsonIgnore]
+        public string[] DBTypes { get { return new string[] { "MsSQL", "PostgreSQL" };  } }
 
+        [JsonProperty("DBType")]
+        public string DBType { get; set; }
+        /// <summary>
+        /// May be we can support multiple connection one day
+        /// </summary>
         [JsonProperty("ConnectionStrings")]
         public string[] ConnectionStrings
         {
@@ -100,6 +106,7 @@ namespace SqlGenUI
                         Password = settings.Password;
                         UserName = settings.UserName;
                         ServerName = settings.ServerName;
+                        DBType = settings.DBType;
                     }
                      
                 }

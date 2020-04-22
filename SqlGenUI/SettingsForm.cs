@@ -13,14 +13,6 @@ using System.Windows.Forms;
 namespace SqlGenUI
 {
 
-    public static class StringHelper
-    {
-        public static string EmptyCheck(this string variable)
-        {
-            return variable == null ? "" : variable;
-        }
-    }
-
     public partial class SettingsForm : Form
     {                
 
@@ -36,13 +28,13 @@ namespace SqlGenUI
          
 
             var settings = AppSettings.Instance;
-            textBoxApiPath.Text = settings.APIPath.EmptyCheck();
+            textBoxApiPath.Text = settings.APIPath?.EmptyCheck();
             textBoxDB.Text = settings.DefaultDB.EmptyCheck();
             textBoxPassword.Text = settings.Password.EmptyCheck();
             textBoxUserName.Text = settings.UserName.EmptyCheck();
             textBoxServer.Text = settings.ServerName.EmptyCheck();
 
-            
+            comboBoxDB.SelectedIndex = 0;
         }
 
 
@@ -63,8 +55,14 @@ namespace SqlGenUI
             settings.Password= textBoxPassword.Text;
             settings.UserName= textBoxUserName.Text;
             settings.ServerName= textBoxServer.Text;
+            settings.DBType = (string) comboBoxDB.SelectedItem;
             settings.Save();
             
+            Close();
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }
