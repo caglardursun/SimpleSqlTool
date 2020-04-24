@@ -1,4 +1,4 @@
-﻿using BusterWood.Mapper;
+﻿//using BusterWood.Mapper;
 using SqlGen.Helper;
 using System;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
-//using Dapper;
+using Dapper;
 
 namespace SqlGen
 {
@@ -23,15 +23,15 @@ namespace SqlGen
 
       
 
-        public Task<List<Table>> LoadNonAuditTable()
+        public async Task<IEnumerable<Table>> LoadNonAuditTable()
         {            
-            return connection.QueryAsync(QueryHelper.TableSql).ToListAsync<Table>();
+            return await connection.QueryAsync<Table>(QueryHelper.TableSql);
         }
 
 
         public List<Column> LoadColumns(string table, string schema = "dbo")
         {
-            var cols = connection.Query(QueryHelper.ColumnSql, new { table, schema }).ToList<Column>();
+            var cols = connection.Query<Column>(QueryHelper.ColumnSql, new { table, schema }).ToList();
 
             var last = cols.Where(c => c.IsAuditColumn() || c.IsRowVersion() || c.IsSequenceNumber()).ToList();
             foreach (var c in last)
@@ -39,6 +39,7 @@ namespace SqlGen
                 cols.Remove(c);
             }
             cols.AddRange(last);
+
             return cols;
         }
 
@@ -56,7 +57,7 @@ namespace SqlGen
 
         List<KeyColumn> LoadPrimaryKeyColumns(string table, string schema)
         {
-            return connection.Query(QueryHelper.PrimaryKeySql, new { table, schema }).ToList<KeyColumn>();
+            return connection.Query<KeyColumn>(QueryHelper.PrimaryKeySql, new { table, schema }).ToList();
         }
 
         public void PopulateForeignKeys(Table table)
@@ -84,33 +85,47 @@ namespace SqlGen
 
         List<ForeignKey> LoadForeignKeyContraints(string table, string schema)
         {
-            return connection.Query(QueryHelper.ForeignKeySql, new { table, schema }).ToList<ForeignKey>();
+            return connection.Query<ForeignKey>(QueryHelper.ForeignKeySql, new { table, schema }).ToList();
         }
 
                
 
-        HashLookup<string, KeyColumn> LoadForeignKeyColumns(string table, string schema)
+        Dictionary<string, List<KeyColumn>> LoadForeignKeyColumns(string table, string schema)
         {
-            return connection.Query(QueryHelper.ForeignKeyColumnSql, new { table, schema }).ToLookup<string, KeyColumn>(c => c.ConstraintName);
+            
+            var queryResult = connection.Query<KeyColumn>(QueryHelper.ForeignKeyColumnSql, new { table, schema }).ToList();
+
+            // var eliminate = (from data in queryResult
+            //                 group data by data.ConstraintName into key
+            //                 );
+            
+            //Group by ConstraintName
+            var eliminate = from data in queryResult
+                            group data by data.ConstraintName into g 
+                            select new { key = (string) g.Key, value = g.ToList()};
+
+            //result = queryResult.ToDictionary<string,List<Column>>(key=> key.ConstraintName, value => value);
+
+            return eliminate.ToDictionary(h=>h.key, v=>v.value);
         }
 
 
         public Table GetTable(string table, string schema)
         {
-            Table t = connection.Query(QueryHelper.TableSql).ToList<Table>().FirstOrDefault(h=>h.TableName.Equals(table));
+            Table t = connection.Query<Table>(QueryHelper.TableSql).ToList<Table>().FirstOrDefault(h=>h.TableName.Equals(table));
             t.Columns = LoadColumns(table, schema);
             return t;
         }
 
-        public async Task<List<string>> ListDatabases()
+        public async Task<IEnumerable<string>> ListDatabases()
         {
-            var dbs = await connection.QueryAsync(QueryHelper.ListDBSql).ToListAsync<Database>();
+            var dbs = await connection.QueryAsync<Database>(QueryHelper.ListDBSql);
             return dbs.Select(db => db.Name).ToList();
         }
 
         public async Task<string> CurrentDatabase()
         {
-            var db = await connection.QueryAsync(QueryHelper.CurrentDbNameSql).SingleAsync<Database>();
+            var db = await connection.QueryFirstAsync<Database>(QueryHelper.CurrentDbNameSql);
             return db.Name;
         }
     }
