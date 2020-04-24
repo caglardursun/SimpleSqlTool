@@ -1,4 +1,4 @@
-﻿using SqlGen.Templeates;
+﻿//using SqlGen.Templeates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,23 +14,25 @@ namespace SqlGen.Generators
         public override string Generate(Table table, GeneratorOptions options)
         {
 
-            DataManagerTempleates dMT = new DataManagerTempleates();
-            dMT.Session = new Dictionary<string, object>();
-            dMT.Session.Add("_namespace","PenMail");
-            dMT.Session.Add("table", table);
-            dMT.Session.Add("tableName", table.TableName);
-            dMT.Session.Add("tableNameToLower", table.TableName);
-            dMT.Session.Add("tableNameToPascal", table.TableName.ToPascalCase());
-            dMT.Session.Add("columns", table.InsertableColumns);
+            // DataManagerTempleates dMT = new DataManagerTempleates();
+            // dMT.Session = new Dictionary<string, object>();
+            // dMT.Session.Add("_namespace","PenMail");
+            // dMT.Session.Add("table", table);
+            // dMT.Session.Add("tableName", table.TableName);
+            // dMT.Session.Add("tableNameToLower", table.TableName);
+            // dMT.Session.Add("tableNameToPascal", table.TableName.ToPascalCase());
+            // dMT.Session.Add("columns", table.InsertableColumns);
 
-            var fk = table.ForeignKeys.ToForegnTableColumns();
-            dMT.Session.Add("foregnkeys", fk);
+            // var fk = table.ForeignKeys.ToForegnTableColumns();
+            // dMT.Session.Add("foregnkeys", fk);
 
             
 
-            dMT.Initialize();            
+            // dMT.Initialize();            
 
-            return dMT.TransformText();                        
+            // return dMT.TransformText();  
+
+            return "";                      
         }
 
 
