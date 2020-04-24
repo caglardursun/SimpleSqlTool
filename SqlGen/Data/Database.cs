@@ -6,7 +6,4 @@ namespace SqlGen
     {
         public string Name { get; set; }
     }
-
-  
-
 }

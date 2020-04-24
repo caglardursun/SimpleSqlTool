@@ -1,5 +1,4 @@
-﻿using BusterWood.Mapper;
-using SqlGen.Helper;
+﻿using SqlGen.Helper;
 using System;
 using System.Collections;
 using System.Collections.Generic;
