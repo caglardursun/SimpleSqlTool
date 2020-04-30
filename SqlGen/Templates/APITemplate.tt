@@ -4,13 +4,13 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.Xml" #>
 <#@ import namespace="SqlGen" #>
 <#@ parameter name="_namespace" type="System.String" #>
 <#@ parameter name="tableName" type="System.String" #>
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
 <#@ parameter name="tableNameToPascal" type="System.String" #>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
