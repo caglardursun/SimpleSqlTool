@@ -14,7 +14,11 @@ using System.Windows.Forms;
 namespace SqlGenUI
 {
 
-    
+    public enum SqlGenDbType
+    {
+        MsSql =0,
+        PostgreSQL = 1
+    }
 
     public class AppSettings
     {
