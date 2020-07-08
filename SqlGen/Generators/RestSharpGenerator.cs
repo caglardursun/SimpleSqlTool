@@ -1,4 +1,5 @@
 ﻿//using SqlGen.Templeates;
+using SqlGen.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +14,14 @@ namespace SqlGen.Generators
         {
 
 
-            // var restSharpClient = new RestSharpClient();
+            var restSharpClient = new RestSharpTemplates();
 
-            // restSharpClient.Session = new Dictionary<string, object>();
-            // restSharpClient.Session.Add("columns", table.InsertableColumns);
-            // restSharpClient.Initialize();
+            restSharpClient.Session = new Dictionary<string, object>();
+            restSharpClient.Session.Add("columns", table.InsertableColumns);
+            restSharpClient.Initialize();
 
-            // return restSharpClient.TransformText();
-
-            return "";
+            return restSharpClient.TransformText();
+            
 
         }
 
