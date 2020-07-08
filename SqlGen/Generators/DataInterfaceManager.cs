@@ -15,7 +15,7 @@ namespace SqlGen.Generators
 
             var interfaceCreator = new DataManagerInterfaceTemplates();
             interfaceCreator.Session = new Dictionary<string, object>();
-            interfaceCreator.Session.Add("_namespace", "PenMail");
+            interfaceCreator.Session.Add("_namespace", "NestPayment");
             interfaceCreator.Session.Add("tableName", table.TableName.ToPascalCase());
             interfaceCreator.Session.Add("columns", table.Columns);
 

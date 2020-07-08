@@ -16,7 +16,7 @@ namespace SqlGen.Generators
             APITemplates apitempleate = new APITemplates();
 
             apitempleate.Session = new Dictionary<string, object>();
-            apitempleate.Session.Add("_namespace", "PenMail");
+            apitempleate.Session.Add("_namespace", "NestPayment");
             apitempleate.Session.Add("table", table);
             apitempleate.Session.Add("tableName", table.TableName);
             apitempleate.Session.Add("tableNameToLower", table.TableName);

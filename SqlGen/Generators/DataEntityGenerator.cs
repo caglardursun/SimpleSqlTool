@@ -14,7 +14,7 @@ namespace SqlGen.Generators
 
             var dataEntity = new EntityTemplates();
             dataEntity.Session = new Dictionary<string, object>();
-            dataEntity.Session.Add("_namespace", "PenMail");
+            dataEntity.Session.Add("_namespace", "NestPayment");
             dataEntity.Session.Add("table", table);
             dataEntity.Session.Add("tableName", table.TableName.ToPascalCase());
             dataEntity.Session.Add("tableNameToLower", table.TableName);

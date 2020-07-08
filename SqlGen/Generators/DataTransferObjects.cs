@@ -17,7 +17,7 @@ namespace SqlGen.Generators
 
             var tdo = new DataTransferObjectTemplates();
             tdo.Session = new Dictionary<string, object>();
-            tdo.Session.Add("_namespace", "PenMail");
+            tdo.Session.Add("_namespace", "NestPayment");
 
 
 

@@ -17,7 +17,7 @@ namespace SqlGen.Generators
 
             var dMT = new DataManagerTemplates();
             dMT.Session = new Dictionary<string, object>();
-            dMT.Session.Add("_namespace", "PenMail");
+            dMT.Session.Add("_namespace", "NestPayment");
             dMT.Session.Add("table", table);
             dMT.Session.Add("tableName", table.TableName);
             dMT.Session.Add("tableNameToLower", table.TableName);
