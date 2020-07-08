@@ -1,4 +1,4 @@
-﻿//using SqlGen.Templeates;
+﻿using SqlGen.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,26 +11,26 @@ namespace SqlGen.Generators
     {
         public override string Generate(Table table, GeneratorOptions options)
         {
-            
-            // var dataEntity = new EntityTempleates();   
-            // dataEntity.Session = new Dictionary<string, object>();
-            // dataEntity.Session.Add("_namespace", "PenMail");
-            // dataEntity.Session.Add("table", table);
-            // dataEntity.Session.Add("tableName", table.TableName.ToPascalCase());
-            // dataEntity.Session.Add("tableNameToLower", table.TableName);
 
-            // var fk = table.ForeignKeys.ToForegnTableColumns();
+            var dataEntity = new EntityTemplates();
+            dataEntity.Session = new Dictionary<string, object>();
+            dataEntity.Session.Add("_namespace", "PenMail");
+            dataEntity.Session.Add("table", table);
+            dataEntity.Session.Add("tableName", table.TableName.ToPascalCase());
+            dataEntity.Session.Add("tableNameToLower", table.TableName);
 
-            // dataEntity.Session.Add("foregnkeys", fk);
+            var fk = table.ForeignKeys.ToForegnTableColumns();
 
-            // var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
-            // dataEntity.Session.Add("columns", columns);
-            // dataEntity.Initialize();
-            
+            dataEntity.Session.Add("foregnkeys", fk);
 
-            // return dataEntity.TransformText();
+            var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
+            dataEntity.Session.Add("columns", columns);
+            dataEntity.Initialize();
 
-            return "";
+
+            return dataEntity.TransformText();
+
+            //return "";
         }
 
 

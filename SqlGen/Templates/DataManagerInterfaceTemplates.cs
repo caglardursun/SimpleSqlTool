@@ -21,9 +21,9 @@ namespace SqlGen.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
+    #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerInterfaceTemplates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DataTransferObjectTempleates : DataTransferObjectTempleatesBase
+    public partial class DataManagerInterfaceTemplates : DataManagerInterfaceTemplatesBase
     {
 #line hidden
         /// <summary>
@@ -31,139 +31,57 @@ namespace SqlGen.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using FluentValidation;\r\n\r\nnamespace ");
+            this.Write("\r\n");
+            this.Write("\r\nusing PenMail.Contracts;\r\nusing PenMail.Data;\r\nusing PenMail.Data.Entity;\r\nusin" +
+                    "g System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing System.T" +
+                    "hreading.Tasks;\r\n\r\nnamespace ");
             
-            #line 17 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
+            #line 22 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerInterfaceTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
-            this.Write(".DTO.Request\r\n{\r\n    public class Update");
+            this.Write(".Contracts\r\n{\r\n    public interface I");
             
-            #line 19 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
+            #line 24 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerInterfaceTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Request :  Create");
+            this.Write("Manager : IRepository<");
             
-            #line 19 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
+            #line 24 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerInterfaceTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Request\r\n    {                \r\n        public long id { get; set; }\r\n    }\r\n\r\n  " +
-                    "  public class Create");
+            this.Write("> \r\n    {        \r\n        Task<(IEnumerable<");
             
-            #line 24 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
+            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerInterfaceTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Request \r\n    {\r\n                \r\n        ");
+            this.Write("> ");
             
-            #line 27 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
-foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
-        {
-                var propName = c.ColumnName;
-                var propType = c.ClrTypeName();
-                
-                if(propName != "id")
-                {
-                    Write("\t");
-                    Write($@"public {propType} {propName} {{ get; set; }}");
-                    Write("\n");
-                }
-                
-        }
-            
-            #line default
-            #line hidden
-            this.Write("\r\n    }\r\n\r\n    public class Create");
-            
-            #line 43 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
+            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerInterfaceTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("RequestValidator : AbstractValidator<Create");
+            this.Write(", Pagination Pagination)> Search");
             
-            #line 43 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
+            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerInterfaceTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Request>\r\n    {\r\n       public Create");
-            
-            #line 45 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("RequestValidator()\r\n       {\r\n            ");
-            
-            #line 47 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
-foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
-            {
-                    var propName = c.ColumnName;
-                    var propType = c.ClrTypeName();
-                    if(!propType.EndsWith("?"))
-                    {
-                        Write("\t");
-                        Write($@"RuleFor(o=>o.{propName}).NotNull();");    
-                        Write("\n");
-                    }
-                        
-                    
-            }
-            
-            #line default
-            #line hidden
-            this.Write("       }\r\n    }\r\n\r\n    public class Update");
-            
-            #line 63 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("RequestValidator : AbstractValidator<Update");
-            
-            #line 63 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("Request>\r\n    {\r\n       public Update");
-            
-            #line 65 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("RequestValidator()\r\n       {\r\n            ");
-            
-            #line 67 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
-foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
-            {
-                    var propName = c.ColumnName;
-                    var propType = c.ClrTypeName();
-                    if(!propType.EndsWith("?"))
-                    {
-                        Write("\t");
-                        Write($@"RuleFor(o=>o.{propName}).NotNull();");    
-                        Write("\n");
-                    }
-                        
-                    
-            }
-            
-            #line default
-            #line hidden
-            this.Write("       }\r\n\r\n    }\r\n}\r\n");
+            this.Write("Async(UrlQuerySearchParameters urlQueryParameters);                  \r\n    }\r\n}\r\n" +
+                    "");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTempleates.tt"
+        #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerInterfaceTemplates.tt"
 
 private string @__namespaceField;
 
@@ -188,45 +106,6 @@ private string tableName
     get
     {
         return this._tableNameField;
-    }
-}
-
-private global::SqlGen.GeneratorOptions _optionsField;
-
-/// <summary>
-/// Access the options parameter of the template.
-/// </summary>
-private global::SqlGen.GeneratorOptions options
-{
-    get
-    {
-        return this._optionsField;
-    }
-}
-
-private global::SqlGen.Table _tableField;
-
-/// <summary>
-/// Access the table parameter of the template.
-/// </summary>
-private global::SqlGen.Table table
-{
-    get
-    {
-        return this._tableField;
-    }
-}
-
-private string _tableNameToLowerField;
-
-/// <summary>
-/// Access the tableNameToLower parameter of the template.
-/// </summary>
-private string tableNameToLower
-{
-    get
-    {
-        return this._tableNameToLowerField;
     }
 }
 
@@ -279,48 +158,6 @@ if ((tableNameValueAcquired == false))
         this._tableNameField = ((string)(data));
     }
 }
-bool optionsValueAcquired = false;
-if (this.Session.ContainsKey("options"))
-{
-    this._optionsField = ((global::SqlGen.GeneratorOptions)(this.Session["options"]));
-    optionsValueAcquired = true;
-}
-if ((optionsValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("options");
-    if ((data != null))
-    {
-        this._optionsField = ((global::SqlGen.GeneratorOptions)(data));
-    }
-}
-bool tableValueAcquired = false;
-if (this.Session.ContainsKey("table"))
-{
-    this._tableField = ((global::SqlGen.Table)(this.Session["table"]));
-    tableValueAcquired = true;
-}
-if ((tableValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("table");
-    if ((data != null))
-    {
-        this._tableField = ((global::SqlGen.Table)(data));
-    }
-}
-bool tableNameToLowerValueAcquired = false;
-if (this.Session.ContainsKey("tableNameToLower"))
-{
-    this._tableNameToLowerField = ((string)(this.Session["tableNameToLower"]));
-    tableNameToLowerValueAcquired = true;
-}
-if ((tableNameToLowerValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("tableNameToLower");
-    if ((data != null))
-    {
-        this._tableNameToLowerField = ((string)(data));
-    }
-}
 bool columnsValueAcquired = false;
 if (this.Session.ContainsKey("columns"))
 {
@@ -353,7 +190,7 @@ if ((columnsValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public class DataTransferObjectTempleatesBase
+    public class DataManagerInterfaceTemplatesBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

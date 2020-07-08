@@ -107,25 +107,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>APITemplates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\DataManagerInterfaceTempates.cs">
+    <Compile Include="Templates\DataManagerInterfaceTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataManagerInterfaceTempates.tt</DependentUpon>
+      <DependentUpon>DataManagerInterfaceTemplates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\DataManagerTempleates.cs">
+    <Compile Include="Templates\DataManagerTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataManagerTempleates.tt</DependentUpon>
+      <DependentUpon>DataManagerTemplates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\DataTransferObjectResponseTempleates.cs">
+    <Compile Include="Templates\DataTransferObjectResponseTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataTransferObjectResponseTempleates.tt</DependentUpon>
+      <DependentUpon>DataTransferObjectResponseTemplates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\DataTransferObjectTempleates.cs">
+    <Compile Include="Templates\DataTransferObjectTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataTransferObjectTempleates.tt</DependentUpon>
+      <DependentUpon>DataTransferObjectTemplates.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\EntityTemplates.cs">
       <AutoGen>True</AutoGen>
@@ -160,21 +160,21 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>APITemplates.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\DataManagerInterfaceTempates.tt">
+    <Content Include="Templates\DataManagerInterfaceTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DataManagerInterfaceTempates.cs</LastGenOutput>
+      <LastGenOutput>DataManagerInterfaceTemplates.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\DataManagerTempleates.tt">
+    <Content Include="Templates\DataManagerTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DataManagerTempleates.cs</LastGenOutput>
+      <LastGenOutput>DataManagerTemplates.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\DataTransferObjectResponseTempleates.tt">
+    <Content Include="Templates\DataTransferObjectResponseTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DataTransferObjectResponseTempleates.cs</LastGenOutput>
+      <LastGenOutput>DataTransferObjectResponseTemplates.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\DataTransferObjectTempleates.tt">
+    <Content Include="Templates\DataTransferObjectTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DataTransferObjectTempleates.cs</LastGenOutput>
+      <LastGenOutput>DataTransferObjectTemplates.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\EntityTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

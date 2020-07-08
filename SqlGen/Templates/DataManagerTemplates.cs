@@ -21,9 +21,9 @@ namespace SqlGen.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+    #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DataManagerTempleates : DataManagerTempleatesBase
+    public partial class DataManagerTemplates : DataManagerTemplatesBase
     {
 #line hidden
         /// <summary>
@@ -35,42 +35,42 @@ namespace SqlGen.Templates
                     "ons.Logging;\r\nusing PenMail.Contracts;\r\nusing PenMail.Data.Entity;\r\nusing System" +
                     ".Collections.Generic;\r\nusing System.Threading.Tasks;\r\n\r\nnamespace ");
             
-            #line 24 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 24 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".Data.DataManager\r\n{\r\n    public class ");
             
-            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Manager : DbFactoryBase, I");
             
-            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 26 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Manager\r\n    {\r\n        private ILogger<");
             
-            #line 28 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 28 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Manager> _logger;\r\n\r\n        public ");
             
-            #line 30 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 30 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Manager(IConfiguration config \r\n        ,ILogger<");
             
-            #line 31 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 31 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -78,7 +78,7 @@ namespace SqlGen.Templates
             this.Write("Manager> logger) : base(config)\r\n        {\r\n            _logger = logger;        " +
                     "\r\n        }\r\n        \r\n\r\n        public async Task<long> CreateAsync(");
             
-            #line 37 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 37 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -86,21 +86,21 @@ namespace SqlGen.Templates
             this.Write(" entity)\r\n        {            \r\n            \r\n            string sqlQuery = $@\"\r" +
                     "\n            INSERT INTO  public.");
             
-            #line 41 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 41 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("\r\n            ");
             
-            #line 42 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 42 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
 Write("\t");
             
             #line default
             #line hidden
             this.Write("(\r\n                ");
             
-            #line 43 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 43 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
 
                 int length = columns.Count();
                 foreach(var item in columns)
@@ -112,20 +112,20 @@ Write("\t");
             #line hidden
             this.Write("                    ");
             
-            #line 49 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 49 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(item.ColumnName));
             
             #line default
             #line hidden
             
-            #line 49 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 49 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
  if(length != 0) Write(","); 
             
             #line default
             #line hidden
             this.Write("\r\n                ");
             
-            #line 51 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 51 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
  
                 }
                 
@@ -134,14 +134,14 @@ Write("\t");
             #line hidden
             this.Write("                ");
             
-            #line 54 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 54 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
 Write("\t");
             
             #line default
             #line hidden
             this.Write(")VALUES(\r\n                 ");
             
-            #line 55 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 55 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
 
                  length = columns.Count();
                  foreach(var item in columns)
@@ -153,20 +153,20 @@ Write("\t");
             #line hidden
             this.Write("                   @");
             
-            #line 61 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 61 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(item.ColumnName));
             
             #line default
             #line hidden
             
-            #line 61 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 61 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
  if(length != 0) Write(",\n"); 
             
             #line default
             #line hidden
             this.Write("                 ");
             
-            #line 62 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 62 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
  
                  }
                  
@@ -177,7 +177,7 @@ Write("\t");
                     "tity);\r\n        }\r\n\r\n        public async Task<bool> DeleteAsync(object Id)\r\n   " +
                     "     {\r\n            string query = $@\"DELETE FROM public.");
             
-            #line 72 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 72 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -192,7 +192,7 @@ Write("\t");
             if(Id.GetType() == typeof(string))
                 return await DbExecuteScalarAsync(""SELECT COUNT(1) FROM public.");
             
-            #line 80 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 80 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -200,7 +200,7 @@ Write("\t");
             this.Write(" WHERE string_criteria = @Id\", new { Id });\r\n\r\n            return await DbExecute" +
                     "ScalarAsync(\"SELECT COUNT(1) FROM public.");
             
-            #line 82 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 82 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -208,28 +208,28 @@ Write("\t");
             this.Write(" WHERE id = @Id\", new { Id });\r\n        }\r\n\r\n\r\n        public async Task<IEnumera" +
                     "ble<");
             
-            #line 86 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 86 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write(">> GetAllAsync()\r\n        {\r\n            string query = $@\"SELECT * FROM public.");
             
-            #line 88 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 88 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("\";\r\n\r\n            return await DbQueryAsync<");
             
-            #line 90 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 90 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write(">(query);\r\n        }\r\n\r\n        public async Task<");
             
-            #line 93 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 93 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -237,7 +237,7 @@ Write("\t");
             this.Write("> GetByIdAsync(object Id)\r\n        {\r\n            string query = $@\"SELECT * FROM" +
                     " public.");
             
-            #line 95 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 95 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -245,7 +245,7 @@ Write("\t");
             this.Write("                                                    \r\n                           " +
                     "WHERE id = {Id}\";\r\n\r\n           \r\n            return await DbQuerySingleAsync<");
             
-            #line 99 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 99 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -253,7 +253,7 @@ Write("\t");
             this.Write(">(query,null);\r\n          \r\n        }\r\n\r\n        public async Task<bool> UpdateAs" +
                     "ync(");
             
-            #line 103 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 103 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -261,14 +261,14 @@ Write("\t");
             this.Write(" entity)\r\n        {\r\n            string query = $@\"                        \r\n    " +
                     "            UPDATE public.");
             
-            #line 106 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 106 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("\r\n                SET     \r\n                ");
             
-            #line 108 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 108 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
 
                  length = columns.Count();
                  foreach(var item in columns)
@@ -280,28 +280,28 @@ Write("\t");
             #line hidden
             this.Write("                   ");
             
-            #line 114 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 114 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(item.ColumnName));
             
             #line default
             #line hidden
             this.Write(" = @");
             
-            #line 114 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 114 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(item.ColumnName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 114 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 114 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
  if(length != 0) Write(",\n"); 
             
             #line default
             #line hidden
             this.Write("                 ");
             
-            #line 115 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 115 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
  
                  }
                  
@@ -312,28 +312,28 @@ Write("\t");
                     "urn await DbExecuteAsync<bool>(query, entity);\r\n        }\r\n\r\n\r\n        public as" +
                     "ync Task<(IEnumerable<");
             
-            #line 127 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 127 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("> ");
             
-            #line 127 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 127 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write(", Pagination Pagination)> Search");
             
-            #line 127 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 127 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
             #line hidden
             this.Write("Async(QuerySearchParameters searchParameters)\r\n        {\r\n\r\n            \r\n");
             
-            #line 131 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 131 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
 
                 if(foregnkeys.Count == 0)
                 {
@@ -350,7 +350,7 @@ Write("\t");
                     "lder.Where($@\"id = {searchParameters.UserID}\");\r\n                    }\r\n        " +
                     "             \r\n                    \r\n                    IEnumerable<");
             
-            #line 145 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 145 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -363,7 +363,7 @@ Write("\t");
                     param.Add(""Offset"", searchParameters.PageNumber);
                     string tableName = typeof(");
             
-            #line 151 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 151 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
             
             #line default
@@ -371,21 +371,21 @@ Write("\t");
             this.Write(").Name;\r\n                    \r\n                    \r\n                    string s" +
                     "ql = @\"select * from ");
             
-            #line 154 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 154 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("                                        \r\n                    ");
             
-            #line 155 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 155 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(table.ForeignKeys.ToLeftJoins()));
             
             #line default
             #line hidden
             this.Write("\";\r\n                    \r\n                    ");
             
-            #line 157 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+            #line 157 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
 
                 
                 }
@@ -397,7 +397,7 @@ Write("\t");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTempleates.tt"
+        #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
 
 private string @__namespaceField;
 
@@ -614,7 +614,7 @@ if ((foregnkeysValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public class DataManagerTempleatesBase
+    public class DataManagerTemplatesBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
