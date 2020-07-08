@@ -24,8 +24,9 @@ namespace SqlGen
       
 
         public async Task<IEnumerable<Table>> LoadNonAuditTable()
-        {            
-            return await connection.QueryAsync<Table>(QueryHelper.TableSql);
+        {
+            var result = await connection.QueryAsync<Table>(QueryHelper.TableSql);
+            return result;
         }
 
 

@@ -53,8 +53,7 @@ namespace SqlGenUI
         {
             get
             {
-
-                return string.Format($"Data Source={ServerName};Initial Catalog={DefaultDB};User Id={UserName};Password={Password};Application Name=SqlGen;");
+                return string.Format($"Data Source={ServerName};Initial Catalog={DefaultDB};User Id={UserName};Password={Password};");
             }
         }
 

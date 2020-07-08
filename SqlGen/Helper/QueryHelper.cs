@@ -40,7 +40,30 @@ namespace SqlGen.Helper
 			                                        and TABLE_NAME = @table)";
 
         private static string columnSql = @"
-                select *, cast(COLUMNPROPERTY(object_id(TABLE_SCHEMA+'.'+TABLE_NAME), COLUMN_NAME, 'IsIdentity') as bit) as [IsIdentity]
+                select  
+                TABLE_CATALOG as TableCatalog,
+                TABLE_SCHEMA as TableSchema,
+                TABLE_NAME as TableName,
+                COLUMN_NAME as ColumnName,
+                ORDINAL_POSITION,
+                COLUMN_DEFAULT as ColumnDefault,
+                IS_NULLABLE as [IsNullable],
+                DATA_TYPE as DataType,
+                CHARACTER_MAXIMUM_LENGTH as CharacterMaximumLength,
+                CHARACTER_OCTET_LENGTH as CharacterOctetLength,
+                NUMERIC_PRECISION as NumericPrecision,
+                NUMERIC_PRECISION_RADIX as NumericPrecisionRadix,
+                NUMERIC_SCALE as NumericScale,
+                DATETIME_PRECISION as DatetimePrecision,
+                CHARACTER_SET_CATALOG as CharacterSetCatalog,
+                CHARACTER_SET_SCHEMA as CharacterSetSchema,
+                CHARACTER_SET_NAME as CharacterSetName,
+                COLLATION_CATALOG as CollationCatalog,
+                COLLATION_SCHEMA as CollationSchema,
+                COLLATION_NAME as CollationName,
+                DOMAIN_CATALOG as DomainCatalog,
+                DOMAIN_SCHEMA as DomainSchema,
+                DOMAIN_NAME as DomainName,
                 from INFORMATION_SCHEMA.COLUMNS 
                 where table_name = @table 
                 and TABLE_SCHEMA = @schema
@@ -54,7 +77,7 @@ namespace SqlGen.Helper
                 and tc.TABLE_SCHEMA = @schema
                 order by ku.ORDINAL_POSITION";
 
-        private static string tableSql = @"select TABLE_SCHEMA, TABLE_NAME
+        private static string tableSql = @"select TABLE_SCHEMA as [Schema], TABLE_NAME as TableName 
                                 from INFORMATION_SCHEMA.TABLES
                                 where TABLE_NAME NOT LIKE '%_AUDIT'
                                 order by TABLE_SCHEMA, TABLE_NAME";
