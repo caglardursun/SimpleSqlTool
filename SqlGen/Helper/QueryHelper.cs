@@ -28,7 +28,7 @@ namespace SqlGen.Helper
                 AND KeyColumnUsage2.ORDINAL_POSITION = KeyColumnUsage.ORDINAL_POSITION 
             where RefConst.CONSTRAINT_SCHEMA = @schema and KeyColumnUsage.TABLE_NAME = @table";
 
-        private static string foreignKeySql = @"select CONSTRAINT_NAME 
+        private static string foreignKeySql = @"select CONSTRAINT_NAME as ConstraintName
                                         from INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS as RC
                                         where exists (
 	                                        select * 
@@ -63,14 +63,14 @@ namespace SqlGen.Helper
                 COLLATION_NAME as CollationName,
                 DOMAIN_CATALOG as DomainCatalog,
                 DOMAIN_SCHEMA as DomainSchema,
-                DOMAIN_NAME as DomainName,
+                DOMAIN_NAME as DomainName
                 from INFORMATION_SCHEMA.COLUMNS 
                 where table_name = @table 
                 and TABLE_SCHEMA = @schema
                 order by ORDINAL_POSITION";
 
         private static string primaryKeySql = @"
-                SELECT tc.CONSTRAINT_NAME, ku.COLUMN_NAME
+                SELECT tc.CONSTRAINT_NAME as ConstraintName, ku.COLUMN_NAME as ColumnName
                 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS tc
                 JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS ku ON tc.CONSTRAINT_TYPE = 'PRIMARY KEY' AND tc.CONSTRAINT_NAME = ku.CONSTRAINT_NAME
                 where tc.table_name = @table 
