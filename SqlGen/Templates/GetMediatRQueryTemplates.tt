@@ -1,0 +1,50 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="SqlGen" #>
+<#@ parameter name="_namespace" type="System.String" #>
+<#@ parameter name="tableName" type="System.String" #>
+<#@ parameter name="tableNameToLower" type="System.String" #>
+<#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
+<#@ parameter name="tableNameToPascal" type="System.String" #>
+
+
+using AutoMapper;
+using MediatR;
+using Sbu.Ubys.Bys.Business.BusinessAspects;
+using Sbu.Ubys.Bys.Business.Constants;
+using Sbu.Ubys.Bys.DataAccess.Abstract;
+using Sbu.Ubys.Bys.Entities.ResponseDtos.Birim;
+using Sbu.Ubys.Core.Utilities.Results;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+
+
+    
+    public class Get<#=tableName#>ListQuery : IRequest<IDataResult<IEnumerable<<#=tableName#>ResponseDto>>>
+    {
+        public class Get<#=tableName#>QueryHandler : IRequestHandler<Get<#=tableName#>ListQuery, IDataResult<IEnumerable<<#=tableName#>ResponseDto>>>
+        {
+            private readonly I<#=tableName#>Repository _<#=tableName#>Repository;
+            private readonly IMediator _mediator;
+
+            public Get<#=tableName#>QueryHandler(I<#=tableName#>Repository repository, IMediator mediator)
+            {
+                _<#=tableName#>Repository = repository;
+                _mediator = mediator;
+            }
+
+            [SecuredOperation(Priority = 1)]
+            public async Task<IDataResult<IEnumerable<<#=tableName#>ResponseDto>>> Handle(Get<#=tableName#>ListQuery request, CancellationToken cancellationToken)
+            {
+                //Burada varsayılan olarak pagination parametreleri gelmeli
+                return new SuccessDataResult<IEnumerable<<#=tableName#>ResponseDto>>(await _<#=tableName#>Repository.GetBirim());
+            }
+        }
+    }

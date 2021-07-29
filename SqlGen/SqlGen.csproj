@@ -90,6 +90,7 @@
     <Compile Include="Generators\DataTransferObjects.cs" />
     <Compile Include="Generators\DataInterfaceManager.cs" />
     <Compile Include="Generators\DataManagers.cs" />
+    <Compile Include="Generators\GetMediatrQueryGenerator.cs" />
     <Compile Include="Generators\JSonGenerator.cs" />
     <Compile Include="Generators\RestSharpGenerator.cs" />
     <Compile Include="Generators\SQLInsertGenerator.cs" />
@@ -134,10 +135,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataTransferObjectTemplates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\DeleteQuery.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeleteQuery.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\EntityTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityTemplates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\GetMediatRQueryTemplates.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetMediatRQueryTemplates.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\JSonTemplates.cs">
       <AutoGen>True</AutoGen>
@@ -192,9 +203,17 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DataTransferObjectTemplates.cs</LastGenOutput>
     </Content>
+    <Content Include="Templates\DeleteQuery.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DeleteQuery.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\EntityTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\GetMediatRQueryTemplates.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>GetMediatRQueryTemplates.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\JSonTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

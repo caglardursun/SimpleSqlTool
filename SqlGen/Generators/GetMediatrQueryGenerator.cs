@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace SqlGen.Generators
 {
-    public class CreateCommandGenerator : Generator
+    public class GetMediatrQueryGenerator : Generator
     {
+
+        public override string ToString() => "Mediatr Get";
+
         public override string Generate(Table table, GeneratorOptions options)
         {
-
             try
             {
 
-                var template = new CreateCommandHandlerTemplates();
+                var template = new GetMediatRQueryTemplates();
                 template.Session = new Dictionary<string, object>();
 
                 var fk = table.ForeignKeys.ToForegnTableColumns();
@@ -31,16 +33,15 @@ namespace SqlGen.Generators
                 return template.TransformText();
 
 
-
-            }
-            catch (Exception)
-            {
-
                 throw new Exception($"{this} generator error occured");
             }
+            catch (Exception exc)
+            {
 
+                throw new Exception("Json generator error occured", exc.InnerException);
+            }
         }
 
-        public override string ToString() => "Create Command Handler Generator";
+        
     }
 }

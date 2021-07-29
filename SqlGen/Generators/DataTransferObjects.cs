@@ -19,9 +19,6 @@ namespace SqlGen.Generators
             tdo.Session = new Dictionary<string, object>();
             tdo.Session.Add("_namespace", "NestPayment");
 
-
-
-
             tdo.Session.Add("tableName", table.TableName.ToPascalCase());
             tdo.Session.Add("tableNameToLower", table.TableName.ToPascalCase().ToLower());
             tdo.Session.Add("columns", table.InsertableColumns);
