@@ -40,7 +40,7 @@ namespace <#=_namespace#>.DTO.Request
 
     }
 
-    public class Create<#=tableName#>RequestValidator : AbstractValidator<Create<#=tableName#>Request>
+    public class Create<#=tableName#>RequestValidator : AbstractValidator<Create<#=tableName#>RequestDto>
     {
        public Create<#=tableName#>RequestValidator()
        {
