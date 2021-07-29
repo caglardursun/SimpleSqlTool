@@ -23,6 +23,7 @@ namespace SqlGen
                 case "char":
                 case "nchar":
                 case "varchar":
+               
                 case "nvarchar":
                     var len = c.CharacterMaximumLength == -1 ? max : c.CharacterMaximumLength.ToString();
                     return $"{c.DataType}({len})";
@@ -107,7 +108,9 @@ namespace SqlGen
                     return c.IsNullable() ? "DateTime?" : "DateTime";
                 case "binary":
                 case "varbinary":
-                    return "byte[]";                
+                    return "byte[]";
+                case "uniqueidentifier":
+                    return "Guid";
                 default:
                     return c.DataType;
             }
