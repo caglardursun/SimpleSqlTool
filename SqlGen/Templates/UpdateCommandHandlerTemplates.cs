@@ -78,16 +78,16 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             
             #line default
             #line hidden
-            this.Write("RequestDto model { get; set; }\r\n\r\n\r\n\t\t\t\tpublic class Update");
+            this.Write("RequestDto model { get; set; }\t\r\n\r\n\t\t}\r\n\r\n\r\n\t\tpublic class Update");
             
-            #line 39 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 41 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("CommandHandler : IRequestHandler<Update");
             
-            #line 39 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 41 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -95,14 +95,14 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             this.Write("Command, IResult>{\r\n\r\n\r\n\t\t\t\t\t\tprivate readonly IMapper _mapper;\r\n\t\t\t\t\t\tprivate re" +
                     "adonly I");
             
-            #line 43 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 45 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Repository _");
             
-            #line 43 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 45 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
@@ -110,14 +110,14 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             this.Write("Repository;\r\n\t\t\t\t\t\tprivate readonly IMediator _mediator;\r\n\t\t\t\t\r\n\t\t\t\t\t\tpublic Upda" +
                     "te");
             
-            #line 46 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 48 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("CommandHandler(\r\n\t\t\t\t\t\t\tIMapper mapper,\r\n\t\t\t\t\t\t\tI");
             
-            #line 48 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 50 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -126,7 +126,7 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
                     "pper;\r\n\t\t\t\t\t\t\t\t_birimRepository = repository;\r\n\t\t\t\t\t\t\t\t_mediator = mediator;\r\n\t\t" +
                     "\t\t\t\t}\r\n\r\n\r\n\t\t\t\t\t\t[ValidationAspect(typeof(Update");
             
-            #line 57 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 59 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -134,7 +134,7 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             this.Write("RequestValidator), Priority = 1)]\r\n\t\t\t\t\t\t[SecuredOperation(Priority = 1)]\r\n\t\t\t\t\t\t" +
                     "public async Task<IResult> Handle(Update");
             
-            #line 59 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 61 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -142,7 +142,7 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             this.Write("Command request, CancellationToken cancellationToken)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tvar data =" +
                     " _");
             
-            #line 61 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 63 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
@@ -151,34 +151,34 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
                     ")\r\n\t\t\t\t\t\t\t\treturn new ErrorResult(Messages.NameAlreadyExist);\r\n\r\n\t\t\t\t\t\t\tvar item" +
                     " = _mapper.Map<Update");
             
-            #line 66 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 68 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestDto, ");
             
-            #line 66 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 68 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(">(request.model);\r\n\r\n\t\t\t\t\t\t\t_");
             
-            #line 68 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 70 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
             this.Write("Repository.Update(item);\r\n\t\t\t\t\t\t\tawait _");
             
-            #line 69 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 71 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
-            this.Write("Repository.SaveChangesAsync();\r\n\t\t\t\t\t\t\treturn new SuccessResult(Messages.Added);\r" +
-                    "\n\t\t\t\t\t\t}\r\n\t\t\t\t\r\n\t\t\t\t}\r\n\r\n\t\t}\r\n}");
+            this.Write("Repository.SaveChangesAsync();\r\n\t\t\t\t\t\t\treturn new SuccessResult(Messages.Updated)" +
+                    ";\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\r\n\t\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         

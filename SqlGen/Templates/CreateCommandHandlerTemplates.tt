@@ -32,11 +32,12 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 		{
 
 			public Create<#=tableName#>RequestDto model { get; set; }
+			
+		}
 
-		
 
-			public class Create<#=tableName#>CommandHandler : IRequestHandler<Create<#=tableName#>Command, IResult>
-			{
+		public class Create<#=tableName#>CommandHandler : IRequestHandler<Create<#=tableName#>Command, IResult>
+		{
 					private readonly IMapper _mapper;
 					private readonly I<#=tableName#>Repository _<#=tableNameToLower#>Repository;
 					private readonly IMediator _mediator;
@@ -56,10 +57,10 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 			
 
 
-			[ValidationAspect(typeof(Create<#=tableName#>RequestValidator), Priority = 1)]
-			[SecuredOperation(Priority = 1)]
-			public async Task<IResult> Handle(Create<#=tableName#>Command request, CancellationToken cancellationToken)
-			{
+		[ValidationAspect(typeof(Create<#=tableName#>RequestValidator), Priority = 1)]
+		[SecuredOperation(Priority = 1)]
+		public async Task<IResult> Handle(Create<#=tableName#>Command request, CancellationToken cancellationToken)
+		{
 				var data = _<#=tableNameToLower#>Repository.Query().Any(u => u.Ad == request.model.Ad);
 
 				if (data == true)
@@ -70,9 +71,8 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 				_<#=tableNameToLower#>Repository.Add(item);
                 await _<#=tableNameToLower#>Repository.SaveChangesAsync();
                 return new SuccessResult(Messages.Added);
-            }
-		
 		}
+		
 	}
 
 }

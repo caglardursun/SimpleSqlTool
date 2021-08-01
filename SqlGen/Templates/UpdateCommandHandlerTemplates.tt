@@ -33,10 +33,12 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 		
 	    public class Update<#=tableName#>Command : IRequest<IResult>
 		{
-				public Update<#=tableName#>RequestDto model { get; set; }
+				public Update<#=tableName#>RequestDto model { get; set; }	
+
+		}
 
 
-				public class Update<#=tableName#>CommandHandler : IRequestHandler<Update<#=tableName#>Command, IResult>{
+		public class Update<#=tableName#>CommandHandler : IRequestHandler<Update<#=tableName#>Command, IResult>{
 
 
 						private readonly IMapper _mapper;
@@ -67,10 +69,8 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 
 							_<#=tableNameToLower#>Repository.Update(item);
 							await _<#=tableNameToLower#>Repository.SaveChangesAsync();
-							return new SuccessResult(Messages.Added);
+							return new SuccessResult(Messages.Updated);
 						}
 				
-				}
-
 		}
 }
