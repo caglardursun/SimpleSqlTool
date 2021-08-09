@@ -20,9 +20,9 @@ namespace SqlGen.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteQuery.tt"
+    #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DeleteQuery : DeleteQueryBase
+    public partial class DeleteCommandHandlerTemplates : DeleteCommandHandlerTemplatesBase
     {
 #line hidden
         /// <summary>
@@ -31,6 +31,7 @@ namespace SqlGen.Templates
         public virtual string TransformText()
         {
             this.Write(@"
+
 using AutoMapper;
 using MediatR;
 using Sbu.Ubys.Bys.Business.BusinessAspects;
@@ -42,11 +43,118 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-");
+
+
+
+    
+    public class Delete");
+            
+            #line 30 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Command :  IRequest<IResult>\r\n    {\r\n              public int Id { get; set; }\r\n " +
+                    "   }\r\n\r\n\r\n     public class Delete");
+            
+            #line 36 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("CommandHandler : IRequestHandler<Delete");
+            
+            #line 36 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Command, IResult>\r\n        {\r\n            private readonly I");
+            
+            #line 38 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Repository _");
+            
+            #line 38 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Repository;\r\n            private readonly IMediator _mediator;\r\n\r\n            pub" +
+                    "lic Delete");
+            
+            #line 41 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("CommandHandler(I");
+            
+            #line 41 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Repository repository, IMediator mediator)\r\n            {\r\n                _");
+            
+            #line 43 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Repository = repository;\r\n                _mediator = mediator;\r\n            }\r\n\r" +
+                    "\n            [SecuredOperation(Priority = 1)]\r\n            public async Task<IRe" +
+                    "sult> Handle(Delete");
+            
+            #line 48 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Command request, CancellationToken cancellationToken)\r\n            {\r\n           " +
+                    "     try\r\n                {                \r\n                    var item = awai" +
+                    "t _");
+            
+            #line 52 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write(@"Repository.GetAsync(h=>h.Id == request.Id);
+                
+                    if (item != null)
+                    {
+                        item.Silindimi = true;
+                    
+
+                        //_birimRepository.Update(item);
+                        await _");
+            
+            #line 60 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write(@"Repository.SaveChangesAsync();
+                    }
+
+                    return new SuccessResult(Messages.Deleted);
+                }
+                catch (Exception exc)
+                {
+
+                    return new ErrorResult(exc.InnerException.Message);
+                }
+            }
+            }
+        }");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteQuery.tt"
+        #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
 
 private string @__namespaceField;
 
@@ -209,7 +317,7 @@ if ((tableNameToPascalValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public class DeleteQueryBase
+    public class DeleteCommandHandlerTemplatesBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

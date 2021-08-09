@@ -12,24 +12,23 @@
 <#@ parameter name="tableNameToPascal" type="System.String" #>
 
 
-using AutoMapper;
 using MediatR;
 using Sbu.Ubys.Bys.Business.BusinessAspects;
-using Sbu.Ubys.Bys.Business.Constants;
 using Sbu.Ubys.Bys.DataAccess.Abstract;
 using Sbu.Ubys.Bys.Entities.ResponseDtos.Birim;
 using Sbu.Ubys.Core.Utilities.Results;
-using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-
-
     
+namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Queries
+{
     public class Get<#=tableName#>ListQuery : IRequest<IDataResult<IEnumerable<<#=tableName#>ResponseDto>>>
     {
-        public class Get<#=tableName#>QueryHandler : IRequestHandler<Get<#=tableName#>ListQuery, IDataResult<IEnumerable<<#=tableName#>ResponseDto>>>
+        
+    }
+
+    public class Get<#=tableName#>QueryHandler : IRequestHandler<Get<#=tableName#>ListQuery, IDataResult<IEnumerable<<#=tableName#>ResponseDto>>>
         {
             private readonly I<#=tableName#>Repository _<#=tableName#>Repository;
             private readonly IMediator _mediator;
@@ -43,8 +42,10 @@ using System.Threading.Tasks;
             [SecuredOperation(Priority = 1)]
             public async Task<IDataResult<IEnumerable<<#=tableName#>ResponseDto>>> Handle(Get<#=tableName#>ListQuery request, CancellationToken cancellationToken)
             {
-                //Burada varsayılan olarak pagination parametreleri gelmeli
-                return new SuccessDataResult<IEnumerable<<#=tableName#>ResponseDto>>(await _<#=tableName#>Repository.GetBirim());
+                
+                return new SuccessDataResult<IEnumerable<<#=tableName#>ResponseDto>>(await _<#=tableName#>Repository.GetList());
             }
         }
-    }
+
+
+}

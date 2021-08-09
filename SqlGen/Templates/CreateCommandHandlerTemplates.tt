@@ -61,16 +61,20 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 		[SecuredOperation(Priority = 1)]
 		public async Task<IResult> Handle(Create<#=tableName#>Command request, CancellationToken cancellationToken)
 		{
-				var data = _<#=tableNameToLower#>Repository.Query().Any(u => u.Ad == request.model.Ad);
+				try{
+					if (_<#=tableName#>Repository.Query().Any(u=> u.Ad == request.model.Ad))                
+						return new ErrorResult(Messages.NameAlreadyExist);
 
-				if (data == true)
-					return new ErrorResult(Messages.NameAlreadyExist);
+					var item = _mapper.Map<Create<#=tableName#>RequestDto, <#=tableName#>>(request.model);
 
-				var item = _mapper.Map<Create<#=tableName#>RequestDto, <#=tableName#>>(request.model);
-
-				_<#=tableNameToLower#>Repository.Add(item);
-                await _<#=tableNameToLower#>Repository.SaveChangesAsync();
-                return new SuccessResult(Messages.Added);
+					_<#=tableNameToLower#>Repository.Add(item);
+					await _<#=tableNameToLower#>Repository.SaveChangesAsync();
+					return new SuccessResult(Messages.Added);
+				}   
+				catch (Exception exc)
+				{
+					return new SuccessResult(exc.InnerException.Message);
+				}
 		}
 		
 	}

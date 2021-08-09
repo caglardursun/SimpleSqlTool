@@ -90,6 +90,7 @@
     <Compile Include="Generators\DataTransferObjects.cs" />
     <Compile Include="Generators\DataInterfaceManager.cs" />
     <Compile Include="Generators\DataManagers.cs" />
+    <Compile Include="Generators\DeleteCommandGenerator.cs" />
     <Compile Include="Generators\GetMediatrQueryGenerator.cs" />
     <Compile Include="Generators\JSonGenerator.cs" />
     <Compile Include="Generators\RestSharpGenerator.cs" />
@@ -135,10 +136,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataTransferObjectTemplates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\DeleteQuery.cs">
+    <Compile Include="Templates\DeleteCommandHandlerTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DeleteQuery.tt</DependentUpon>
+      <DependentUpon>DeleteCommandHandlerTemplates.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\EntityTemplates.cs">
       <AutoGen>True</AutoGen>
@@ -203,9 +204,9 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DataTransferObjectTemplates.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\DeleteQuery.tt">
+    <Content Include="Templates\DeleteCommandHandlerTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DeleteQuery.cs</LastGenOutput>
+      <LastGenOutput>DeleteCommandHandlerTemplates.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\EntityTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

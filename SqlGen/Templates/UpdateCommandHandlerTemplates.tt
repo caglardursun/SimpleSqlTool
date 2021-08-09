@@ -51,7 +51,7 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 							IMediator mediator
 						){
 								_mapper = mapper;
-								_birimRepository = repository;
+								_<#=tableName#>Repository = repository;
 								_mediator = mediator;
 						}
 
@@ -60,16 +60,19 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 						[SecuredOperation(Priority = 1)]
 						public async Task<IResult> Handle(Update<#=tableName#>Command request, CancellationToken cancellationToken)
 						{
-							var data = _<#=tableNameToLower#>Repository.Query().Any(u => u.Id == request.model.Id);
+							try{
+								
 
-							if (data == true)
-								return new ErrorResult(Messages.NameAlreadyExist);
+								var item = _mapper.Map<Update<#=tableName#>Request, <#=tableName#>>(request.model);
 
-							var item = _mapper.Map<Update<#=tableName#>RequestDto, <#=tableName#>>(request.model);
-
-							_<#=tableNameToLower#>Repository.Update(item);
-							await _<#=tableNameToLower#>Repository.SaveChangesAsync();
-							return new SuccessResult(Messages.Updated);
+								_birimResxRepository.Update(item);
+				
+								await _<#=tableName#>Repository.SaveChangesAsync();
+								return new SuccessResult(Messages.Updated);
+							}catch(Exception exc)
+							{
+								return new ErrorResult(exc.InnerException.Message);
+							}
 						}
 				
 		}

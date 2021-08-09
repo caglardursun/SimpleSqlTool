@@ -145,45 +145,46 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             
             #line default
             #line hidden
-            this.Write("Command request, CancellationToken cancellationToken)\r\n\t\t{\r\n\t\t\t\tvar data = _");
+            this.Write("Command request, CancellationToken cancellationToken)\r\n\t\t{\r\n\t\t\t\ttry{\r\n\t\t\t\t\tif (_");
             
-            #line 64 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
+            #line 65 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Repository.Query().Any(u => u.Ad == request.model.Ad);\r\n\r\n\t\t\t\tif (data == true)\r\n" +
-                    "\t\t\t\t\treturn new ErrorResult(Messages.NameAlreadyExist);\r\n\r\n\t\t\t\tvar item = _mappe" +
-                    "r.Map<Create");
+            this.Write("Repository.Query().Any(u=> u.Ad == request.model.Ad))                \r\n\t\t\t\t\t\tretu" +
+                    "rn new ErrorResult(Messages.NameAlreadyExist);\r\n\r\n\t\t\t\t\tvar item = _mapper.Map<Cr" +
+                    "eate");
             
-            #line 69 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 68 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestDto, ");
             
-            #line 69 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 68 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write(">(request.model);\r\n\r\n\t\t\t\t_");
+            this.Write(">(request.model);\r\n\r\n\t\t\t\t\t_");
+            
+            #line 70 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
+            
+            #line default
+            #line hidden
+            this.Write("Repository.Add(item);\r\n\t\t\t\t\tawait _");
             
             #line 71 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
-            this.Write("Repository.Add(item);\r\n                await _");
-            
-            #line 72 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
-            
-            #line default
-            #line hidden
-            this.Write("Repository.SaveChangesAsync();\r\n                return new SuccessResult(Messages" +
-                    ".Added);\r\n\t\t}\r\n\t\t\r\n\t}\r\n\r\n}");
+            this.Write("Repository.SaveChangesAsync();\r\n\t\t\t\t\treturn new SuccessResult(Messages.Added);\r\n\t" +
+                    "\t\t\t}   \r\n\t\t\t\tcatch (Exception exc)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn new SuccessResult(exc.Inn" +
+                    "erException.Message);\r\n\t\t\t\t}\r\n\t\t}\r\n\t\t\r\n\t}\r\n\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         

@@ -17,7 +17,7 @@
 
 namespace <#=_namespace#>.Data.Entity
 {
-    public class <#=tableName#> 
+    public class <#=tableName#> : BaseIntEntity, IEntity
     {
         <#
         foreach (var c in columns)

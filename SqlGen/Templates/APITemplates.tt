@@ -39,153 +39,113 @@ namespace <#= _namespace #>.API.v1
     //[Authorize]
     public class <#=tableNameToPascal#>Controller : ControllerBase
     {
-        private ILogger<<#=tableNameToPascal#>Controller> _logger;
-        private I<#=tableNameToPascal#>Manager _<#=tableName#>Manager;
-        private IMapper _mapper;
 
-        public <#=tableNameToPascal#>Controller(IConfiguration config, 
-        IMapper mapper,
-        I<#=tableNameToPascal#>Manager <#=tableName#>Manager,
-        ILogger<<#=tableNameToPascal#>Controller> logger)
-        {
-            _logger = logger;        
-            _mapper = mapper;
-            _<#=tableName#>Manager = <#=tableName#>Manager;
-        }
+            ///<summary>
+            ///Getir tüm <#=tableName#> : Tüm <#=tableName#> getirildiği servistir.
+            ///</summary>
+            ///<remarks> <#=tableName#> </remarks>
+            ///<return>List <#=tableName#></return>
+            ///<response code="200"></response>
+            [Produces("application/json", "text/plain")]
+            [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<<#=tableName#>Response>))]
+            [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+            [HttpGet("Getir<#=tableName#>List")]
+            public async Task<IActionResult> Getir<#=tableName#>List()
+            {
+                var result = await Mediator.Send(new Get<#=tableName#>ListQuery());
+                if (result.Success)
+                {
+                    return Ok(result.Data);
+                }
+                return BadRequest(result.Message);
+            }
 
 
-
-        /// <summary>
-        /// <#=tableNameToPascal#> kayıt servisi
-        /// </summary>
-        /// <param name="dto">
-        /// <see cref="Create<#=tableNameToPascal#>Request"/>
-        /// </param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<ApiResponse> Post([FromBody] Create<#=tableNameToPascal#>Request dto)
-        {
-
-            if (ModelState.IsValid)
+            
+            ///<summary>
+            ///Getir <#=tableName#> byId: <#=tableName#> id'sine göre birim listelenir.
+            ///</summary>
+            ///<remarks><#=tableName#></remarks>
+            ///<return><#=tableName#>Response</return>
+            ///<response code="200"></response>
+            [Produces("application/json", "text/plain")]
+            [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<<#=tableName#>Response>))]
+            [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+            [HttpGet("Getir<#=tableName#>ById")]
+            public async Task<IActionResult> Getir<#=tableName#>ById(int id)
+            {
+                var result = await Mediator.Send(new Get<#=tableName#>ByIdQuery() { Id = id });
+                if (result.Success)
+                {
+                    return Ok(result.Data);
+                }
+                return BadRequest(result.Message);
+            }
+       
+            /// <summary>
+            /// <#=tableName#> kayıt servisi
+            /// </summary>
+            /// <param name="dto">
+            /// <see cref="Create<#=tableName#>Request"/>
+            /// </param>
+            /// <returns><see cref="<#=tableName#>Response"></returns>
+            [Produces("application/json", "text/plain")]
+            [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<<#=tableName#>Response>))]
+            [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+            [HttpPost("Kaydet<#=tableName#>")]
+            public async Task<IActionResult> Kaydet<#=tableName#>([FromBody] Create<#=tableName#>Request dto)
             {
                 
-                var data = _mapper.Map<<#=tableNameToPascal#>>(dto);
-                if (await  _<#=tableName#>Manager.ExistAsync(data.unique))
-                    throw new ApiException($"Record Already Exists", Status202Accepted);
-
-                return new ApiResponse("Record successfully created.", await _<#=tableName#>Manager.CreateAsync(data), Status201Created);
-            }
-            else
-                throw new ApiException(ModelState.AllErrors());
-        }
-        
-
-        /// <summary>
-        /// <#=tableNameToPascal#> güncelleme servisi
-        /// </summary>
-        /// <param name="id">
-        /// Kayıt Id si
-        /// </param>
-        /// <param name="dto">
-        /// Kayıt güncelleme bilgileri <see cref="Update<#=tableNameToPascal#>Request"/>
-        /// </param>
-        /// <returns></returns>
-        [Route("{id:long}")]
-        [HttpPut]
-        public async Task<ApiResponse> Put(long id, [FromBody] Update<#=tableNameToPascal#>Request dto)
-        {
-            if (ModelState.IsValid)
-            {
-                var data = _mapper.Map<<#=tableNameToPascal#>>(dto);
-                data.id = id;
-
-                if (await _<#=tableName#>Manager.UpdateAsync(data))
-                    return new ApiResponse($"Record with Id: {id} sucessfully updated.", true);
-                else
-                    throw new ApiException($"Record with Id: {id} does not exist.", Status404NotFound);
-            }
-            else
-                throw new ApiException(ModelState.AllErrors());
-        }
-
-        
-        /// <summary>
-        /// <#=tableNameToPascal#> delete service
-        /// </summary>
-        /// <param name="id">
-        /// Record Id si
-        /// </param>
-        /// <returns>
-        /// <see cref="ApiResponse"/>
-        /// </returns>
-        [Route("{id:long}")]
-        [HttpDelete]
-        public async Task<ApiResponse> Delete(long id)
-        {
-            if (await _<#=tableName#>Manager.DeleteAsync(id))
-            {
-                _logger.LogInformation($"Record with Id: {id} sucessfully deleted.");
-                return new ApiResponse($"Record with Id: {id} sucessfully deleted.", true);
-            }                
-            else
-                throw new ApiException($"Record with id: {id} does not exist.", Status404NotFound);
-        }
-
-        /// <summary>
-        /// <#=tableNameToPascal#> get service
-        /// </summary>
-        /// <param name="id">
-        /// Record Id 
-        /// </param>
-        /// <returns>
-        /// <see cref="<#=tableNameToPascal#>Response>"/>
-        [Route("{id:long}")]
-        [HttpGet]
-        public async Task<<#=tableNameToPascal#>Response>> Get(long id)
-        {
-            var data = await  _<#=tableName#>Manager.GetByIdAsync(id);
-            if (data == null)
-            {
-                _logger.LogWarning($@"No records Found with CustomerID : {id}");
-                throw new ApiException($@"No records Found");
+                    var result = await Mediator.Send(new Create<#=tableName#>Command { model = model });
+                    if (result.Success)
+                    {
+                        return Ok(result.Message);
+                    }
+                    return BadRequest(result.Message);
             }
 
-            return _mapper.Map<<#=tableNameToPascal#>Response>(data);;
-        }
-
-
-        /// <summary>
-        /// <#=tableNameToPascal#> get pagination service
-        /// </summary>
-        /// <param name="UrlQuerySearchParameters">
-        ///  search parameter
-        /// </param>
-        /// <returns>
-        /// <see cref="IEnumerable<<#=tableNameToPascal#>Response>"/>
-        [Route("paged")]
-        [HttpGet]        
-        public async Task<IEnumerable<<#=tableNameToPascal#>Response>> Get([FromQuery] UrlQuerySearchParameters urlQueryParameters)
-        {
-
-            var parameters = _mapper.Map<QuerySearchParameters>(urlQueryParameters);
-            parameters.PersonID = User.Claims.ToUserId();            
-            parameters.IsAdmin = User.Claims.IsAdmin();            
-
-            var data = await _<#=tableName#>Manager.Search<#=tableNameToPascal#>Async(urlQueryParameters);
-            if (data.<#=tableNameToPascal#> == null)
+            ///<summary>
+            ///<#=tableName#> Güncelle
+            ///</summary>
+            ///<remarks><#=tableName#></remarks>
+            ///<return></return>
+            /// <returns><see cref="<#=tableName#>Response"></returns>
+            [Produces("application/json", "text/plain")]
+            [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<<#=tableName#>Response>))]
+            [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+            [HttpPut("Guncelle<#=tableName#>")]
+            public async Task<IActionResult> Guncelle<#=tableName#>([FromBody] Update<#=tableName#>Request model)
             {
-                throw new ApiException("No records Found");
+                var result = await Mediator.Send(new Update<#=tableName#>Command { model = model });
+                if (result.Success)
+                {
+                    return Ok(result.Message);
+                }
+                return BadRequest(result.Message);
             }
 
-            var response = _mapper.Map<IEnumerable<<#=tableNameToPascal#>Response>>(data.<#=tableNameToPascal#>);
-
-            //4 reading header value of access pagination values
-            Response.Headers.Add("Access-Control-Expose-Headers", "X-Pagination");            
-            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(data.Pagination));
-
-            return response;
-        }
-
+            ///<summary>
+            ///<#=tableName#> Sil
+            ///</summary>
+            ///<remarks><#=tableName#></remarks>
+            ///<return></return>
+            ///<response code="200"></response>
+            //[Produces("application/json", "text/plain")]        
+            ///<response code="200"></response>
+            [Produces("application/json", "text/plain")]
+            [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
+            [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+            [HttpDelete("Sil<#=tableName#>")]
+            public async Task<IActionResult> Sil<#=tableName#>(int id)
+            {
+                
+                var result = await Mediator.Send(new Delete<#=tableName#>Command() { Id = id});
+                if (result.Success)
+                {
+                    return Ok(result.Message);
+                }
+                return BadRequest(result.Message);
+            }
         
 
     }

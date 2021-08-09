@@ -123,8 +123,15 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             #line default
             #line hidden
             this.Write("Repository repository,\r\n\t\t\t\t\t\t\tIMediator mediator\r\n\t\t\t\t\t\t){\r\n\t\t\t\t\t\t\t\t_mapper = ma" +
-                    "pper;\r\n\t\t\t\t\t\t\t\t_birimRepository = repository;\r\n\t\t\t\t\t\t\t\t_mediator = mediator;\r\n\t\t" +
-                    "\t\t\t\t}\r\n\r\n\r\n\t\t\t\t\t\t[ValidationAspect(typeof(Update");
+                    "pper;\r\n\t\t\t\t\t\t\t\t_");
+            
+            #line 54 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Repository = repository;\r\n\t\t\t\t\t\t\t\t_mediator = mediator;\r\n\t\t\t\t\t\t}\r\n\r\n\r\n\t\t\t\t\t\t[Vali" +
+                    "dationAspect(typeof(Update");
             
             #line 59 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
@@ -139,46 +146,32 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             
             #line default
             #line hidden
-            this.Write("Command request, CancellationToken cancellationToken)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tvar data =" +
-                    " _");
+            this.Write("Command request, CancellationToken cancellationToken)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ttry{\r\n\t\t\t\t" +
+                    "\t\t\t\t\r\n\r\n\t\t\t\t\t\t\t\tvar item = _mapper.Map<Update");
             
-            #line 63 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
-            
-            #line default
-            #line hidden
-            this.Write("Repository.Query().Any(u => u.Id == request.model.Id);\r\n\r\n\t\t\t\t\t\t\tif (data == true" +
-                    ")\r\n\t\t\t\t\t\t\t\treturn new ErrorResult(Messages.NameAlreadyExist);\r\n\r\n\t\t\t\t\t\t\tvar item" +
-                    " = _mapper.Map<Update");
-            
-            #line 68 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 66 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("RequestDto, ");
+            this.Write("Request, ");
             
-            #line 68 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            #line 66 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write(">(request.model);\r\n\r\n\t\t\t\t\t\t\t_");
+            this.Write(">(request.model);\r\n\r\n\t\t\t\t\t\t\t\t_birimResxRepository.Update(item);\r\n\t\t\t\t\r\n\t\t\t\t\t\t\t\taw" +
+                    "ait _");
             
             #line 70 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Repository.Update(item);\r\n\t\t\t\t\t\t\tawait _");
-            
-            #line 71 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
-            
-            #line default
-            #line hidden
-            this.Write("Repository.SaveChangesAsync();\r\n\t\t\t\t\t\t\treturn new SuccessResult(Messages.Updated)" +
-                    ";\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\r\n\t\t}\r\n}");
+            this.Write("Repository.SaveChangesAsync();\r\n\t\t\t\t\t\t\t\treturn new SuccessResult(Messages.Updated" +
+                    ");\r\n\t\t\t\t\t\t\t}catch(Exception exc)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn new ErrorResult(exc.I" +
+                    "nnerException.Message);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\r\n\t\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         
