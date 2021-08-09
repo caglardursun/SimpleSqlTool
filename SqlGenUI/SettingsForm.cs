@@ -65,6 +65,7 @@ namespace SqlGenUI
             settings.UserName= textBoxUserName.Text;
             settings.ServerName= textBoxServer.Text;
             settings.DBType = (SqlGenDbType) comboBoxDB.SelectedIndex;
+            settings.Namespace = textBoxNamespace.Text;
             settings.Save();
             
             Close();

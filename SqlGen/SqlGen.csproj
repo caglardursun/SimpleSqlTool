@@ -91,7 +91,7 @@
     <Compile Include="Generators\DataInterfaceManager.cs" />
     <Compile Include="Generators\DataManagers.cs" />
     <Compile Include="Generators\DeleteCommandGenerator.cs" />
-    <Compile Include="Generators\GetMediatrQueryGenerator.cs" />
+    <Compile Include="Generators\GetListQueryGenerator.cs" />
     <Compile Include="Generators\JSonGenerator.cs" />
     <Compile Include="Generators\RestSharpGenerator.cs" />
     <Compile Include="Generators\SQLInsertGenerator.cs" />

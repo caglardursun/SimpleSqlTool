@@ -37,13 +37,15 @@
             this.labelSql = new System.Windows.Forms.Label();
             this.textBoxDB = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxDB = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxNamespace = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonSave
@@ -124,13 +126,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "DB";
             // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Location = new System.Drawing.Point(284, 93);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(142, 20);
-            this.textBoxPassword.TabIndex = 12;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -184,11 +179,36 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "DB Type";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(219, 145);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Namespace";
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(284, 93);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(142, 20);
+            this.textBoxPassword.TabIndex = 12;
+            // 
+            // textBoxNamespace
+            // 
+            this.textBoxNamespace.Location = new System.Drawing.Point(284, 138);
+            this.textBoxNamespace.Name = "textBoxNamespace";
+            this.textBoxNamespace.Size = new System.Drawing.Size(138, 20);
+            this.textBoxNamespace.TabIndex = 17;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(446, 285);
+            this.Controls.Add(this.textBoxNamespace);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBoxDB);
             this.Controls.Add(this.label5);
@@ -225,12 +245,14 @@
         private System.Windows.Forms.Label labelSql;
         private System.Windows.Forms.TextBox textBoxDB;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxDB;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.TextBox textBoxNamespace;
     }
 }

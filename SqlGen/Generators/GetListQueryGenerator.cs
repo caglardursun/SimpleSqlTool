@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SqlGen.Generators
 {
-    public class GetMediatrQueryGenerator : Generator
+    public class GetListQueryGenerator : Generator
     {
 
         public override string ToString() => "GetList Command Handler Generator";

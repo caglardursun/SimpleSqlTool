@@ -71,8 +71,9 @@ namespace SqlGenUI
 
         [JsonProperty("Password")]
         public string Password { get; set; }
+        [JsonProperty("Namespace")]
+        public string Namespace { get; set; }
 
-     
 
         [JsonProperty("DBType")]
         public SqlGenDbType DBType { get; set; }
