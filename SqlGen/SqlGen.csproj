@@ -128,11 +128,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataManagerTemplates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\DataTransferObjectResponseTemplates.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataTransferObjectResponseTemplates.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\DataTransferObjectTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,10 +143,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityTemplates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\GetMediatRQueryTemplates.cs">
+    <Compile Include="Templates\GetCommandHandlerTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GetMediatRQueryTemplates.tt</DependentUpon>
+      <DependentUpon>GetCommandHandlerTemplates.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\JSonTemplates.cs">
       <AutoGen>True</AutoGen>
@@ -208,10 +203,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DataManagerTemplates.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\DataTransferObjectResponseTemplates.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DataTransferObjectResponseTemplates.cs</LastGenOutput>
-    </Content>
     <Content Include="Templates\DataTransferObjectTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DataTransferObjectTemplates.cs</LastGenOutput>
@@ -224,9 +215,9 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\GetMediatRQueryTemplates.tt">
+    <Content Include="Templates\GetCommandHandlerTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>GetMediatRQueryTemplates.cs</LastGenOutput>
+      <LastGenOutput>GetCommandHandlerTemplates.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\JSonTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

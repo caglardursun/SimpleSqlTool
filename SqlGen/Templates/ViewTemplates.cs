@@ -41,25 +41,44 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
                    
 
                     Write("<div class=\"form-group row\">\n");
-                    Write($"<label class=\"col-3\">{propName}</label>\n");
+                    Write($"<label class=\"col-3\" data-langkey=\"{propName}\">{propName}</label>\n");
                     Write("<div class=\"col-9\">\n");
 
-                    Write("<input class=\"form-control\" type=\"");
+                    
+                    Write($"\n <!-- PropertyName : {propName} PropertyType : {propType}--->\n");
+
+                    Write($"<input class=\"form-control\" type=\"");
 
                     
                     switch(propType)
                     {
                         case "int":
+                        case "Guid":
+                        {
+                            Write($"hidden\" ");  
+                            break;
+                        }
                         case "int?":
                         {
-                            Write($"{propName} {propType}\"");  
+                            Write($"number\" ");  
+                            break;
+                        }         
+                        case "DateTime":
+                        {
+                            Write($"date\" "); 
+                            break;
+                        } 
+                        case "string":
+                        {
+                            Write("text\" "); 
+
                             break;
                         }
                         default:
-                            Write("hidden");  
+                            Write("hidden\" ");  
                         break;
                     }
-                    Write($" value=\"2011-09-08\" id=\"{propName}\" />\n");
+                    Write($"id=\"{propName}\" name=\"{propName}\" />\n");
                     Write("</div>\n");
                     Write("</div>\n");
 

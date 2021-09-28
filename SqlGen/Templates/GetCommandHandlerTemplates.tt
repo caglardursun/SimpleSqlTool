@@ -10,8 +10,6 @@
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
 <#@ parameter name="tableNameToPascal" type="System.String" #>
-
-
 using MediatR;
 using Sbu.Ubys.Bys.Business.BusinessAspects;
 using Sbu.Ubys.Bys.DataAccess.Abstract;
@@ -29,7 +27,7 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Queries
     }
 
     public class Get<#=tableName#>QueryHandler : IRequestHandler<Get<#=tableName#>ListQuery, IDataResult<IEnumerable<<#=tableName#>ResponseDto>>>
-        {
+    {
             private readonly I<#=tableName#>Repository _<#=tableName#>Repository;
             private readonly IMediator _mediator;
             private readonly IMapper _mapper;
@@ -45,13 +43,23 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Queries
             public async Task<IDataResult<IEnumerable<<#=tableName#>ResponseDto>>> Handle(Get<#=tableName#>ListQuery request, CancellationToken cancellationToken)
             {
                 
-                 var enties = await _<#=tableName#>Repository.GetListAsync();
+                try
+                {
 
-                var response = _mapper.Map<IEnumerable<<#=tableName#>>, IEnumerable<<#=tableName#>ResponseDto>>(enties);
+                    var enties = await _<#=tableName#>Repository.GetListAsync();
 
-                return new SuccessDataResult<IEnumerable<<#=tableName#>ResponseDto>>(response);
+                    var response = _mapper.Map<IEnumerable<<#=tableName#>>, IEnumerable<<#=tableName#>ResponseDto>>(enties);
+
+                    return new SuccessDataResult<IEnumerable<<#=tableName#>ResponseDto>>(response);
+
+                }
+                catch (Exception exc)
+                {
+
+                    return new ErrorDataResult<IEnumerable<<#=tableName#>ResponseDto>>(exc.InnerException.Message);
+                }
+
+              
             }
-        }
-
-
+    }
 }

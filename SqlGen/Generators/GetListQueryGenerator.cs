@@ -10,14 +10,14 @@ namespace SqlGen.Generators
     public class GetListQueryGenerator : Generator
     {
 
-        public override string ToString() => "GetList Command Handler Generator";
+        public override string ToString() => "Get Command Handler Generator";
 
         public override string Generate(Table table, GeneratorOptions options)
         {
             try
             {
 
-                var template = new GetMediatRQueryTemplates();
+                var template = new GetCommandHandlerTemplates();
                 template.Session = new Dictionary<string, object>();
 
                 var fk = table.ForeignKeys.ToForegnTableColumns();
