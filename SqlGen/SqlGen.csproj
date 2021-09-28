@@ -93,6 +93,7 @@
     <Compile Include="Generators\DeleteCommandGenerator.cs" />
     <Compile Include="Generators\GetListQueryGenerator.cs" />
     <Compile Include="Generators\JSonGenerator.cs" />
+    <Compile Include="Generators\RepositoryGenerator.cs" />
     <Compile Include="Generators\RestSharpGenerator.cs" />
     <Compile Include="Generators\SQLInsertGenerator.cs" />
     <Compile Include="Generators\MultiGenerator.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Generators\Generator.cs" />
     <Compile Include="Core\Column.cs" />
     <Compile Include="Generators\UpdateCommandGenerators.cs" />
+    <Compile Include="Generators\ViewGenerator.cs" />
     <Compile Include="Helper\QueryHelper.cs" />
     <Compile Include="Core\Table.cs" />
     <Compile Include="Data\TableDataAccess.cs" />
@@ -156,6 +158,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JSonTemplates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\RepositoryTemplates.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepositoryTemplates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\RestSharpTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,6 +172,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UpdateCommandHandlerTemplates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\ViewTemplates.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewTemplates.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +232,10 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>JSonTemplates.cs</LastGenOutput>
     </Content>
+    <Content Include="Templates\RepositoryTemplates.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RepositoryTemplates.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\RestSharpTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>RestSharpTemplates.cs</LastGenOutput>
@@ -227,6 +243,10 @@
     <Content Include="Templates\UpdateCommandHandlerTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UpdateCommandHandlerTemplates.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\ViewTemplates.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ViewTemplates.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

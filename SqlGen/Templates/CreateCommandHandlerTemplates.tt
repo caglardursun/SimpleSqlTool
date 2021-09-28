@@ -30,9 +30,7 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 
 	    public class Create<#=tableName#>Command : IRequest<IResult>
 		{
-
 			public Create<#=tableName#>RequestDto model { get; set; }
-			
 		}
 
 
@@ -43,39 +41,36 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 					private readonly IMediator _mediator;
 
 
-					public Create<#=tableNameToPascal#>CommandHandler(
+				public Create<#=tableNameToPascal#>CommandHandler(
 							IMapper mapper,
 							I<#=tableName#>Repository repository,
 							IMediator mediator)
-						{
+				{
 							_mapper = mapper;
 							_<#=tableNameToLower#>Repository = repository;
 							_mediator = mediator;
-						}
-
-			
-			
-
-
-		[ValidationAspect(typeof(Create<#=tableName#>RequestValidator), Priority = 1)]
-		[SecuredOperation(Priority = 1)]
-		public async Task<IResult> Handle(Create<#=tableName#>Command request, CancellationToken cancellationToken)
-		{
-				try{
-					if (_<#=tableName#>Repository.Query().Any(u=> u.Ad == request.model.Ad))                
-						return new ErrorResult(Messages.NameAlreadyExist);
-
-					var item = _mapper.Map<Create<#=tableName#>RequestDto, <#=tableName#>>(request.model);
-
-					_<#=tableNameToLower#>Repository.Add(item);
-					await _<#=tableNameToLower#>Repository.SaveChangesAsync();
-					return new SuccessResult(Messages.Added);
-				}   
-				catch (Exception exc)
-				{
-					return new SuccessResult(exc.InnerException.Message);
 				}
-		}
+
+
+				[ValidationAspect(typeof(Create<#=tableName#>RequestValidator), Priority = 1)]
+				[SecuredOperation(Priority = 1)]
+				public async Task<IResult> Handle(Create<#=tableName#>Command request, CancellationToken cancellationToken)
+				{
+						try{
+							if (_<#=tableName#>Repository.Query().Any(u=> u.Ad == request.model.Ad))                
+								return new ErrorResult(Resource.BasarisizKayitIslemi);
+
+							var item = _mapper.Map<Create<#=tableName#>RequestDto, <#=tableName#>>(request.model);
+
+							_<#=tableNameToLower#>Repository.Add(item);
+							await _<#=tableNameToLower#>Repository.SaveChangesAsync();
+							return new SuccessResult(Resource.BasariliKayitIslemi);
+						}   
+						catch (Exception exc)
+						{
+							return new SuccessResult(exc.InnerException.Message);
+						}
+				}
 		
 	}
 

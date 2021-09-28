@@ -115,33 +115,36 @@ using System.Threading.Tasks;
             #line default
             #line hidden
             this.Write("Command request, CancellationToken cancellationToken)\r\n            {\r\n           " +
-                    "     try\r\n                {                \r\n                    var item = awai" +
-                    "t _");
+                    "     try\r\n                {                \r\n               \r\n\r\n                " +
+                    "      if (_");
             
-            #line 52 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 54 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write(@"Repository.GetAsync(h=>h.Id == request.Id);
-                
-                    if (item != null)
-                    {
-                        item.Silindimi = true;
-                    
-
-                        //_birimRepository.Update(item);
-                        await _");
+            this.Write("Repository.Query().Any(h => h.Id == request.Id))\r\n                        {      " +
+                    "              \r\n                            _");
             
-            #line 60 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 56 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Repository.Delete(request.Id);\r\n                            await _");
+            
+            #line 57 "D:\Project\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(@"Repository.SaveChangesAsync();
-                    }
+                            return new SuccessResult(Resource.BasariliSilmeIslemi);
+                        }
 
-                    return new SuccessResult(Messages.Deleted);
+                        return new ErrorResult(Resource.BasarisizSilmeIslemi);
+
+                    
                 }
                 catch (Exception exc)
                 {

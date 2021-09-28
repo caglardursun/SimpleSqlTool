@@ -42,7 +42,7 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 
 
 						private readonly IMapper _mapper;
-						private readonly I<#=tableName#>Repository _<#=tableNameToLower#>Repository;
+						private readonly I<#=tableName#>Repository _<#=tableName#>Repository;
 						private readonly IMediator _mediator;
 				
 						public Update<#=tableName#>CommandHandler(
@@ -63,12 +63,13 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 							try{
 								
 
-								var item = _mapper.Map<Update<#=tableName#>Request, <#=tableName#>>(request.model);
+								var item = _mapper.Map<Update<#=tableName#>RequestDto, <#=tableName#>>(request.model);
 
-								_birimResxRepository.Update(item);
+								_<#=tableName#>Repository.Update(item);
 				
 								await _<#=tableName#>Repository.SaveChangesAsync();
-								return new SuccessResult(Messages.Updated);
+								return new SuccessResult(Resource.BasariliGuncellemeIslemi);
+
 							}catch(Exception exc)
 							{
 								return new ErrorResult(exc.InnerException.Message);

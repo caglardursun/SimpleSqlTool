@@ -103,7 +103,7 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             this.Write("Repository _");
             
             #line 45 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
@@ -154,24 +154,30 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             
             #line default
             #line hidden
-            this.Write("Request, ");
+            this.Write("RequestDto, ");
             
             #line 66 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write(">(request.model);\r\n\r\n\t\t\t\t\t\t\t\t_birimResxRepository.Update(item);\r\n\t\t\t\t\r\n\t\t\t\t\t\t\t\taw" +
-                    "ait _");
+            this.Write(">(request.model);\r\n\r\n\t\t\t\t\t\t\t\t_");
+            
+            #line 68 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Repository.Update(item);\r\n\t\t\t\t\r\n\t\t\t\t\t\t\t\tawait _");
             
             #line 70 "D:\Project\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Repository.SaveChangesAsync();\r\n\t\t\t\t\t\t\t\treturn new SuccessResult(Messages.Updated" +
-                    ");\r\n\t\t\t\t\t\t\t}catch(Exception exc)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn new ErrorResult(exc.I" +
-                    "nnerException.Message);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\r\n\t\t}\r\n}");
+            this.Write("Repository.SaveChangesAsync();\r\n\t\t\t\t\t\t\t\treturn new SuccessResult(Resource.Basaril" +
+                    "iGuncellemeIslemi);\r\n\r\n\t\t\t\t\t\t\t}catch(Exception exc)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn ne" +
+                    "w ErrorResult(exc.InnerException.Message);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\r\n\t\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         

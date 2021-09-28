@@ -49,18 +49,18 @@ using System.Threading.Tasks;
             {
                 try
                 {                
-                    var item = await _<#=tableName#>Repository.GetAsync(h=>h.Id == request.Id);
-                
-                    if (item != null)
-                    {
-                        item.Silindimi = true;
+               
+
+                      if (_<#=tableName#>Repository.Query().Any(h => h.Id == request.Id))
+                        {                    
+                            _<#=tableName#>Repository.Delete(request.Id);
+                            await _<#=tableName#>Repository.SaveChangesAsync();
+                            return new SuccessResult(Resource.BasariliSilmeIslemi);
+                        }
+
+                        return new ErrorResult(Resource.BasarisizSilmeIslemi);
+
                     
-
-                        //_birimRepository.Update(item);
-                        await _<#=tableName#>Repository.SaveChangesAsync();
-                    }
-
-                    return new SuccessResult(Messages.Deleted);
                 }
                 catch (Exception exc)
                 {

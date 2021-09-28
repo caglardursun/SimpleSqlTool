@@ -104,60 +104,77 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write("Repository;\r\n            private readonly IMediator _mediator;\r\n\r\n            pub" +
-                    "lic Get");
+            this.Write("Repository;\r\n            private readonly IMediator _mediator;\r\n            priva" +
+                    "te readonly IMapper _mapper;\r\n\r\n            public Get");
             
-            #line 36 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
+            #line 37 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("QueryHandler(I");
             
-            #line 36 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
+            #line 37 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Repository repository, IMediator mediator)\r\n            {\r\n                _");
+            this.Write("Repository repository, IMediator mediator,IMapper mapper)\r\n            {\r\n       " +
+                    "         _");
             
-            #line 38 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
+            #line 39 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Repository = repository;\r\n                _mediator = mediator;\r\n            }\r\n\r" +
-                    "\n            [SecuredOperation(Priority = 1)]\r\n            public async Task<IDa" +
-                    "taResult<IEnumerable<");
+            this.Write("Repository = repository;\r\n                _mediator = mediator;\r\n                " +
+                    "_mapper = mapper;\r\n            }\r\n\r\n            [SecuredOperation(Priority = 1)]" +
+                    "\r\n            public async Task<IDataResult<IEnumerable<");
             
-            #line 43 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
+            #line 45 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("ResponseDto>>> Handle(Get");
             
-            #line 43 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
+            #line 45 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("ListQuery request, CancellationToken cancellationToken)\r\n            {\r\n         " +
-                    "       \r\n                return new SuccessDataResult<IEnumerable<");
+                    "       \r\n                 var enties = await _");
             
-            #line 46 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
+            #line 48 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("ResponseDto>>(await _");
+            this.Write("Repository.GetListAsync();\r\n\r\n                var response = _mapper.Map<IEnumera" +
+                    "ble<");
             
-            #line 46 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
+            #line 50 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Repository.GetList());\r\n            }\r\n        }\r\n\r\n\r\n}");
+            this.Write(">, IEnumerable<");
+            
+            #line 50 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("ResponseDto>>(enties);\r\n\r\n                return new SuccessDataResult<IEnumerabl" +
+                    "e<");
+            
+            #line 52 "D:\Project\SimpleSqlTool\SqlGen\Templates\GetMediatRQueryTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("ResponseDto>>(response);\r\n            }\r\n        }\r\n\r\n\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         

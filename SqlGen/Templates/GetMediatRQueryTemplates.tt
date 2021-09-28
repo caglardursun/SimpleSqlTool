@@ -32,18 +32,24 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Queries
         {
             private readonly I<#=tableName#>Repository _<#=tableName#>Repository;
             private readonly IMediator _mediator;
+            private readonly IMapper _mapper;
 
-            public Get<#=tableName#>QueryHandler(I<#=tableName#>Repository repository, IMediator mediator)
+            public Get<#=tableName#>QueryHandler(I<#=tableName#>Repository repository, IMediator mediator,IMapper mapper)
             {
                 _<#=tableName#>Repository = repository;
                 _mediator = mediator;
+                _mapper = mapper;
             }
 
             [SecuredOperation(Priority = 1)]
             public async Task<IDataResult<IEnumerable<<#=tableName#>ResponseDto>>> Handle(Get<#=tableName#>ListQuery request, CancellationToken cancellationToken)
             {
                 
-                return new SuccessDataResult<IEnumerable<<#=tableName#>ResponseDto>>(await _<#=tableName#>Repository.GetList());
+                 var enties = await _<#=tableName#>Repository.GetListAsync();
+
+                var response = _mapper.Map<IEnumerable<<#=tableName#>>, IEnumerable<<#=tableName#>ResponseDto>>(enties);
+
+                return new SuccessDataResult<IEnumerable<<#=tableName#>ResponseDto>>(response);
             }
         }
 

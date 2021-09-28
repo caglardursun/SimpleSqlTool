@@ -94,7 +94,9 @@ namespace SqlGen
         Dictionary<string, List<KeyColumn>> LoadForeignKeyColumns(string table, string schema)
         {
             
-            var queryResult = connection.Query<KeyColumn>(QueryHelper.ForeignKeyColumnSql, new { table, schema }).ToList();
+            var queryResult = connection
+                .Query<KeyColumn>(QueryHelper.ForeignKeyColumnSql, new { table, schema })
+                .ToList();
 
             // var eliminate = (from data in queryResult
             //                 group data by data.ConstraintName into key

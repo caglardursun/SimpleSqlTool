@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 
 namespace <#= _namespace #>.Data.DataManager
 {
-    public class <#=tableNameToPascal#>Manager : DbFactoryBase, I<#=tableNameToPascal#>Manager
+    public class <#=tableName#>Manager : DbFactoryBase, I<#=tableNameToPascal#>Manager
     {
         private ILogger<<#=tableNameToPascal#>Manager> _logger;
 
@@ -124,7 +124,7 @@ namespace <#= _namespace #>.Data.DataManager
         }
 
 
-        public async Task<(IEnumerable<<#=tableNameToPascal#>> <#=tableNameToPascal#>, Pagination Pagination)> Search<#=tableNameToPascal#>Async(QuerySearchParameters searchParameters)
+        public async Task<(IEnumerable<<#=tableName#>> <#=tableNameToPascal#>, Pagination Pagination)> Search<#=tableNameToPascal#>Async(QuerySearchParameters searchParameters)
         {
 
             
