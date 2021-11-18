@@ -161,10 +161,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityTemplates.tt</DependentUpon>
     </Compile>
-    <Compile Include="Templates\GetCommandHandlerTemplates.cs">
+    <Compile Include="Templates\GetListQueryTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GetCommandHandlerTemplates.tt</DependentUpon>
+      <DependentUpon>GetListQueryTemplates.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\JSonTemplates.cs">
       <AutoGen>True</AutoGen>
@@ -233,9 +233,9 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
     </Content>
-    <Content Include="Templates\GetCommandHandlerTemplates.tt">
+    <Content Include="Templates\GetListQueryTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>GetCommandHandlerTemplates.cs</LastGenOutput>
+      <LastGenOutput>GetListQueryTemplates.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\JSonTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

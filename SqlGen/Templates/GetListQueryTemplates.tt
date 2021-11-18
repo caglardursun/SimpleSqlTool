@@ -10,11 +10,15 @@
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
 <#@ parameter name="tableNameToPascal" type="System.String" #>
+using AutoMapper;
 using MediatR;
-using Sbu.Ubys.Bys.Business.BusinessAspects;
-using Sbu.Ubys.Bys.DataAccess.Abstract;
-using Sbu.Ubys.Bys.Entities.ResponseDtos.Birim;
 using Sbu.Ubys.Core.Utilities.Results;
+using <#=_namespace#>.Business.BusinessAspects;
+using <#=_namespace#>.DataAccess.Abstract;
+using <#=_namespace#>.Entities.Concrete;
+using <#=_namespace#>.Entities.ResponseDtos.<#=tableName#>;
+using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
