@@ -1,11 +1,6 @@
 ﻿//using SqlGen.Templeates;
 using SqlGen.Templates;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SqlGen.Generators
 {
@@ -15,22 +10,22 @@ namespace SqlGen.Generators
         {
 
 
-            var tdo = new DataTransferObjectTemplates();
-            tdo.Session = new Dictionary<string, object>();
-            tdo.Session.Add("_namespace", AppSettings.Instance.Namespace);
+            var template = new DataTransferObjectTemplates();
+            template.Session = new Dictionary<string, object>();
+            template.Session.Add("_namespace", AppSettings.Instance.Namespace);
 
-            tdo.Session.Add("tableName", table.TableName);            
-            tdo.Session.Add("columns", table.InsertableColumns);
-            tdo.Session.Add("options", options);
-            tdo.Session.Add("table", table);
+            template.Session.Add("tableName", table.TableName);
+            template.Session.Add("columns", table.InsertableColumns);
+            template.Session.Add("options", options);
+            template.Session.Add("table", table);
 
-            tdo.Initialize();
+            template.Initialize();
 
-            return tdo.TransformText();
-            
+            return template.TransformText();
+
 
         }
 
-        public override string ToString() => "Data Transfer Object";        
+        public override string ToString() => "Data Transfer Object";
     }
 }

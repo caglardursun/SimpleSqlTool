@@ -10,31 +10,34 @@
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
 <#@ parameter name="tableNameToPascal" type="System.String" #>
-
-
-using AutoMapper;
+<#@ parameter name="table" type="SqlGen.Table" #>
+<#@ parameter name="options" type="SqlGen.GeneratorOptions" #>
 using MediatR;
-using Sbu.Ubys.Bys.Business.BusinessAspects;
-using Sbu.Ubys.Bys.Business.Constants;
-using Sbu.Ubys.Bys.DataAccess.Abstract;
-using Sbu.Ubys.Bys.Entities.ResponseDtos.Birim;
 using Sbu.Ubys.Core.Utilities.Results;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using <#=_namespace#>.Business.BusinessAspects;
+using <#=_namespace#>.DataAccess.Abstract;
+using Sbu.Ubys.Core.Localization.Constants;
 
-
-
-    
+namespace <#=_namespace#>.<#=tableName#>Handlers.Commands
+{
     public class Delete<#=tableName#>Command :  IRequest<IResult>
     {
-              public int Id { get; set; }
+
+    <#
+        var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
+        var id = columns.ElementAt(0);
+        var id_type = id.ClrTypeName();
+        var id_name = id.ColumnName;
+    #>
+        public <#=id_type#> <#=id_name#> { get; set; }              
     }
 
-
      public class Delete<#=tableName#>CommandHandler : IRequestHandler<Delete<#=tableName#>Command, IResult>
-        {
+     {
             private readonly I<#=tableName#>Repository _<#=tableName#>Repository;
             private readonly IMediator _mediator;
 
@@ -49,7 +52,6 @@ using System.Threading.Tasks;
             {
                 try
                 {                
-               
 
                       if (_<#=tableName#>Repository.Query().Any(h => h.Id == request.Id))
                         {                    
@@ -69,4 +71,4 @@ using System.Threading.Tasks;
                 }
             }
             }
-        }
+}
