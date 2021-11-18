@@ -27,7 +27,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace <#=_namespace#>.<#=tableName#>Handlers.Commands
+namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands
 {
 
     public class Get<#=tableName#>ByIdQuery : IRequest<IDataResult<<#=tableName#>ResponseDto>>

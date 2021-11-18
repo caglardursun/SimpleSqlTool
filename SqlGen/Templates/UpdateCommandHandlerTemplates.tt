@@ -18,14 +18,14 @@ using System.Threading.Tasks;
 using Sbu.Ubys.Core.Aspects.Autofac.Validation;
 using Sbu.Ubys.Core.Utilities.Results;
 using Sbu.Ubys.Core.Localization.Constants;
-using <#=_namespace#>.Business.Handlers.<#=tableName#>.ValidationRules;
+using <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.ValidationRules;
 using <#=_namespace#>.DataAccess.Abstract;
 using <#=_namespace#>.Entities.Concrete;
 using <#=_namespace#>.Entities.RequestDtos.<#=tableName#>;
 using <#=_namespace#>.Business.BusinessAspects;
 
 
-namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
+namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands
 {
 
 		
@@ -40,7 +40,7 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 
 
 						private readonly IMapper _mapper;
-						private readonly I<#=tableName#>Repository _<#=tableName#>Repository;
+						private readonly I<#=tableName#>Repository _<#=tableNameToLower#>Repository;
 						private readonly IMediator _mediator;
 				
 						public Update<#=tableName#>CommandHandler(
@@ -49,7 +49,7 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 							IMediator mediator
 						){
 								_mapper = mapper;
-								_<#=tableName#>Repository = repository;
+								_<#=tableNameToLower#>Repository = repository;
 								_mediator = mediator;
 						}
 
@@ -61,7 +61,7 @@ namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
 							try{
 								
 
-								var item = _mapper.Map<Update<#=tableName#>RequestDto, <#=tableName#>>(request.model);
+								var item = _mapper.Map<Update<#=tableNameToLower#>RequestDto, <#=tableName#>>(request.model);
 
 								_<#=tableName#>Repository.Update(item);
 				

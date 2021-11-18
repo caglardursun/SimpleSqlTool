@@ -12,31 +12,32 @@ namespace SqlGen.Generators
         public override string Generate(Table table, GeneratorOptions options)
         {
 
-            var dataEntity = new EntityTemplates();
-            dataEntity.Session = new Dictionary<string, object>();
-            
-            dataEntity.Session.Add("_namespace", AppSettings.Instance.Namespace);
-            dataEntity.Session.Add("table", table);
-            dataEntity.Session.Add("schemaName", table.Schema);
-            dataEntity.Session.Add("tableName", table.TableName);
-           
-            
+            var template = new EntityTemplates();
+            template.Session = new Dictionary<string, object>();
+
+            template.Session.Add("_namespace", AppSettings.Instance.Namespace);
+            template.Session.Add("tableName", table.TableName);
+            template.Session.Add("options", options);
+            template.Session.Add("tableNameToLower", $"{table.TableName.ElementAt(0).ToString().ToLower()}{table.TableName.Substring(1, table.TableName.Length - 1)}");
+            template.Session.Add("tableNameToPascal", table.TableName.ToPascalCase());
+
+
             var fk = table.ForeignKeys.ToForegnTableColumns();
 
-            dataEntity.Session.Add("foregnkeys", fk);
+            template.Session.Add("foregnkeys", fk);
 
             var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
-            dataEntity.Session.Add("columns", columns);
-            dataEntity.Initialize();
+            template.Session.Add("columns", columns);
+            template.Initialize();
 
 
-            return dataEntity.TransformText();
+            return template.TransformText();
 
             //return "";
         }
 
 
 
-        public override string ToString() => "Data Entity";
+        public override string ToString() => "Data Entity Generator";
     }
 }

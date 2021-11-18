@@ -10,34 +10,23 @@
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
 <#@ parameter name="tableNameToPascal" type="System.String" #>
-
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using AutoWrapper.Wrappers;
-using <#=_namespace #>.Contracts;
-using <#=_namespace #>.Data;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using <#=_namespace #>.DTO.Response;
-using <#=_namespace #>.DTO.Request;
-using <#=_namespace #>.Data.DataManager;
-using Microsoft.Extensions.Configuration;
-using static Microsoft.AspNetCore.Http.StatusCodes;
-using <#=_namespace #>.Data.Entity;
-using System.Text.Json;
-using AutoWrapper.Extensions;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using <#=_namespace#>.Entities.ResponseDtos.<#=tableName#>;
+using <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Queries;
+using <#=_namespace#>.<#=tableName#>Handlers.Commands;
+using <#=_namespace#>.Entities.RequestDtos.<#=tableName#>;
+using <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands;
 
-namespace <#= _namespace #>.API.v1
+namespace <#= _namespace #>.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
-    public class <#=tableNameToPascal#>Controller : BaseApiController
+    public class <#=tableName#>Controller : BaseApiController
     {
 
             ///<summary>
@@ -86,9 +75,9 @@ namespace <#= _namespace #>.API.v1
             /// <#=tableName#> kayıt servisi
             /// </summary>
             /// <param name="dto">
-            /// <see cref="Create<#=tableName#>Request"/>
+            /// <see cref="Create<#=tableName#>RequestDto"/>
             /// </param>
-            /// <returns><see cref="<#=tableName#>Response"/></returns>
+            /// <returns><see cref="<#=tableName#>ResponseDto"/></returns>
             [Produces("application/json", "text/plain")]
             [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
             [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
@@ -109,7 +98,7 @@ namespace <#= _namespace #>.API.v1
             ///</summary>
             ///<remarks><#=tableName#></remarks>
             ///<return></return>
-            /// <returns><see cref="<#=tableName#>Response"/></returns>
+            /// <returns><see cref="<#=tableName#>ResponseDto"/></returns>
             [Produces("application/json", "text/plain")]
             [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<<#=tableName#>ResponseDto>))]
             [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]

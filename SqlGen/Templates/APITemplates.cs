@@ -30,93 +30,117 @@ namespace SqlGen.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Sys" +
-                    "tem.Threading.Tasks;\r\nusing AutoMapper;\r\nusing AutoWrapper.Wrappers;\r\nusing ");
+            this.Write("using System;\r\nusing Microsoft.AspNetCore.Http;\r\nusing Microsoft.AspNetCore.Mvc;\r" +
+                    "\nusing System.Collections.Generic;\r\nusing System.Threading.Tasks;\r\nusing ");
+            
+            #line 18 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Entities.ResponseDtos.");
+            
+            #line 18 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\nusing ");
+            
+            #line 19 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Business.Handlers.");
+            
+            #line 19 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Handlers.Queries;\r\nusing ");
             
             #line 20 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
-            this.Write(".Contracts;\r\nusing ");
+            this.Write(".");
+            
+            #line 20 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Handlers.Commands;\r\nusing ");
             
             #line 21 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
-            this.Write(".Data;\r\nusing Microsoft.AspNetCore.Authorization;\r\nusing Microsoft.AspNetCore.Htt" +
-                    "p;\r\nusing Microsoft.AspNetCore.Mvc;\r\nusing Microsoft.Extensions.Logging;\r\nusing " +
-                    "");
+            this.Write(".Entities.RequestDtos.");
             
-            #line 26 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 21 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\nusing ");
+            
+            #line 22 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
-            this.Write(".DTO.Response;\r\nusing ");
+            this.Write(".Business.Handlers.");
             
-            #line 27 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 22 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("Handlers.Commands;\r\n\r\nnamespace ");
+            
+            #line 24 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
-            this.Write(".DTO.Request;\r\nusing ");
+            this.Write(".WebAPI.Controllers\r\n{\r\n    [Route(\"api/[controller]\")]\r\n    [ApiController]\r\n   " +
+                    " //[Authorize]\r\n    public class ");
             
-            #line 28 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
-            
-            #line default
-            #line hidden
-            this.Write(".Data.DataManager;\r\nusing Microsoft.Extensions.Configuration;\r\nusing static Micro" +
-                    "soft.AspNetCore.Http.StatusCodes;\r\nusing ");
-            
-            #line 31 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
-            
-            #line default
-            #line hidden
-            this.Write(".Data.Entity;\r\nusing System.Text.Json;\r\nusing AutoWrapper.Extensions;\r\n\r\nnamespac" +
-                    "e ");
-            
-            #line 35 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
-            
-            #line default
-            #line hidden
-            this.Write(".API.v1\r\n{\r\n    [Route(\"api/[controller]\")]\r\n    [ApiController]\r\n    //[Authoriz" +
-                    "e]\r\n    public class ");
-            
-            #line 40 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            #line 29 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Controller : BaseApiController\r\n    {\r\n\r\n            ///<summary>\r\n            //" +
                     "/Getir tüm ");
             
-            #line 44 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 33 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(" : Tüm ");
             
-            #line 44 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 33 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(" getirildiği servistir.\r\n            ///</summary>\r\n            ///<remarks> ");
             
-            #line 46 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 35 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(" </remarks>\r\n            ///<return>List ");
             
-            #line 47 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 36 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -125,7 +149,7 @@ namespace SqlGen.Templates
                     "(\"application/json\", \"text/plain\")]\r\n            [ProducesResponseType(StatusCod" +
                     "es.Status200OK, Type = typeof(IEnumerable<");
             
-            #line 50 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -133,21 +157,21 @@ namespace SqlGen.Templates
             this.Write("ResponseDto>))]\r\n            [ProducesResponseType(StatusCodes.Status400BadReques" +
                     "t, Type = typeof(string))]\r\n            [HttpGet(\"Get");
             
-            #line 52 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("List\")]\r\n            public async Task<IActionResult> Get");
             
-            #line 53 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 42 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("List()\r\n            {\r\n                var result = await Mediator.Send(new Get");
             
-            #line 55 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 44 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -165,14 +189,14 @@ namespace SqlGen.Templates
             ///<summary>
             ///Getir ");
             
-            #line 66 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 55 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(" byId: ");
             
-            #line 66 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 55 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -180,14 +204,14 @@ namespace SqlGen.Templates
             this.Write(" id\'sine göre birim listelenir.\r\n            ///</summary>\r\n            ///<remar" +
                     "ks>");
             
-            #line 68 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 57 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("</remarks>\r\n            ///<return>");
             
-            #line 69 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 58 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -196,7 +220,7 @@ namespace SqlGen.Templates
                     "Produces(\"application/json\", \"text/plain\")]\r\n            [ProducesResponseType(S" +
                     "tatusCodes.Status200OK, Type = typeof(IEnumerable<");
             
-            #line 72 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 61 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -204,14 +228,14 @@ namespace SqlGen.Templates
             this.Write("ResponseDto>))]\r\n            [ProducesResponseType(StatusCodes.Status400BadReques" +
                     "t, Type = typeof(string))]\r\n            [HttpGet(\"Get");
             
-            #line 74 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 63 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("ById\")]\r\n            public async Task<IActionResult> Get");
             
-            #line 75 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 64 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -219,7 +243,7 @@ namespace SqlGen.Templates
             this.Write("ById(int id)\r\n            {\r\n                var result = await Mediator.Send(new" +
                     " Get");
             
-            #line 77 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 66 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -235,7 +259,7 @@ namespace SqlGen.Templates
             /// <summary>
             /// ");
             
-            #line 86 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 75 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -243,39 +267,39 @@ namespace SqlGen.Templates
             this.Write(" kayıt servisi\r\n            /// </summary>\r\n            /// <param name=\"dto\">\r\n " +
                     "           /// <see cref=\"Create");
             
-            #line 89 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 78 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Request\"/>\r\n            /// </param>\r\n            /// <returns><see cref=\"");
+            this.Write("RequestDto\"/>\r\n            /// </param>\r\n            /// <returns><see cref=\"");
             
-            #line 91 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 80 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write(@"Response""/></returns>
+            this.Write(@"ResponseDto""/></returns>
             [Produces(""application/json"", ""text/plain"")]
             [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
             [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
             [HttpPost(""Create");
             
-            #line 95 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 84 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("\")]\r\n            public async Task<IActionResult> Create");
             
-            #line 96 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 85 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("([FromBody] Create");
             
-            #line 96 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 85 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -283,7 +307,7 @@ namespace SqlGen.Templates
             this.Write("RequestDto dto)\r\n            {\r\n                \r\n                    var result " +
                     "= await Mediator.Send(new Create");
             
-            #line 99 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 88 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -299,14 +323,14 @@ namespace SqlGen.Templates
             ///<summary>
             ///");
             
-            #line 108 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 97 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(" Güncelle\r\n            ///</summary>\r\n            ///<remarks>");
             
-            #line 110 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 99 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -314,16 +338,16 @@ namespace SqlGen.Templates
             this.Write("</remarks>\r\n            ///<return></return>\r\n            /// <returns><see cref=" +
                     "\"");
             
-            #line 112 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 101 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Response\"/></returns>\r\n            [Produces(\"application/json\", \"text/plain\")]\r\n" +
-                    "            [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumer" +
-                    "able<");
+            this.Write("ResponseDto\"/></returns>\r\n            [Produces(\"application/json\", \"text/plain\")" +
+                    "]\r\n            [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnu" +
+                    "merable<");
             
-            #line 114 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 103 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -331,21 +355,21 @@ namespace SqlGen.Templates
             this.Write("ResponseDto>))]\r\n            [ProducesResponseType(StatusCodes.Status400BadReques" +
                     "t, Type = typeof(string))]\r\n            [HttpPut(\"Update");
             
-            #line 116 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 105 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("\")]\r\n            public async Task<IActionResult> Update");
             
-            #line 117 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 106 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("([FromBody] Update");
             
-            #line 117 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 106 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -353,7 +377,7 @@ namespace SqlGen.Templates
             this.Write("RequestDto model)\r\n            {\r\n                var result = await Mediator.Sen" +
                     "d(new Update");
             
-            #line 119 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 108 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -369,14 +393,14 @@ namespace SqlGen.Templates
             ///<summary>
             ///");
             
-            #line 128 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 117 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(" Sil\r\n            ///</summary>\r\n            ///<remarks>");
             
-            #line 130 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 119 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -391,14 +415,14 @@ namespace SqlGen.Templates
             [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
             [HttpDelete(""Delete");
             
-            #line 138 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 127 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("\")]\r\n            public async Task<IActionResult> Delete");
             
-            #line 139 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 128 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -406,7 +430,7 @@ namespace SqlGen.Templates
             this.Write("(int id)\r\n            {\r\n                \r\n                var result = await Med" +
                     "iator.Send(new Delete");
             
-            #line 142 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
+            #line 131 "D:\Projects\SimpleSqlTool\SqlGen\Templates\APITemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default

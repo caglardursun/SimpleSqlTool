@@ -22,7 +22,7 @@ using <#=_namespace#>.Business.BusinessAspects;
 using <#=_namespace#>.DataAccess.Abstract;
 using Sbu.Ubys.Core.Localization.Constants;
 
-namespace <#=_namespace#>.<#=tableName#>Handlers.Commands
+namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands
 {
     public class Delete<#=tableName#>Command :  IRequest<IResult>
     {
@@ -53,9 +53,9 @@ namespace <#=_namespace#>.<#=tableName#>Handlers.Commands
                 try
                 {                
 
-                      if (_<#=tableName#>Repository.Query().Any(h => h.Id == request.Id))
+                      if (_<#=tableNameToLower#>Repository.Query().Any(h => h.Id == request.Id))
                         {                    
-                            _<#=tableName#>Repository.Delete(request.Id);
+                            _<#=tableNameToLower#>Repository.Delete(request.Id);
                             await _<#=tableNameToLower#>Repository.SaveChangesAsync();
                             return new SuccessResult(Resource.BasariliSilmeIslemi);
                         }

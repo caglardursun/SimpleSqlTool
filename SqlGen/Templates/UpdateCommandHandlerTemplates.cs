@@ -47,7 +47,7 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write(".ValidationRules;\r\nusing ");
+            this.Write("Handlers.ValidationRules;\r\nusing ");
             
             #line 22 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
@@ -82,7 +82,14 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write(".Business.BusinessAspects;\r\n\r\n\r\nnamespace Sbu.Ubys.Bys.Business.Handlers.");
+            this.Write(".Business.BusinessAspects;\r\n\r\n\r\nnamespace ");
+            
+            #line 28 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Business.Handlers.");
             
             #line 28 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
@@ -128,7 +135,7 @@ namespace SqlGen.Templates
             this.Write("Repository _");
             
             #line 43 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
@@ -151,7 +158,7 @@ namespace SqlGen.Templates
                     "pper;\r\n\t\t\t\t\t\t\t\t_");
             
             #line 52 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
@@ -175,7 +182,7 @@ namespace SqlGen.Templates
                     "\t\t\t\t\r\n\r\n\t\t\t\t\t\t\t\tvar item = _mapper.Map<Update");
             
             #line 64 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden

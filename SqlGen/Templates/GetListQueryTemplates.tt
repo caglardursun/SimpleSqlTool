@@ -32,13 +32,13 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Queries
 
     public class Get<#=tableName#>QueryHandler : IRequestHandler<Get<#=tableName#>ListQuery, IDataResult<IEnumerable<<#=tableName#>ResponseDto>>>
     {
-            private readonly I<#=tableName#>Repository _<#=tableName#>Repository;
+            private readonly I<#=tableName#>Repository _<#=tableNameToLower#>Repository;
             private readonly IMediator _mediator;
             private readonly IMapper _mapper;
 
-            public Get<#=tableName#>QueryHandler(I<#=tableName#>Repository repository, IMediator mediator,IMapper mapper)
+            public Get<#=tableName#>QueryHandler(I<#=tableNameToLower#>Repository repository, IMediator mediator,IMapper mapper)
             {
-                _<#=tableName#>Repository = repository;
+                _<#=tableNameToLower#>Repository = repository;
                 _mediator = mediator;
                 _mapper = mapper;
             }
@@ -50,7 +50,7 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Queries
                 try
                 {
 
-                    var enties = await _<#=tableName#>Repository.GetListAsync();
+                    var enties = await _<#=tableNameToLower#>Repository.GetListAsync();
 
                     var response = _mapper.Map<IEnumerable<<#=tableName#>>, IEnumerable<<#=tableName#>ResponseDto>>(enties);
 

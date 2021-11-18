@@ -13,23 +13,25 @@ namespace SqlGen.Generators
         public override string Generate(Table table, GeneratorOptions options)
         {
 
-            APITemplates apitempleate = new APITemplates();
+            APITemplates template = new APITemplates();
 
-            apitempleate.Session = new Dictionary<string, object>();
-            apitempleate.Session.Add("_namespace", "NestPayment");
-            apitempleate.Session.Add("table", table);
-            apitempleate.Session.Add("tableName", table.TableName);
-            apitempleate.Session.Add("tableNameToLower", table.TableName);
-            apitempleate.Session.Add("tableNameToPascal", table.TableName.ToPascalCase());
-            apitempleate.Session.Add("columns", table.InsertableColumns);
-            apitempleate.Initialize();
+            template.Session = new Dictionary<string, object>();
+            template.Session.Add("_namespace", AppSettings.Instance.Namespace);
+            template.Session.Add("tableName", table.TableName);
+            template.Session.Add("options", options);
 
-            return apitempleate.TransformText();
+            template.Session.Add("tableNameToLower", $"{table.TableName.ElementAt(0).ToString().ToLower()}{table.TableName.Substring(1, table.TableName.Length - 1)}");
+            template.Session.Add("tableNameToPascal", table.TableName.ToPascalCase());
+            template.Session.Add("table", table);            
+            template.Session.Add("columns", table.InsertableColumns);
+            template.Initialize();
+
+            return template.TransformText();
 
             
 
         }
 
-        public override string ToString() => "REST API Generator";        
+        public override string ToString() => "WebAPI Generator";        
     }
 }

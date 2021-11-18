@@ -298,86 +298,67 @@ namespace SqlGenUI
 
 
 
-        private void dataManagerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            Save();
-        }
 
-        private void dataManagerInterfaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            Save();
-        }
-
-        private void aPICreateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            Save();
-        }
-
-        private void dTOCreateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            
-            Save();
-        }
-
-        private void dataEntityToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
-            Save();
-        }
 
         private void Save([CallerMemberName] string memberName = "",
                         [CallerFilePath] string sourceFilePath = "",
                         [CallerLineNumber] int sourceLineNumber = 0)
         {
-            var selected_item = codeList.SelectedItems[0].Name;
+            var selected_item = codeList.SelectedItems[0].Text;
+
+            var selected_Table = tableList.SelectedItems[0].Text;
 
 
-
-
-            string name = GetTableName();
+            string tablename = GetTableName();
             string str = sqlTextBox.Text;
             var settings = AppSettings.Instance;
             string sfd = "";
-            switch (memberName)
-            {
-                case "dataEntityToolStripMenuItem_Click":
-                    {
-                        
-                        
-                        sfd = Path.Combine(settings.APIPath, settings.Namespace);
-                        sfd = Path.Combine(sfd, string.Format("Concrete\\{0}.cs", name));
-                        break;
-                    }
-                case "dTOCreateToolStripMenuItem_Click":
-                    {
-                        sfd = Path.Combine(settings.APIPath, settings.Namespace);
-                        sfd = Path.Combine(settings.APIPath, @"", string.Format("\\Entities\\RequestDtos\\{0}\\{0}RequestDto.cs", name));
 
-                        break;
-                    }
-                case "aPICreateToolStripMenuItem_Click":
-                    {
-                        
-                        sfd = Path.Combine(settings.APIPath, @"\API\v1\", string.Format("{0}Controller.cs", name));
-                        break;
-                    }
-                case "dataManagerInterfaToolStripMenuItem_Click":
-                    {
-                        
-                        sfd = Path.Combine(settings.APIPath, @"\Contracts\", string.Format("I{0}Manager.cs", name));
-                        break;
-                    }
-                case "dataManagerToolStripMenuItem_Click":
-                    {
-                        
-                        sfd = Path.Combine(settings.APIPath, @"\Data\DataManager\", string.Format("{0}Manager.cs", name));
-                        break;
-                    }
+            switch (selected_item.Trim())
+            {
+                case "Data Entity Generator":
+                    //Sbu.Ubys.Ebs.Entities
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Entities\\Concrete\\{tablename}.cs");
+                    break;
+            
+                case "Create Command Handler Generator":
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Commands\\Create{tablename}Command.cs");
+                    break;
+                case "Update Command Handler Generator":
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Commands\\Update{tablename}Command.cs");
+                    break;
+                case "Delete Command Handler Generator":
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Commands\\Delete{tablename}Command.cs");
+                    break;
+                case "Get List Query Generator":
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Queries\\Get{tablename}ListQuery.cs");
+                    break;
+                case "Get By Id Query Generator":
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Queries\\Get{tablename}byIdQuery.cs");
+                    break;
+                case "WebAPI Generator":
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.WebAPI\\Controllers\\{tablename}Controller.cs");
+                    break;
+                //case "Delete Command Generator":
+                //    break;
+                //case "Delete Command Generator":
+                //    break;
+                //case "Delete Command Generator":
+                //    break;
+                //case "Delete Command Generator":
+                //    break;
+                default:
+
+                    break;
             }
+            
 
             using (StreamWriter writer = File.CreateText(sfd))
             {
@@ -402,6 +383,14 @@ namespace SqlGenUI
         {
             SettingsForm settingsForm = new SettingsForm();
             settingsForm.Show();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tableList.SelectedItems.Count > 0 && codeList.SelectedItems.Count > 0)
+                Save();
+            else
+                MessageBox.Show($"You must select both table and generate command", "",MessageBoxButtons.OK,MessageBoxIcon.Warning);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace SqlGen.Generators
     public class GetByIdGenerator : Generator
     {
 
-        public override string ToString() => "Get By Id ";
+        public override string ToString() => "Get By Id Query Generator";
 
         public override string Generate(Table table, GeneratorOptions options)
         {

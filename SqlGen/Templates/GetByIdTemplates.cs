@@ -75,7 +75,7 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write(".");
+            this.Write(".Business.Handlers.");
             
             #line 30 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));

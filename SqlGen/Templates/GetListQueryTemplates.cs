@@ -126,7 +126,7 @@ namespace SqlGen.Templates
             this.Write("Repository _");
             
             #line 35 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
@@ -141,7 +141,7 @@ namespace SqlGen.Templates
             this.Write("QueryHandler(I");
             
             #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
@@ -149,7 +149,7 @@ namespace SqlGen.Templates
                     "         _");
             
             #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
@@ -174,7 +174,7 @@ namespace SqlGen.Templates
                     "s = await _");
             
             #line 53 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden

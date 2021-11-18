@@ -14,6 +14,8 @@ using AutoMapper;
 using MediatR;
 using Sbu.Ubys.Core.Aspects.Autofac.Validation;
 using Sbu.Ubys.Core.Utilities.Results;
+using Sbu.Ubys.Core.Localization.Constants;
+using <#=_namespace#>.DataAccess.Abstract;
 using System;
 using System.Linq;
 using System.Threading;
@@ -22,9 +24,9 @@ using <#=_namespace#>.Business.BusinessAspects;
 using <#=_namespace#>.Entities.Concrete;
 using <#=_namespace#>.Entities.RequestDtos.<#=tableName#>;
 using <#=_namespace#>.DataAccess.Concrete.EntityFramework;
-using <#=_namespace#>.Business.Handlers.<#=tableName#>.ValidationRules;
+using <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.ValidationRules;
 
-namespace <#=_namespace#>.<#=tableName#>Handlers.Commands
+namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands
 {
 
 	    public class Create<#=tableName#>Command : IRequest<IResult>

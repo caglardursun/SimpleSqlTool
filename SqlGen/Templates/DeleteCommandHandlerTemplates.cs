@@ -52,7 +52,7 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write(".");
+            this.Write(".Business.Handlers.");
             
             #line 25 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
@@ -155,7 +155,7 @@ namespace SqlGen.Templates
                     "     try\r\n                {                \r\n\r\n                      if (_");
             
             #line 56 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
@@ -163,7 +163,7 @@ namespace SqlGen.Templates
                     "              \r\n                            _");
             
             #line 58 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden

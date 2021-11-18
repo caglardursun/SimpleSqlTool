@@ -34,12 +34,6 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataManagerInterfaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dTOCreateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dTOResponseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aPICreateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataEntityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.schemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,68 +97,21 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dataManagerToolStripMenuItem,
-            this.dataManagerInterfaToolStripMenuItem,
-            this.dTOCreateToolStripMenuItem,
-            this.dTOResponseToolStripMenuItem,
-            this.aPICreateToolStripMenuItem,
-            this.dataEntityToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
-            // 
-            // dataManagerToolStripMenuItem
-            // 
-            this.dataManagerToolStripMenuItem.Name = "dataManagerToolStripMenuItem";
-            this.dataManagerToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.dataManagerToolStripMenuItem.Text = "DataManager";
-            this.dataManagerToolStripMenuItem.Click += new System.EventHandler(this.dataManagerToolStripMenuItem_Click);
-            // 
-            // dataManagerInterfaToolStripMenuItem
-            // 
-            this.dataManagerInterfaToolStripMenuItem.Name = "dataManagerInterfaToolStripMenuItem";
-            this.dataManagerInterfaToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.dataManagerInterfaToolStripMenuItem.Text = "Data Manager Interface";
-            this.dataManagerInterfaToolStripMenuItem.Click += new System.EventHandler(this.dataManagerInterfaToolStripMenuItem_Click);
-            // 
-            // dTOCreateToolStripMenuItem
-            // 
-            this.dTOCreateToolStripMenuItem.Name = "dTOCreateToolStripMenuItem";
-            this.dTOCreateToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.dTOCreateToolStripMenuItem.Text = "DTO Create";
-            this.dTOCreateToolStripMenuItem.Click += new System.EventHandler(this.dTOCreateToolStripMenuItem_Click);
-            // 
-            // dTOResponseToolStripMenuItem
-            // 
-            this.dTOResponseToolStripMenuItem.Name = "dTOResponseToolStripMenuItem";
-            this.dTOResponseToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.dTOResponseToolStripMenuItem.Text = "DTO Response";
-            // 
-            // aPICreateToolStripMenuItem
-            // 
-            this.aPICreateToolStripMenuItem.Name = "aPICreateToolStripMenuItem";
-            this.aPICreateToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.aPICreateToolStripMenuItem.Text = "API Create";
-            this.aPICreateToolStripMenuItem.Click += new System.EventHandler(this.aPICreateToolStripMenuItem_Click);
-            // 
-            // dataEntityToolStripMenuItem
-            // 
-            this.dataEntityToolStripMenuItem.Name = "dataEntityToolStripMenuItem";
-            this.dataEntityToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.dataEntityToolStripMenuItem.Text = "Data Entity";
-            this.dataEntityToolStripMenuItem.Click += new System.EventHandler(this.dataEntityToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // databaseToolStripMenuItem
@@ -217,11 +164,8 @@
             // 
             // refreshToolStripMenuItem
             // 
-            //this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            //this.refreshToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            //this.refreshToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            //this.refreshToolStripMenuItem.Text = "Refresh";
-            //this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             // 
             // tableLayoutPanel1
             // 
@@ -364,12 +308,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.RichTextBox sqlTextBox;
-        private System.Windows.Forms.ToolStripMenuItem dataManagerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dataManagerInterfaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dTOCreateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dTOResponseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aPICreateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dataEntityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }

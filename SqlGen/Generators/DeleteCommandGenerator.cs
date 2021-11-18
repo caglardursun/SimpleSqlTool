@@ -41,6 +41,6 @@ namespace SqlGen.Generators
             }
         }
 
-        public override string ToString() => "Delete Command Generator";
+        public override string ToString() => "Delete Command Handler Generator";
     }
 }
