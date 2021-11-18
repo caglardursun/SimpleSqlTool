@@ -9,20 +9,21 @@
 // ------------------------------------------------------------------------------
 namespace SqlGen.Templates
 {
+    using System;
     using System.Linq;
     using System.Text;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Xml;
     using SqlGen;
-    using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+    #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DeleteCommandHandlerTemplates : DeleteCommandHandlerTemplatesBase
+    public partial class GetByIdTemplates : GetByIdTemplatesBase
     {
 #line hidden
         /// <summary>
@@ -30,170 +31,228 @@ namespace SqlGen.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using MediatR;\r\nusing Sbu.Ubys.Core.Utilities.Results;\r\nusing System;\r\nusing Syst" +
-                    "em.Linq;\r\nusing System.Threading;\r\nusing System.Threading.Tasks;\r\nusing ");
+            this.Write("using AutoMapper;\r\nusing MediatR;\r\nusing Sbu.Ubys.Core.Utilities.Results;\r\nusing " +
+                    "");
             
-            #line 21 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 21 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".Business.BusinessAspects;\r\nusing ");
             
-            #line 22 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 22 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
-            this.Write(".DataAccess.Abstract;\r\nusing Sbu.Ubys.Core.Localization.Constants;\r\n\r\nnamespace ");
+            this.Write(".DataAccess.Abstract;\r\nusing ");
             
-            #line 25 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Entities.Concrete;\r\nusing ");
+            
+            #line 24 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Entities.ResponseDtos.");
+            
+            #line 24 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\nusing System;\r\nusing System.Threading;\r\nusing System.Threading.Tasks;\r\n\r\n\r\nnam" +
+                    "espace ");
+            
+            #line 30 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".");
             
-            #line 25 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 30 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Handlers.Commands\r\n{\r\n    public class Delete");
+            this.Write("Handlers.Commands\r\n{\r\n\r\n    public class Get");
             
-            #line 27 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 33 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Command :  IRequest<IResult>\r\n    {\r\n\r\n    ");
+            this.Write("ByIdQuery : IRequest<IDataResult<");
             
-            #line 30 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 33 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("ResponseDto>>\r\n    {\r\n        ");
+            
+            #line 35 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
 
         var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
         var id = columns.ElementAt(0);
         var id_type = id.ClrTypeName();
         var id_name = id.ColumnName;
-    
+        
             
             #line default
             #line hidden
             this.Write("        public ");
             
-            #line 36 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(id_type));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 36 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(id_name));
             
             #line default
             #line hidden
-            this.Write(" { get; set; }              \r\n    }\r\n\r\n     public class Delete");
+            this.Write(" { get; set; }              \r\n    }\r\n\r\n    public class Get");
             
-            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 44 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("CommandHandler : IRequestHandler<Delete");
+            this.Write("ByIdQueryHandler : IRequestHandler<Get");
             
-            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 44 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Command, IResult>\r\n     {\r\n            private readonly I");
+            this.Write("ByIdQuery, IDataResult<");
             
-            #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 44 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("ResponseDto>>\r\n    {\r\n        private readonly I");
+            
+            #line 46 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Repository _");
             
-            #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 46 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
-            this.Write("Repository;\r\n            private readonly IMediator _mediator;\r\n\r\n            pub" +
-                    "lic Delete");
+            this.Write("Repository;\r\n        private readonly IMediator _mediator;\r\n        private reado" +
+                    "nly IMapper _mapper;\r\n\r\n        public Get");
             
-            #line 44 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 50 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("CommandHandler(I");
+            this.Write("ByIdQueryHandler(I");
             
-            #line 44 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 50 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Repository repository, IMediator mediator)\r\n            {\r\n                _");
+            this.Write("Repository repository, IMediator mediator,IMapper mapper)\r\n        {\r\n           " +
+                    " _");
             
-            #line 46 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 52 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
-            this.Write("Repository = repository;\r\n                _mediator = mediator;\r\n            }\r\n\r" +
-                    "\n            [SecuredOperation(Priority = 1)]\r\n            public async Task<IRe" +
-                    "sult> Handle(Delete");
+            this.Write("Repository = repository;\r\n            _mediator = mediator;\r\n            _mapper " +
+                    "= mapper;\r\n        }\r\n\r\n        [SecuredOperation(Priority = 1)]\r\n\r\n        publ" +
+                    "ic async Task<IDataResult<");
             
-            #line 51 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 59 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Command request, CancellationToken cancellationToken)\r\n            {\r\n           " +
-                    "     try\r\n                {                \r\n\r\n                      if (_");
+            this.Write("ResponseDto>> Handle(Get");
             
-            #line 56 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 59 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Repository.Query().Any(h => h.Id == request.Id))\r\n                        {      " +
-                    "              \r\n                            _");
+            this.Write("ByIdQuery request, CancellationToken cancellationToken)\r\n        {\r\n            t" +
+                    "ry\r\n            {\r\n                var entity = await _");
             
-            #line 58 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("Repository.Delete(request.Id);\r\n                            await _");
-            
-            #line 59 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+            #line 63 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
-            this.Write(@"Repository.SaveChangesAsync();
-                            return new SuccessResult(Resource.BasariliSilmeIslemi);
-                        }
-
-                        return new ErrorResult(Resource.BasarisizSilmeIslemi);
-
-                    
-                }
-                catch (Exception exc)
-                {
-
-                    return new ErrorResult(exc.InnerException.Message);
-                }
-            }
-            }
-}");
+            this.Write("Repository.GetAsync(h => h.");
+            
+            #line 63 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(id_name));
+            
+            #line default
+            #line hidden
+            this.Write(" == request.");
+            
+            #line 63 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(id_name));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n\r\n                var response = _mapper.Map<");
+            
+            #line 65 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write(", ");
+            
+            #line 65 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("ResponseDto>(entity);\r\n\r\n                return new SuccessDataResult<");
+            
+            #line 67 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("ResponseDto>(response);\r\n            }\r\n            catch (Exception exc)\r\n      " +
+                    "      {\r\n                return new ErrorDataResult<");
+            
+            #line 71 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("ResponseDto>(exc.InnerException.Message);\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n}" +
+                    "");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
+        #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
 
 private string @__namespaceField;
 
@@ -218,6 +277,45 @@ private string tableName
     get
     {
         return this._tableNameField;
+    }
+}
+
+private string _schemaNameField;
+
+/// <summary>
+/// Access the schemaName parameter of the template.
+/// </summary>
+private string schemaName
+{
+    get
+    {
+        return this._schemaNameField;
+    }
+}
+
+private global::SqlGen.GeneratorOptions _optionsField;
+
+/// <summary>
+/// Access the options parameter of the template.
+/// </summary>
+private global::SqlGen.GeneratorOptions options
+{
+    get
+    {
+        return this._optionsField;
+    }
+}
+
+private global::SqlGen.Table _tableField;
+
+/// <summary>
+/// Access the table parameter of the template.
+/// </summary>
+private global::SqlGen.Table table
+{
+    get
+    {
+        return this._tableField;
     }
 }
 
@@ -247,42 +345,16 @@ private global::System.Collections.Generic.IEnumerable<Column> columns
     }
 }
 
-private string _tableNameToPascalField;
+private global::System.Collections.Generic.List<FkModel> _foregnkeysField;
 
 /// <summary>
-/// Access the tableNameToPascal parameter of the template.
+/// Access the foregnkeys parameter of the template.
 /// </summary>
-private string tableNameToPascal
+private global::System.Collections.Generic.List<FkModel> foregnkeys
 {
     get
     {
-        return this._tableNameToPascalField;
-    }
-}
-
-private global::SqlGen.Table _tableField;
-
-/// <summary>
-/// Access the table parameter of the template.
-/// </summary>
-private global::SqlGen.Table table
-{
-    get
-    {
-        return this._tableField;
-    }
-}
-
-private global::SqlGen.GeneratorOptions _optionsField;
-
-/// <summary>
-/// Access the options parameter of the template.
-/// </summary>
-private global::SqlGen.GeneratorOptions options
-{
-    get
-    {
-        return this._optionsField;
+        return this._foregnkeysField;
     }
 }
 
@@ -322,6 +394,48 @@ if ((tableNameValueAcquired == false))
         this._tableNameField = ((string)(data));
     }
 }
+bool schemaNameValueAcquired = false;
+if (this.Session.ContainsKey("schemaName"))
+{
+    this._schemaNameField = ((string)(this.Session["schemaName"]));
+    schemaNameValueAcquired = true;
+}
+if ((schemaNameValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("schemaName");
+    if ((data != null))
+    {
+        this._schemaNameField = ((string)(data));
+    }
+}
+bool optionsValueAcquired = false;
+if (this.Session.ContainsKey("options"))
+{
+    this._optionsField = ((global::SqlGen.GeneratorOptions)(this.Session["options"]));
+    optionsValueAcquired = true;
+}
+if ((optionsValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("options");
+    if ((data != null))
+    {
+        this._optionsField = ((global::SqlGen.GeneratorOptions)(data));
+    }
+}
+bool tableValueAcquired = false;
+if (this.Session.ContainsKey("table"))
+{
+    this._tableField = ((global::SqlGen.Table)(this.Session["table"]));
+    tableValueAcquired = true;
+}
+if ((tableValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("table");
+    if ((data != null))
+    {
+        this._tableField = ((global::SqlGen.Table)(data));
+    }
+}
 bool tableNameToLowerValueAcquired = false;
 if (this.Session.ContainsKey("tableNameToLower"))
 {
@@ -350,46 +464,18 @@ if ((columnsValueAcquired == false))
         this._columnsField = ((global::System.Collections.Generic.IEnumerable<Column>)(data));
     }
 }
-bool tableNameToPascalValueAcquired = false;
-if (this.Session.ContainsKey("tableNameToPascal"))
+bool foregnkeysValueAcquired = false;
+if (this.Session.ContainsKey("foregnkeys"))
 {
-    this._tableNameToPascalField = ((string)(this.Session["tableNameToPascal"]));
-    tableNameToPascalValueAcquired = true;
+    this._foregnkeysField = ((global::System.Collections.Generic.List<FkModel>)(this.Session["foregnkeys"]));
+    foregnkeysValueAcquired = true;
 }
-if ((tableNameToPascalValueAcquired == false))
+if ((foregnkeysValueAcquired == false))
 {
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("tableNameToPascal");
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("foregnkeys");
     if ((data != null))
     {
-        this._tableNameToPascalField = ((string)(data));
-    }
-}
-bool tableValueAcquired = false;
-if (this.Session.ContainsKey("table"))
-{
-    this._tableField = ((global::SqlGen.Table)(this.Session["table"]));
-    tableValueAcquired = true;
-}
-if ((tableValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("table");
-    if ((data != null))
-    {
-        this._tableField = ((global::SqlGen.Table)(data));
-    }
-}
-bool optionsValueAcquired = false;
-if (this.Session.ContainsKey("options"))
-{
-    this._optionsField = ((global::SqlGen.GeneratorOptions)(this.Session["options"]));
-    optionsValueAcquired = true;
-}
-if ((optionsValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("options");
-    if ((data != null))
-    {
-        this._optionsField = ((global::SqlGen.GeneratorOptions)(data));
+        this._foregnkeysField = ((global::System.Collections.Generic.List<FkModel>)(data));
     }
 }
 
@@ -410,7 +496,7 @@ if ((optionsValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public class DeleteCommandHandlerTemplatesBase
+    public class GetByIdTemplatesBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

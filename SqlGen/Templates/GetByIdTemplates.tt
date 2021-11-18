@@ -1,0 +1,77 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="SqlGen" #>
+<#@ parameter name="_namespace" type="System.String" #>
+<#@ parameter name="tableName" type="System.String" #>
+<#@ parameter name="schemaName" type="System.String" #>
+<#@ parameter name="options" type="SqlGen.GeneratorOptions" #>
+<#@ parameter name="table" type="SqlGen.Table" #>
+<#@ parameter name="tableNameToLower" type="System.String" #>
+<#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
+<#@ parameter name="foregnkeys" type="System.Collections.Generic.List<FkModel>" #>
+using AutoMapper;
+using MediatR;
+using Sbu.Ubys.Core.Utilities.Results;
+using <#=_namespace#>.Business.BusinessAspects;
+using <#=_namespace#>.DataAccess.Abstract;
+using <#=_namespace#>.Entities.Concrete;
+using <#=_namespace#>.Entities.ResponseDtos.<#=tableName#>;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+
+namespace <#=_namespace#>.<#=tableName#>Handlers.Commands
+{
+
+    public class Get<#=tableName#>ByIdQuery : IRequest<IDataResult<<#=tableName#>ResponseDto>>
+    {
+        <#
+        var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
+        var id = columns.ElementAt(0);
+        var id_type = id.ClrTypeName();
+        var id_name = id.ColumnName;
+        #>
+        public <#=id_type#> <#=id_name#> { get; set; }              
+    }
+
+    public class Get<#=tableName#>ByIdQueryHandler : IRequestHandler<Get<#=tableName#>ByIdQuery, IDataResult<<#=tableName#>ResponseDto>>
+    {
+        private readonly I<#=tableName#>Repository _<#=tableNameToLower#>Repository;
+        private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
+
+        public Get<#=tableName#>ByIdQueryHandler(I<#=tableName#>Repository repository, IMediator mediator,IMapper mapper)
+        {
+            _<#=tableNameToLower#>Repository = repository;
+            _mediator = mediator;
+            _mapper = mapper;
+        }
+
+        [SecuredOperation(Priority = 1)]
+
+        public async Task<IDataResult<<#=tableName#>ResponseDto>> Handle(Get<#=tableName#>ByIdQuery request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var entity = await _<#=tableNameToLower#>Repository.GetAsync(h => h.<#=id_name#> == request.<#=id_name#>);
+
+                var response = _mapper.Map<<#=tableName#>, <#=tableName#>ResponseDto>(entity);
+
+                return new SuccessDataResult<<#=tableName#>ResponseDto>(response);
+            }
+            catch (Exception exc)
+            {
+                return new ErrorDataResult<<#=tableName#>ResponseDto>(exc.InnerException.Message);
+            }
+        }
+    }
+
+
+}

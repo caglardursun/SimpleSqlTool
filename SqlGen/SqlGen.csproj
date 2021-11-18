@@ -109,6 +109,7 @@
     <Compile Include="Generators\DataInterfaceManager.cs" />
     <Compile Include="Generators\DataManagers.cs" />
     <Compile Include="Generators\DeleteCommandGenerator.cs" />
+    <Compile Include="Generators\GetByIdGenerator.cs" />
     <Compile Include="Generators\GetListQueryGenerator.cs" />
     <Compile Include="Generators\JSonGenerator.cs" />
     <Compile Include="Generators\RepositoryGenerator.cs" />
@@ -160,6 +161,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityTemplates.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\GetByIdTemplates.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetByIdTemplates.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\GetListQueryTemplates.cs">
       <AutoGen>True</AutoGen>
@@ -232,6 +238,10 @@
     <Content Include="Templates\EntityTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>EntityTemplates.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\GetByIdTemplates.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>GetByIdTemplates.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\GetListQueryTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
