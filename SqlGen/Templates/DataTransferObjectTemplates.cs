@@ -52,15 +52,15 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write("Request\r\n    {                \r\n        public long id { get; set; }\r\n    }\r\n\r\n  " +
-                    "  public class Create");
+            this.Write("RequestDto\r\n    {                \r\n        public long id { get; set; }\r\n    }\r\n\r" +
+                    "\n    public class Create");
             
             #line 24 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Request \r\n    {\r\n                \r\n        ");
+            this.Write("RequestDto \r\n    {\r\n                \r\n        ");
             
             #line 27 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
 foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
@@ -133,7 +133,7 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
             
             #line default
             #line hidden
-            this.Write("Request>\r\n    {\r\n       public Update");
+            this.Write("RequestDto>\r\n    {\r\n       public Update");
             
             #line 65 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));

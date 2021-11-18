@@ -16,9 +16,10 @@ namespace SqlGen.Generators
             dataEntity.Session = new Dictionary<string, object>();
             dataEntity.Session.Add("_namespace", "NestPayment");
             dataEntity.Session.Add("table", table);
-            dataEntity.Session.Add("tableName", table.TableName.ToPascalCase());
-            dataEntity.Session.Add("tableNameToLower", table.TableName);
-
+            dataEntity.Session.Add("schemaName", table.Schema);
+            dataEntity.Session.Add("tableName", table.TableName);
+           
+            
             var fk = table.ForeignKeys.ToForegnTableColumns();
 
             dataEntity.Session.Add("foregnkeys", fk);

@@ -21,7 +21,7 @@ namespace SqlGen.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+    #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
     public partial class EntityTemplates : EntityTemplatesBase
     {
@@ -33,21 +33,30 @@ namespace SqlGen.Templates
         {
             this.Write("\r\nnamespace ");
             
-            #line 18 "D:\Project\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+            #line 18 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
-            this.Write(".Data.Entity\r\n{\r\n    public class ");
+            this.Write(".Data.Entity\r\n{\r\n    ");
             
-            #line 20 "D:\Project\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+            #line 20 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+
+    Write($"[Table(\"{tableName}\", Schema = \"{schemaName}\")]\n");
+    
+            
+            #line default
+            #line hidden
+            this.Write("    public class ");
+            
+            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write(" : BaseIntEntity, IEntity\r\n    {\r\n        ");
+            this.Write(" : UpdateEntity, IEntity\r\n    {\r\n    ");
             
-            #line 22 "D:\Project\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+            #line 25 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
 
         foreach (var c in columns)
         {
@@ -55,8 +64,6 @@ namespace SqlGen.Templates
                 var propType = c.ClrTypeName();
                 Write("\t");Write($@"public {propType} {propName} {{ get; set; }}");Write("\n");
         }
-
-       
         
         if(foregnkeys.Count > 0)
         {
@@ -71,14 +78,9 @@ namespace SqlGen.Templates
                 }else{
                 
                     Write($@"public List<{fk.TableName}> {fk.FKey.TableName}s {{ get; set; }}");Write("\n");
-                }
-               
-                
-                
+                } 
             }    
-        
         }
-        
         
             
             #line default
@@ -87,7 +89,7 @@ namespace SqlGen.Templates
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+        #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
 
 private string @__namespaceField;
 
@@ -115,6 +117,19 @@ private string tableName
     }
 }
 
+private string _schemaNameField;
+
+/// <summary>
+/// Access the schemaName parameter of the template.
+/// </summary>
+private string schemaName
+{
+    get
+    {
+        return this._schemaNameField;
+    }
+}
+
 private global::SqlGen.GeneratorOptions _optionsField;
 
 /// <summary>
@@ -138,19 +153,6 @@ private global::SqlGen.Table table
     get
     {
         return this._tableField;
-    }
-}
-
-private string _tableNameToLowerField;
-
-/// <summary>
-/// Access the tableNameToLower parameter of the template.
-/// </summary>
-private string tableNameToLower
-{
-    get
-    {
-        return this._tableNameToLowerField;
     }
 }
 
@@ -216,6 +218,20 @@ if ((tableNameValueAcquired == false))
         this._tableNameField = ((string)(data));
     }
 }
+bool schemaNameValueAcquired = false;
+if (this.Session.ContainsKey("schemaName"))
+{
+    this._schemaNameField = ((string)(this.Session["schemaName"]));
+    schemaNameValueAcquired = true;
+}
+if ((schemaNameValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("schemaName");
+    if ((data != null))
+    {
+        this._schemaNameField = ((string)(data));
+    }
+}
 bool optionsValueAcquired = false;
 if (this.Session.ContainsKey("options"))
 {
@@ -242,20 +258,6 @@ if ((tableValueAcquired == false))
     if ((data != null))
     {
         this._tableField = ((global::SqlGen.Table)(data));
-    }
-}
-bool tableNameToLowerValueAcquired = false;
-if (this.Session.ContainsKey("tableNameToLower"))
-{
-    this._tableNameToLowerField = ((string)(this.Session["tableNameToLower"]));
-    tableNameToLowerValueAcquired = true;
-}
-if ((tableNameToLowerValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("tableNameToLower");
-    if ((data != null))
-    {
-        this._tableNameToLowerField = ((string)(data));
     }
 }
 bool columnsValueAcquired = false;

@@ -9,25 +9,26 @@
 <#@ import namespace="SqlGen" #>
 <#@ parameter name="_namespace" type="System.String" #>
 <#@ parameter name="tableName" type="System.String" #>
+<#@ parameter name="schemaName" type="System.String" #>
 <#@ parameter name="options" type="SqlGen.GeneratorOptions" #>
 <#@ parameter name="table" type="SqlGen.Table" #>
-<#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
 <#@ parameter name="foregnkeys" type="System.Collections.Generic.List<FkModel>" #>
 
 namespace <#=_namespace#>.Data.Entity
 {
-    public class <#=tableName#> : BaseIntEntity, IEntity
+    <#
+    Write($"[Table(\"{tableName}\", Schema = \"{schemaName}\")]\n");
+    #>
+    public class <#=tableName#> : UpdateEntity, IEntity
     {
-        <#
+    <#
         foreach (var c in columns)
         {
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
                 Write("\t");Write($@"public {propType} {propName} {{ get; set; }}");Write("\n");
         }
-
-       
         
         if(foregnkeys.Count > 0)
         {
@@ -42,14 +43,9 @@ namespace <#=_namespace#>.Data.Entity
                 }else{
                 
                     Write($@"public List<{fk.TableName}> {fk.FKey.TableName}s {{ get; set; }}");Write("\n");
-                }
-               
-                
-                
+                } 
             }    
-        
         }
-        
         #>
     }
 

@@ -16,12 +16,12 @@ using FluentValidation;
 
 namespace <#=_namespace#>.DTO.Request
 {
-    public class Update<#=tableName#>Request :  Create<#=tableName#>Request
+    public class Update<#=tableName#>Request :  Create<#=tableName#>RequestDto
     {                
         public long id { get; set; }
     }
 
-    public class Create<#=tableName#>Request 
+    public class Create<#=tableName#>RequestDto 
     {
                 
         <#foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
@@ -60,7 +60,7 @@ namespace <#=_namespace#>.DTO.Request
        }
     }
 
-    public class Update<#=tableName#>RequestValidator : AbstractValidator<Update<#=tableName#>Request>
+    public class Update<#=tableName#>RequestValidator : AbstractValidator<Update<#=tableName#>RequestDto>
     {
        public Update<#=tableName#>RequestValidator()
        {
