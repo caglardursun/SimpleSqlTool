@@ -15,21 +15,21 @@ namespace SqlGen.Generators
         public override string Generate(Table table, GeneratorOptions options)
         {
 
-            var dMT = new DataManagerTemplates();
-            dMT.Session = new Dictionary<string, object>();
-            dMT.Session.Add("_namespace", AppSettings.Instance.Namespace);
-            dMT.Session.Add("table", table);
-            dMT.Session.Add("tableName", table.TableName);
-            dMT.Session.Add("columns", table.InsertableColumns);
+            var template = new DataManagerTemplates();
+            template.Session = new Dictionary<string, object>();
+            template.Session.Add("_namespace", AppSettings.Instance.Namespace);
+            template.Session.Add("table", table);
+            template.Session.Add("tableName", table.TableName);
+            template.Session.Add("columns", table.InsertableColumns);
 
             var fk = table.ForeignKeys.ToForegnTableColumns();
-            dMT.Session.Add("foregnkeys", fk);
+            template.Session.Add("foregnkeys", fk);
 
 
 
-            dMT.Initialize();
+            template.Initialize();
 
-            return dMT.TransformText();
+            return template.TransformText();
             //return "";
 
         }

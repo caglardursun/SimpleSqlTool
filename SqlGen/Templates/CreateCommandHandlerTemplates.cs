@@ -20,7 +20,7 @@ namespace SqlGen.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+    #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
     public partial class CreateCommandHandlerTemplates : CreateCommandHandlerTemplatesBase
     {
@@ -30,64 +30,95 @@ namespace SqlGen.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write(@"
-using AutoMapper;
-using MediatR;
-using Sbu.Ubys.Bys.Business.BusinessAspects;
-using Sbu.Ubys.Bys.Business.Constants;
-using Sbu.Ubys.Bys.DataAccess.Abstract;
-using Sbu.Ubys.Bys.Entities.Concrete;
-using Sbu.Ubys.Bys.Entities.RequestDtos.Birim;
-using Sbu.Ubys.Core.Aspects.Autofac.Validation;
-using Sbu.Ubys.Core.Utilities.Results;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using static Sbu.Ubys.Bys.Business.Handlers.");
+            this.Write("using AutoMapper;\r\nusing MediatR;\r\nusing Sbu.Ubys.Core.Aspects.Autofac.Validation" +
+                    ";\r\nusing Sbu.Ubys.Core.Utilities.Results;\r\nusing System;\r\nusing System.Linq;\r\nus" +
+                    "ing System.Threading;\r\nusing System.Threading.Tasks;\r\nusing ");
             
-            #line 26 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 21 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Business.BusinessAspects;\r\nusing ");
+            
+            #line 22 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Entities.Concrete;\r\nusing ");
+            
+            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Entities.RequestDtos.");
+            
+            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Handlers.ValidationRules.");
+            this.Write(";\r\nusing ");
             
-            #line 26 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 24 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DataAccess.Concrete.EntityFramework;\r\nusing ");
+            
+            #line 25 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Business.Handlers.");
+            
+            #line 25 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Validator;\r\n\r\nnamespace Sbu.Ubys.Bys.Business.Handlers.");
+            this.Write(".ValidationRules;\r\n\r\nnamespace ");
             
-            #line 28 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 27 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".");
+            
+            #line 27 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Handlers.Commands\r\n{\r\n\r\n\t    public class Create");
             
-            #line 31 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 30 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Command : IRequest<IResult>\r\n\t\t{\r\n\t\t\tpublic Create");
             
-            #line 33 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 32 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestDto model { get; set; }\r\n\t\t}\r\n\r\n\r\n\t\tpublic class Create");
             
-            #line 37 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 36 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("CommandHandler : IRequestHandler<Create");
             
-            #line 37 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 36 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -95,28 +126,28 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             this.Write("Command, IResult>\r\n\t\t{\r\n\t\t\t\t\tprivate readonly IMapper _mapper;\r\n\t\t\t\t\tprivate read" +
                     "only I");
             
-            #line 40 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Repository _");
             
-            #line 40 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
             this.Write("Repository;\r\n\t\t\t\t\tprivate readonly IMediator _mediator;\r\n\r\n\r\n\t\t\t\tpublic Create");
             
-            #line 44 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            #line 43 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("CommandHandler(\r\n\t\t\t\t\t\t\tIMapper mapper,\r\n\t\t\t\t\t\t\tI");
             
-            #line 46 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 45 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -124,7 +155,7 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             this.Write("Repository repository,\r\n\t\t\t\t\t\t\tIMediator mediator)\r\n\t\t\t\t{\r\n\t\t\t\t\t\t\t_mapper = mappe" +
                     "r;\r\n\t\t\t\t\t\t\t_");
             
-            #line 50 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 49 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
@@ -132,7 +163,7 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             this.Write("Repository = repository;\r\n\t\t\t\t\t\t\t_mediator = mediator;\r\n\t\t\t\t}\r\n\r\n\r\n\t\t\t\t[Validatio" +
                     "nAspect(typeof(Create");
             
-            #line 55 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 54 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -140,7 +171,7 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             this.Write("RequestValidator), Priority = 1)]\r\n\t\t\t\t[SecuredOperation(Priority = 1)]\r\n\t\t\t\tpubl" +
                     "ic async Task<IResult> Handle(Create");
             
-            #line 57 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 56 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -148,8 +179,8 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             this.Write("Command request, CancellationToken cancellationToken)\r\n\t\t\t\t{\r\n\t\t\t\t\t\ttry{\r\n\t\t\t\t\t\t\t" +
                     "if (_");
             
-            #line 60 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            #line 59 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
@@ -157,28 +188,28 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
                     "turn new ErrorResult(Resource.BasarisizKayitIslemi);\r\n\r\n\t\t\t\t\t\t\tvar item = _mappe" +
                     "r.Map<Create");
             
-            #line 63 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 62 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestDto, ");
             
-            #line 63 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 62 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(">(request.model);\r\n\r\n\t\t\t\t\t\t\t_");
             
-            #line 65 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 64 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
             this.Write("Repository.Add(item);\r\n\t\t\t\t\t\t\tawait _");
             
-            #line 66 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+            #line 65 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
@@ -189,7 +220,7 @@ using static Sbu.Ubys.Bys.Business.Handlers.");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
+        #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\CreateCommandHandlerTemplates.tt"
 
 private string @__namespaceField;
 

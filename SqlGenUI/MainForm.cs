@@ -293,7 +293,7 @@ namespace SqlGenUI
 
         private string GetTableName()
         {
-            return tableList.SelectedItems[0].Text.Split('.')[1].ToPascalCase();
+            return tableList.SelectedItems[0].Text.Split('.')[1];
         }
 
 
@@ -333,6 +333,11 @@ namespace SqlGenUI
                         [CallerFilePath] string sourceFilePath = "",
                         [CallerLineNumber] int sourceLineNumber = 0)
         {
+            var selected_item = codeList.SelectedItems[0].Name;
+
+
+
+
             string name = GetTableName();
             string str = sqlTextBox.Text;
             var settings = AppSettings.Instance;
@@ -342,12 +347,15 @@ namespace SqlGenUI
                 case "dataEntityToolStripMenuItem_Click":
                     {
                         
-                        sfd = Path.Combine(settings.APIPath, @"\Data\Entity\", string.Format("{0}.cs", name));
+                        
+                        sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                        sfd = Path.Combine(sfd, string.Format("Concrete\\{0}.cs", name));
                         break;
                     }
                 case "dTOCreateToolStripMenuItem_Click":
                     {
-                        sfd = Path.Combine(settings.APIPath, @"\DTO\Request\", string.Format("{0}Request.cs", name));
+                        sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                        sfd = Path.Combine(settings.APIPath, @"", string.Format("\\Entities\\RequestDtos\\{0}\\{0}RequestDto.cs", name));
 
                         break;
                     }
