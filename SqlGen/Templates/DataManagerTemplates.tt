@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 
 namespace <#= _namespace #>.Data.DataManager
 {
-    public class <#=tableName#>Manager : DbFactoryBase, I<#=tableNameToPascal#>Manager
+    public class <#=tableName#>Manager : DbFactoryBase, I<#=tableName#>Manager
     {
         private ILogger<<#=tableNameToPascal#>Manager> _logger;
 
@@ -34,7 +34,7 @@ namespace <#= _namespace #>.Data.DataManager
         }
         
 
-        public async Task<long> CreateAsync(<#=tableNameToPascal#> entity)
+        public async Task<long> CreateAsync(<#=tableName#> entity)
         {            
             
             string sqlQuery = $@"

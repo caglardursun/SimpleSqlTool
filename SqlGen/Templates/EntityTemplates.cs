@@ -31,16 +31,17 @@ namespace SqlGen.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\nnamespace ");
+            this.Write("using Sbu.Ubys.Core.Entities;\r\nusing Sbu.Ubys.Core.Entities.Base;\r\nusing System;\r" +
+                    "\nusing System.ComponentModel.DataAnnotations.Schema;\r\n\r\nnamespace ");
             
-            #line 18 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+            #line 22 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".Data.Entity\r\n{\r\n    ");
             
-            #line 20 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+            #line 24 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
 
     Write($"[Table(\"{tableName}\", Schema = \"{schemaName}\")]\n");
     
@@ -49,20 +50,23 @@ namespace SqlGen.Templates
             #line hidden
             this.Write("    public class ");
             
-            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+            #line 27 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(" : UpdateEntity, IEntity\r\n    {\r\n    ");
             
-            #line 25 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+            #line 29 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
 
         foreach (var c in columns)
         {
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
-                Write("\t");Write($@"public {propType} {propName} {{ get; set; }}");Write("\n");
+                if(!propName.Equals("Id")){
+                    Write("\t");Write($@"public {propType} {propName} {{ get; set; }}");Write("\n");
+                }
+                
         }
         
         if(foregnkeys.Count > 0)

@@ -21,7 +21,7 @@ namespace SqlGen.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+    #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
     public partial class DataTransferObjectTemplates : DataTransferObjectTemplatesBase
     {
@@ -33,36 +33,61 @@ namespace SqlGen.Templates
         {
             this.Write("using FluentValidation;\r\n\r\nnamespace ");
             
-            #line 17 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 16 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".DTO.Request\r\n{\r\n    public class Update");
             
-            #line 19 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 18 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Request :  Create");
+            this.Write("RequestDto :  Create");
             
-            #line 19 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 18 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("RequestDto\r\n    {                \r\n        public long id { get; set; }\r\n    }\r\n\r" +
-                    "\n    public class Create");
+            this.Write("RequestDto\r\n    {         \r\n    ");
             
-            #line 24 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 20 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+
+        var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
+        var id = columns.ElementAt(0);
+        var id_type = id.ClrTypeName();
+        var id_name = id.ColumnName;
+    
+            
+            #line default
+            #line hidden
+            this.Write("        public ");
+            
+            #line 26 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(id_type));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 26 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(id_name));
+            
+            #line default
+            #line hidden
+            this.Write(" { get; set; }\r\n    }\r\n\r\n    public class Create");
+            
+            #line 29 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("RequestDto \r\n    {\r\n                \r\n        ");
+            this.Write("RequestDto \r\n    {\r\n    \r\n    ");
             
-            #line 27 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 32 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
 foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
         {
                 var propName = c.ColumnName;
@@ -75,34 +100,34 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
                     Write("\n");
                 }
                 
-        }
+    }
             
             #line default
             #line hidden
             this.Write("\r\n    }\r\n\r\n    public class Create");
             
-            #line 43 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 48 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestValidator : AbstractValidator<Create");
             
-            #line 43 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 48 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestDto>\r\n    {\r\n       public Create");
             
-            #line 45 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 50 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("RequestValidator()\r\n       {\r\n            ");
+            this.Write("RequestValidator()\r\n       {\r\n       ");
             
-            #line 47 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 52 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
 foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
             {
                     var propName = c.ColumnName;
@@ -121,28 +146,28 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
             #line hidden
             this.Write("       }\r\n    }\r\n\r\n    public class Update");
             
-            #line 63 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 68 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestValidator : AbstractValidator<Update");
             
-            #line 63 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 68 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestDto>\r\n    {\r\n       public Update");
             
-            #line 65 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 70 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("RequestValidator()\r\n       {\r\n            ");
+            this.Write("RequestValidator()\r\n       {\r\n       ");
             
-            #line 67 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            #line 72 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
 foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
             {
                     var propName = c.ColumnName;
@@ -155,7 +180,7 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
                     }
                         
                     
-            }
+        }
             
             #line default
             #line hidden
@@ -163,7 +188,7 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+        #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
 
 private string @__namespaceField;
 
@@ -214,19 +239,6 @@ private global::SqlGen.Table table
     get
     {
         return this._tableField;
-    }
-}
-
-private string _tableNameToLowerField;
-
-/// <summary>
-/// Access the tableNameToLower parameter of the template.
-/// </summary>
-private string tableNameToLower
-{
-    get
-    {
-        return this._tableNameToLowerField;
     }
 }
 
@@ -305,20 +317,6 @@ if ((tableValueAcquired == false))
     if ((data != null))
     {
         this._tableField = ((global::SqlGen.Table)(data));
-    }
-}
-bool tableNameToLowerValueAcquired = false;
-if (this.Session.ContainsKey("tableNameToLower"))
-{
-    this._tableNameToLowerField = ((string)(this.Session["tableNameToLower"]));
-    tableNameToLowerValueAcquired = true;
-}
-if ((tableNameToLowerValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("tableNameToLower");
-    if ((data != null))
-    {
-        this._tableNameToLowerField = ((string)(data));
     }
 }
 bool columnsValueAcquired = false;

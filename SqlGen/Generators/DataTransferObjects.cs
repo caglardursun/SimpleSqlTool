@@ -17,10 +17,9 @@ namespace SqlGen.Generators
 
             var tdo = new DataTransferObjectTemplates();
             tdo.Session = new Dictionary<string, object>();
-            tdo.Session.Add("_namespace", "Sbu.Ubys.Bys.Entities.RequestDtos");
+            tdo.Session.Add("_namespace", AppSettings.Instance.Namespace);
 
-            tdo.Session.Add("tableName", table.TableName.ToPascalCase());
-            tdo.Session.Add("tableNameToLower", table.TableName.ToPascalCase().ToLower());
+            tdo.Session.Add("tableName", table.TableName);            
             tdo.Session.Add("columns", table.InsertableColumns);
             tdo.Session.Add("options", options);
             tdo.Session.Add("table", table);

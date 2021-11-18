@@ -17,11 +17,9 @@ namespace SqlGen.Generators
 
             var dMT = new DataManagerTemplates();
             dMT.Session = new Dictionary<string, object>();
-            dMT.Session.Add("_namespace", "Sbu.Ubys.Bys.Entities.RequestDtos");
+            dMT.Session.Add("_namespace", AppSettings.Instance.Namespace);
             dMT.Session.Add("table", table);
             dMT.Session.Add("tableName", table.TableName);
-            dMT.Session.Add("tableNameToLower", table.TableName);
-            dMT.Session.Add("tableNameToPascal", table.TableName.ToPascalCase());
             dMT.Session.Add("columns", table.InsertableColumns);
 
             var fk = table.ForeignKeys.ToForegnTableColumns();

@@ -10,21 +10,26 @@
 <#@ parameter name="tableName" type="System.String" #>
 <#@ parameter name="options" type="SqlGen.GeneratorOptions" #>
 <#@ parameter name="table" type="SqlGen.Table" #>
-<#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
 using FluentValidation;
 
 namespace <#=_namespace#>.DTO.Request
 {
-    public class Update<#=tableName#>Request :  Create<#=tableName#>RequestDto
-    {                
-        public long id { get; set; }
+    public class Update<#=tableName#>RequestDto :  Create<#=tableName#>RequestDto
+    {         
+    <#
+        var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
+        var id = columns.ElementAt(0);
+        var id_type = id.ClrTypeName();
+        var id_name = id.ColumnName;
+    #>
+        public <#=id_type#> <#=id_name#> { get; set; }
     }
 
     public class Create<#=tableName#>RequestDto 
     {
-                
-        <#foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
+    
+    <#foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
         {
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
@@ -36,7 +41,7 @@ namespace <#=_namespace#>.DTO.Request
                     Write("\n");
                 }
                 
-        }#>
+    }#>
 
     }
 
@@ -44,7 +49,7 @@ namespace <#=_namespace#>.DTO.Request
     {
        public Create<#=tableName#>RequestValidator()
        {
-            <#foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
+       <#foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
             {
                     var propName = c.ColumnName;
                     var propType = c.ClrTypeName();
@@ -64,7 +69,7 @@ namespace <#=_namespace#>.DTO.Request
     {
        public Update<#=tableName#>RequestValidator()
        {
-            <#foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
+       <#foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
             {
                     var propName = c.ColumnName;
                     var propType = c.ClrTypeName();
@@ -76,7 +81,7 @@ namespace <#=_namespace#>.DTO.Request
                     }
                         
                     
-            }#>
+        }#>
        }
 
     }

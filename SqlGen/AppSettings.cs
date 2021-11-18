@@ -116,6 +116,7 @@ namespace SqlGen
                         UserName = settings.UserName;
                         ServerName = settings.ServerName;
                         DBType = settings.DBType;
+                        Namespace = settings.Namespace;
                     }
 
                 }
