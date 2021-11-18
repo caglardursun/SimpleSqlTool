@@ -93,7 +93,7 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
                 
-                if(propName != "id")
+                if(propName != "Id")
                 {
                     Write("\t");
                     Write($@"public {propType} {propName} {{ get; set; }}");

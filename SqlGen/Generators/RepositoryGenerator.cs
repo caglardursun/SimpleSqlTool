@@ -19,11 +19,10 @@ namespace SqlGen.Generators
 
                 var fk = table.ForeignKeys.ToForegnTableColumns();
                 template.Session.Add("foregnkeys", fk);
-                template.Session.Add("_namespace", "Sbu.Ubys.Bys");
+                template.Session.Add("_namespace", AppSettings.Instance.Namespace);
                 template.Session.Add("table", table);
                 template.Session.Add("tableName", table.TableName);
-                template.Session.Add("tableNameToLower", table.TableName.ToLower());
-                template.Session.Add("tableNameToPascal", table.TableName.ToPascalCase());
+                template.Session.Add("tableNameToLower", table.TableName.ToLower());                
 
                 template.Session.Add("columns", table.InsertableColumns);
                 template.Initialize();

@@ -57,21 +57,21 @@ namespace SqlGen.Templates
             this.Write("Manager\r\n    {\r\n        private ILogger<");
             
             #line 28 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Manager> _logger;\r\n\r\n        public ");
             
             #line 30 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Manager(IConfiguration config \r\n        ,ILogger<");
             
             #line 31 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
@@ -209,7 +209,7 @@ Write("\t");
                     "ble<");
             
             #line 86 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
@@ -223,14 +223,14 @@ Write("\t");
             this.Write("\";\r\n\r\n            return await DbQueryAsync<");
             
             #line 90 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(">(query);\r\n        }\r\n\r\n        public async Task<");
             
             #line 93 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
@@ -246,7 +246,7 @@ Write("\t");
                     "WHERE id = {Id}\";\r\n\r\n           \r\n            return await DbQuerySingleAsync<");
             
             #line 99 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
@@ -254,7 +254,7 @@ Write("\t");
                     "ync(");
             
             #line 103 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
@@ -320,14 +320,14 @@ Write("\t");
             this.Write("> ");
             
             #line 127 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(", Pagination Pagination)> Search");
             
             #line 127 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
@@ -351,7 +351,7 @@ Write("\t");
                     "             \r\n                    \r\n                    IEnumerable<");
             
             #line 145 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
@@ -364,7 +364,7 @@ Write("\t");
                     string tableName = typeof(");
             
             #line 151 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataManagerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden

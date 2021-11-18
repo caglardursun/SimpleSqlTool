@@ -21,7 +21,7 @@ namespace SqlGen.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+    #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
     public partial class RepositoryTemplates : RepositoryTemplatesBase
     {
@@ -31,49 +31,68 @@ namespace SqlGen.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using Dapper;\r\nusing Microsoft.Extensions.Configuration;\r\nusing Microsoft.Extensi" +
-                    "ons.Logging;\r\nusing PenMail.Contracts;\r\nusing PenMail.Data.Entity;\r\nusing System" +
-                    ".Collections.Generic;\r\nusing System.Threading.Tasks;\r\n\r\nnamespace ");
+            this.Write("using Sbu.Ubys.Core.DataAccess.EntityFramework;\r\nusing ");
             
-            #line 24 "D:\Project\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            #line 16 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
-            this.Write(".Data.DataManager\r\n{\r\n    public class ");
+            this.Write(".DataAccess.Abstract;\r\nusing ");
             
-            #line 26 "D:\Project\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            #line 17 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DataAccess.Concrete.EntityFramework.Contexts;\r\nusing ");
+            
+            #line 18 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Entities.Concrete;\r\n\r\n\r\nnamespace ");
+            
+            #line 21 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".DataAccess.Concrete.EntityFramework\r\n{\r\n    public class ");
+            
+            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Repository : EfEntityRepositoryBase<");
             
-            #line 26 "D:\Project\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(",ProjectDbContext>, I");
             
-            #line 26 "D:\Project\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToPascal));
+            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Repository\r\n    {\r\n        \r\n        public ");
             
-            #line 29 "D:\Project\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            #line 26 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
-            this.Write("Repository(ProjectDbContext context) : base(context)\r\n        {\r\n        \r\n      " +
-                    "  }\r\n    }\r\n}");
+            this.Write("Repository(ProjectDbContext context) \r\n        : base(context)\r\n        {\r\n      " +
+                    "  \r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Project\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+        #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
 
 private string @__namespaceField;
 
@@ -137,19 +156,6 @@ private global::System.Collections.Generic.IEnumerable<Column> columns
     get
     {
         return this._columnsField;
-    }
-}
-
-private string _tableNameToPascalField;
-
-/// <summary>
-/// Access the tableNameToPascal parameter of the template.
-/// </summary>
-private string tableNameToPascal
-{
-    get
-    {
-        return this._tableNameToPascalField;
     }
 }
 
@@ -242,20 +248,6 @@ if ((columnsValueAcquired == false))
     if ((data != null))
     {
         this._columnsField = ((global::System.Collections.Generic.IEnumerable<Column>)(data));
-    }
-}
-bool tableNameToPascalValueAcquired = false;
-if (this.Session.ContainsKey("tableNameToPascal"))
-{
-    this._tableNameToPascalField = ((string)(this.Session["tableNameToPascal"]));
-    tableNameToPascalValueAcquired = true;
-}
-if ((tableNameToPascalValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("tableNameToPascal");
-    if ((data != null))
-    {
-        this._tableNameToPascalField = ((string)(data));
     }
 }
 bool foregnkeysValueAcquired = false;

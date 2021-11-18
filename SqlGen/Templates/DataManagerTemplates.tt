@@ -25,10 +25,10 @@ namespace <#= _namespace #>.Data.DataManager
 {
     public class <#=tableName#>Manager : DbFactoryBase, I<#=tableName#>Manager
     {
-        private ILogger<<#=tableNameToPascal#>Manager> _logger;
+        private ILogger<<#=tableName#>Manager> _logger;
 
-        public <#=tableNameToPascal#>Manager(IConfiguration config 
-        ,ILogger<<#=tableNameToPascal#>Manager> logger) : base(config)
+        public <#=tableName#>Manager(IConfiguration config 
+        ,ILogger<<#=tableName#>Manager> logger) : base(config)
         {
             _logger = logger;        
         }
@@ -83,24 +83,24 @@ namespace <#= _namespace #>.Data.DataManager
         }
 
 
-        public async Task<IEnumerable<<#=tableNameToPascal#>>> GetAllAsync()
+        public async Task<IEnumerable<<#=tableName#>>> GetAllAsync()
         {
             string query = $@"SELECT * FROM public.<#=tableName#>";
 
-            return await DbQueryAsync<<#=tableNameToPascal#>>(query);
+            return await DbQueryAsync<<#=tableName#>>(query);
         }
 
-        public async Task<<#=tableNameToPascal#>> GetByIdAsync(object Id)
+        public async Task<<#=tableName#>> GetByIdAsync(object Id)
         {
             string query = $@"SELECT * FROM public.<#=tableName#>                                                    
                            WHERE id = {Id}";
 
            
-            return await DbQuerySingleAsync<<#=tableNameToPascal#>>(query,null);
+            return await DbQuerySingleAsync<<#=tableName#>>(query,null);
           
         }
 
-        public async Task<bool> UpdateAsync(<#=tableNameToPascal#> entity)
+        public async Task<bool> UpdateAsync(<#=tableName#> entity)
         {
             string query = $@"                        
                 UPDATE public.<#=tableName#>
@@ -124,7 +124,7 @@ namespace <#= _namespace #>.Data.DataManager
         }
 
 
-        public async Task<(IEnumerable<<#=tableName#>> <#=tableNameToPascal#>, Pagination Pagination)> Search<#=tableNameToPascal#>Async(QuerySearchParameters searchParameters)
+        public async Task<(IEnumerable<<#=tableName#>> <#=tableName#>, Pagination Pagination)> Search<#=tableName#>Async(QuerySearchParameters searchParameters)
         {
 
             
@@ -142,13 +142,13 @@ namespace <#= _namespace #>.Data.DataManager
                     }
                      
                     
-                    IEnumerable<<#=tableNameToPascal#>> data = null;
+                    IEnumerable<<#=tableName#>> data = null;
                     long recordCount = 0;
 
                     var param = new DynamicParameters();
                     param.Add("Limit", searchParameters.PageSize);
                     param.Add("Offset", searchParameters.PageNumber);
-                    string tableName = typeof(<#=tableNameToPascal#>).Name;
+                    string tableName = typeof(<#=tableName#>).Name;
                     
                     
                     string sql = @"select * from <#=tableName#>                                        

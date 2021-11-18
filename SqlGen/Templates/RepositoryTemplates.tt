@@ -11,22 +11,20 @@
 <#@ parameter name="tableName" type="System.String" #>
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
-<#@ parameter name="tableNameToPascal" type="System.String" #>
 <#@ parameter name="foregnkeys" type="System.Collections.Generic.List<FkModel>" #>
-using Dapper;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using PenMail.Contracts;
-using PenMail.Data.Entity;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Sbu.Ubys.Core.DataAccess.EntityFramework;
+using <#=_namespace#>.DataAccess.Abstract;
+using <#=_namespace#>.DataAccess.Concrete.EntityFramework.Contexts;
+using <#=_namespace#>.Entities.Concrete;
 
-namespace <#= _namespace #>.Data.DataManager
+
+namespace <#= _namespace #>.DataAccess.Concrete.EntityFramework
 {
-    public class <#=tableName#>Repository : EfEntityRepositoryBase<<#=tableName#>,ProjectDbContext>, I<#=tableNameToPascal#>Repository
+    public class <#=tableName#>Repository : EfEntityRepositoryBase<<#=tableName#>,ProjectDbContext>, I<#=tableName#>Repository
     {
         
-        public <#=tableName#>Repository(ProjectDbContext context) : base(context)
+        public <#=tableName#>Repository(ProjectDbContext context) 
+        : base(context)
         {
         
         }

@@ -34,7 +34,7 @@ namespace <#=_namespace#>.DTO.Request
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
                 
-                if(propName != "id")
+                if(propName != "Id")
                 {
                     Write("\t");
                     Write($@"public {propType} {propName} {{ get; set; }}");
