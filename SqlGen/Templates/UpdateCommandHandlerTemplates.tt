@@ -10,21 +10,19 @@
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
 <#@ parameter name="tableNameToPascal" type="System.String" #>
-
 using AutoMapper;
 using MediatR;
-using Sbu.Ubys.Bys.Business.BusinessAspects;
-using Sbu.Ubys.Bys.Business.Constants;
-using Sbu.Ubys.Bys.DataAccess.Abstract;
-using Sbu.Ubys.Bys.Entities.Concrete;
-using Sbu.Ubys.Bys.Entities.RequestDtos.Birim;
-using Sbu.Ubys.Core.Aspects.Autofac.Validation;
-using Sbu.Ubys.Core.Utilities.Results;
-using System.Linq;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using static Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.ValidationRules.<#=tableName#>Validator;
-
+using Sbu.Ubys.Core.Aspects.Autofac.Validation;
+using Sbu.Ubys.Core.Utilities.Results;
+using Sbu.Ubys.Core.Localization.Constants;
+using <#=_namespace#>.Business.Handlers.<#=tableName#>.ValidationRules;
+using <#=_namespace#>.DataAccess.Abstract;
+using <#=_namespace#>.Entities.Concrete;
+using <#=_namespace#>.Entities.RequestDtos.<#=tableName#>;
+using <#=_namespace#>.Business.BusinessAspects;
 
 
 namespace Sbu.Ubys.Bys.Business.Handlers.<#=tableName#>Handlers.Commands
