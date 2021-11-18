@@ -300,91 +300,32 @@ namespace SqlGenUI
 
         private void dataManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //string name = GetTableName();
-            //string content = sqlTextBox.Text;
-
-            //var settings = AppSettings.Instance;
-
-            //string sfd = Path.Combine(settings.APIPath, @"\Data\DataManager\");
-
-            //sfd += "" + name + "Manager.cs";
-
-            //using (StreamWriter writer = File.CreateText(sfd))
-            //{
-            //    writer.Write(content);
-            //}
-            //MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+            
             Save();
         }
 
         private void dataManagerInterfaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //string name = GetTableName();
-            //string str = sqlTextBox.Text;
-
-            //var settings = AppSettings.Instance;
-
-            //string sfd = Path.Combine(settings.APIPath, @"\Contracts\");
-
-            //sfd += "I" + name + "Manager.cs";
-
-            //using (StreamWriter writer = File.CreateText(sfd))
-            //{
-            //    writer.Write(str);
-            //}
-
-            //MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+            
             Save();
         }
 
         private void aPICreateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //string name = GetTableName();
-            //string str = sqlTextBox.Text;
-            //var settings = AppSettings.Instance;
-            //string sfd = Path.Combine(settings.APIPath, @"\API\v1\");
-            //sfd += "" + name + "Controller.cs";
-            //using (StreamWriter writer = File.CreateText(sfd))
-            //{
-            //    writer.Write(str);
-            //}
-            //MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+            
             Save();
         }
 
         private void dTOCreateToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            //string name = GetTableName();
-            //string str = sqlTextBox.Text;
-
-            //var settings = AppSettings.Instance;
-
-            //string sfd = Path.Combine(settings.APIPath, @"\DTO\Request\");
-            //sfd += "" + name + "Request.cs";
-
-            //using (StreamWriter writer = File.CreateText(sfd))
-            //{
-            //    writer.Write(str);
-            //}
-            //MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+            
             Save();
         }
 
         private void dataEntityToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //string name = GetTableName();
-            //string str = sqlTextBox.Text;
-            //var settings = AppSettings.Instance;
-
-            //string sfd = Path.Combine(settings.APIPath, @"\Data\Entity\");
-            //sfd += "" + name + ".cs";
-
-            //using (StreamWriter writer = File.CreateText(sfd))
-            //{
-            //    writer.Write(str);
-            //}
-            //MessageBox.Show(string.Format("File saved in the path {0}", sfd), "Mention");
+           
             Save();
         }
 

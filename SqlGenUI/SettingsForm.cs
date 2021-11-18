@@ -34,6 +34,7 @@ namespace SqlGenUI
             textBoxPassword.Text = settings.Password.EmptyCheck();
             textBoxUserName.Text = settings.UserName.EmptyCheck();
             textBoxServer.Text = settings.ServerName.EmptyCheck();
+            textBoxNamespace.Text = settings.Namespace.EmptyCheck();
 
             switch (settings.DBType)
             {
