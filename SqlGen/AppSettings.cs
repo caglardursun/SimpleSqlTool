@@ -1,48 +1,43 @@
 ﻿using Newtonsoft.Json;
-using SqlGen;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace SqlGenUI
+
+namespace SqlGen
 {
 
     public enum SqlGenDbType
     {
-        MsSql =0,
+        MsSql = 0,
         PostgreSQL = 1
     }
 
     public class AppSettings
     {
-        
+
         [JsonIgnore]
         private static bool isInitialize = false;
         [JsonIgnore]
         private static AppSettings instance = null;
         [JsonIgnore]
-        public static AppSettings Instance 
-        { 
-            get {
+        public static AppSettings Instance
+        {
+            get
+            {
                 if (instance == null)
+                {
                     instance = new AppSettings();
+                }
 
-                return instance; 
-            } 
+                return instance;
+            }
         }
         [JsonIgnore]
         private const string appName = "SqlGenUI";
         [JsonIgnore]
         private const string settingFileName = "Settings.json";
 
-    
+
 
         [JsonIgnore]
         private static string fileSettingsPath { get; set; }
@@ -83,20 +78,26 @@ namespace SqlGenUI
         [JsonProperty("ConnectionStrings")]
         public string[] ConnectionStrings
         {
-            get; set;            
+            get; set;
         }
 
 
         AppSettings()
         {
             if (!isInitialize)
+            {
                 isInitialize = true;
+            }
             else
+            {
                 return;
+            }
 
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), appName);
             if (!Directory.Exists(folderPath))
+            {
                 Directory.CreateDirectory(folderPath);
+            }
 
             fileSettingsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), appName, settingFileName);
 
@@ -104,10 +105,10 @@ namespace SqlGenUI
             {
                 try
                 {
-                    
+
                     using (StreamReader sr = new StreamReader(fileSettingsPath))
                     {
-                        
+
                         var settings = JsonConvert.DeserializeObject<AppSettings>(sr.ReadToEnd());
                         APIPath = settings.APIPath;
                         DefaultDB = settings.DefaultDB;
@@ -116,7 +117,7 @@ namespace SqlGenUI
                         ServerName = settings.ServerName;
                         DBType = settings.DBType;
                     }
-                     
+
                 }
                 catch (Exception exc)
                 {
@@ -126,7 +127,7 @@ namespace SqlGenUI
             }
         }
 
-        
+
         public void Save()
         {
             string output = JsonConvert.SerializeObject(instance);
