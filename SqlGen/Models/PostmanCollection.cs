@@ -140,12 +140,12 @@ namespace PostmanCollections
 
     public partial class PostmanCollection
     {
-        public static PostmanCollection FromJson(string json) => JsonConvert.DeserializeObject<PostmanCollection>(json, QuickType.Converter.Settings);
+        public static PostmanCollection FromJson(string json) => JsonConvert.DeserializeObject<PostmanCollection>(json, Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this PostmanCollection self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
+        public static string ToJson(this PostmanCollection self) => JsonConvert.SerializeObject(self, Converter.Settings);
     }
 
     internal static class Converter
