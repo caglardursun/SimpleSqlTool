@@ -25,8 +25,7 @@ namespace SqlGen
         public string CollationName { get; set; } //Sysname
         public string DomainCatalog { get; set; } //Sysname
         public string DomainSchema { get; set; } //Sysname
-        public string DomainName { get; set; } //sysname
-
+        public string DomainName { get; set; } //sysname        
         public bool IsIdentity { get; set; }
         public string SourceTableName { get; set; }
         public string ReferancedTableName { get; set; }

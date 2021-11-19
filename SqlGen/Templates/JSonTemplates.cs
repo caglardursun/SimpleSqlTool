@@ -44,9 +44,6 @@ Write("{\n");
                 System.String str = $"{propDefault}";
        
 
-                if(propType.GetType() == Type.GetType(""))
-                    str = "\'\'";
-
                 Write("\t");Write($"\"{propName}\" : {str} ,");Write("\n");
 
         }

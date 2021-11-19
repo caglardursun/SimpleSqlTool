@@ -11,11 +11,17 @@ namespace SqlGen.Helper
         #region queries ...
 
         private static string foreignKeyColumnSql = @"
-                    SELECT KeyColumnUsage.*
-            ,KeyColumnUsage.TABLE_NAME AS  SourceTableName 
+                    SELECT 
+           KeyColumnUsage.TABLE_NAME AS  SourceTableName 
             ,KeyColumnUsage.COLUMN_NAME AS SourceColumnName
 	        ,KeyColumnUsage2.TABLE_NAME AS  ReferancedTableName
             ,KeyColumnUsage2.COLUMN_NAME AS ReferancedColumnName
+            ,KeyColumnUsage2.CONSTRAINT_NAME As ConstraintName
+            ,KeyColumnUsage2.CONSTRAINT_SCHEMA As ConstraintSchema
+            ,KeyColumnUsage2.TABLE_CATALOG As TableCatalog 
+            ,KeyColumnUsage2.TABLE_NAME as TableName
+            ,KeyColumnUsage2.TABLE_SCHEMA AS TableSchema
+            ,KeyColumnUsage.*
             FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS AS RefConst 
             INNER JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS KeyColumnUsage 
                 ON KeyColumnUsage.CONSTRAINT_CATALOG = RefConst.CONSTRAINT_CATALOG  
@@ -28,7 +34,7 @@ namespace SqlGen.Helper
                 AND KeyColumnUsage2.ORDINAL_POSITION = KeyColumnUsage.ORDINAL_POSITION 
             where RefConst.CONSTRAINT_SCHEMA = @schema and KeyColumnUsage.TABLE_NAME = @table";
 
-        private static string foreignKeySql = @"select CONSTRAINT_NAME as ConstraintName
+        private static string foreignKeySql = @"select RC.UNIQUE_CONSTRAINT_NAME as ConstraintName
                                         from INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS as RC
                                         where exists (
 	                                        select * 

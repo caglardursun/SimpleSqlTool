@@ -86,7 +86,8 @@ namespace SqlGen
 
         List<ForeignKey> LoadForeignKeyContraints(string table, string schema)
         {
-            return connection.Query<ForeignKey>(QueryHelper.ForeignKeySql, new { table, schema }).ToList();
+            
+            return connection.Query<ForeignKey>(QueryHelper.ForeignKeySql, new { table, schema }).ToList(); 
         }
 
                
@@ -105,7 +106,8 @@ namespace SqlGen
             //Group by ConstraintName
             var eliminate = from data in queryResult
                             group data by data.ConstraintName into g 
-                            select new { key = (string) g.Key, value = g.ToList()};
+                            select new { key = g.Key, value = g.ToList()};
+            //Sıçmış sıvamışsın ... 
 
             //result = queryResult.ToDictionary<string,List<Column>>(key=> key.ConstraintName, value => value);
 

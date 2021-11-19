@@ -1,7 +1,6 @@
 ﻿using SqlGen;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -185,7 +184,9 @@ namespace SqlGenUI
         private string CurrentConnectionStringAndDatabase()
         {
             if (CheckedDatabase == null)
+            {
                 return AppSettings.Instance.ConnectionString;
+            }
 
             var b = new SqlConnectionStringBuilder(AppSettings.Instance.ConnectionString);
             b["Database"] = CheckedDatabase;
@@ -232,7 +233,10 @@ namespace SqlGenUI
         private void List_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (sender == tableList)
+            {
                 _ = LoadForeignKeysAsync(SelectedTables().FirstOrDefault());
+            }
+
             GenerateSql();
         }
 
@@ -241,7 +245,9 @@ namespace SqlGenUI
             Cursor = Cursors.AppStarting;
             fkList.Items.Clear();
             if (table == null)
+            {
                 return;
+            }
 
             await Task.Yield();
             // ConnectionStringSettings connectionSettings = CheckedConnectionString();
@@ -297,9 +303,6 @@ namespace SqlGenUI
         }
 
 
-
-
-
         private void Save([CallerMemberName] string memberName = "",
                         [CallerFilePath] string sourceFilePath = "",
                         [CallerLineNumber] int sourceLineNumber = 0)
@@ -321,7 +324,7 @@ namespace SqlGenUI
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
                     sfd = Path.Combine(sfd, $"{settings.Namespace}.Entities\\Concrete\\{tablename}.cs");
                     break;
-            
+
                 case "Create Command Handler Generator":
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
                     sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Commands\\Create{tablename}Command.cs");
@@ -350,8 +353,10 @@ namespace SqlGenUI
                     //Check the directory if doesn't exists create one ... then write
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
                     if (!Directory.Exists($"{sfd}\\Postman"))
+                    {
                         Directory.CreateDirectory($"{sfd}\\Postman");
-                    
+                    }
+
                     sfd = Path.Combine(sfd, $"Postman\\{tablename}Collections.json");
                     break;
                 //case "Delete Command Generator":
@@ -364,7 +369,7 @@ namespace SqlGenUI
 
                     break;
             }
-            
+
 
             using (StreamWriter writer = File.CreateText(sfd))
             {
@@ -394,16 +399,15 @@ namespace SqlGenUI
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (tableList.SelectedItems.Count > 0 && codeList.SelectedItems.Count > 0)
+            {
                 Save();
+            }
             else
-                MessageBox.Show($"You must select both table and generate command", "",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            {
+                MessageBox.Show($"You must select both table and generate command", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void exportPostmanToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PostmanForm postmanForm = new PostmanForm();
-            postmanForm.ShowDialog();
-
-        }
+       
     }
 }
