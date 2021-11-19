@@ -50,7 +50,6 @@
             this.tableList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.sqlTextBox = new System.Windows.Forms.RichTextBox();
-            this.exportPostmanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -90,7 +89,6 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
             this.saveToolStripMenuItem,
-            this.exportPostmanToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -266,13 +264,6 @@
             this.sqlTextBox.Text = "";
             this.sqlTextBox.WordWrap = false;
             // 
-            // exportPostmanToolStripMenuItem
-            // 
-            this.exportPostmanToolStripMenuItem.Name = "exportPostmanToolStripMenuItem";
-            this.exportPostmanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exportPostmanToolStripMenuItem.Text = "Export Postman";
-            this.exportPostmanToolStripMenuItem.Click += new System.EventHandler(this.exportPostmanToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,7 +309,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.RichTextBox sqlTextBox;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportPostmanToolStripMenuItem;
     }
 }
 

@@ -21,7 +21,7 @@ namespace SqlGen.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
+    #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
     public partial class JSonTemplates : JSonTemplatesBase
     {
@@ -32,9 +32,8 @@ namespace SqlGen.Templates
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n");
             
-            #line 15 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
+            #line 14 "D:\Projects\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
 
 Write("{\n");
         foreach (var c in columns)
@@ -81,7 +80,7 @@ Write("}");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\USER\Desktop\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
+        #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
 
 private global::System.Collections.Generic.IEnumerable<Column> _columnsField;
 

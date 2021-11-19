@@ -346,8 +346,14 @@ namespace SqlGenUI
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
                     sfd = Path.Combine(sfd, $"{settings.Namespace}.WebAPI\\Controllers\\{tablename}Controller.cs");
                     break;
-                //case "Delete Command Generator":
-                //    break;
+                case "Postman Generator":
+                    //Check the directory if doesn't exists create one ... then write
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    if (!Directory.Exists($"{sfd}\\Postman"))
+                        Directory.CreateDirectory($"{sfd}\\Postman");
+                    
+                    sfd = Path.Combine(sfd, $"Postman\\{tablename}Collections.json");
+                    break;
                 //case "Delete Command Generator":
                 //    break;
                 //case "Delete Command Generator":

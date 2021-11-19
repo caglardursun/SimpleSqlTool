@@ -8,7 +8,6 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Xml" #>
 <#@ import namespace="SqlGen" #>
-
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
 <#@ parameter name="foregnkeys" type="System.Collections.Generic.List<FkModel>" #>
 

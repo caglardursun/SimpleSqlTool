@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using SqlGen.Models;
+using SqlGen.Templates;
 
 namespace SqlGen.Generators
 {
@@ -23,7 +24,7 @@ namespace SqlGen.Generators
             #region GetList
 
             Item getListItem = new Item();
-            getListItem.Name = "List";
+            getListItem.Name = $"Get{table.TableName}List";
             getListItem.ProtocolProfileBehavior = new ProtocolProfileBehavior() { DisableBodyPruning = true };
             var request = new Request();
             request.Method = "GET";
@@ -69,6 +70,7 @@ namespace SqlGen.Generators
             getByIdUrl.Path = new string[] { "api", $"{table.TableName}", $"Get{table.TableName}ById" };
             getByIdrequest.Url = getByIdUrl;
 
+            getByIdItem.Request = getByIdrequest;
             #endregion
 
             #region Create
@@ -77,6 +79,7 @@ namespace SqlGen.Generators
 
             CreateItem.Name = $"Create{table.TableName}";
             CreateItem.ProtocolProfileBehavior = new ProtocolProfileBehavior() { DisableBodyPruning = true };
+
             var createRequest = new Request();
             createRequest.Method = "POST";
             createRequest.Header = new object[] { };
@@ -84,15 +87,30 @@ namespace SqlGen.Generators
 
             var createBody = new Body();
             createBody.Mode = "raw";
-            createBody.Raw = ""; //json generate edilebilir ...
+
+            #region json compile for body
+
+            var jsontemplate = new JSonTemplates();
+            var json = new JSonTemplates();
+            json.Session = new Dictionary<string, object>();
+            var fk = table.ForeignKeys.ToForegnTableColumns();
+            json.Session.Add("foregnkeys", fk);
+            json.Session.Add("columns", table.InsertableColumns);
+            json.Initialize();
+            createBody.Raw = json.TransformText();
+
+            #endregion
+
             createBody.Options = new Options() { Raw = new Raw() { Language = "text" } };
-            createRequest.Body = body;
+            createRequest.Body = createBody;
 
             var createUrl = new Url();
             createUrl.Raw = string.Format(@"{{url}}/api/{0}/Cretae{0}", table.TableName);
             createUrl.Host = new string[] { "{{url}}" };
             createUrl.Path = new string[] { "api", $"{table.TableName}", $"Cretae{table.TableName}" };
             createRequest.Url = createUrl;
+
+            CreateItem.Request = createRequest;
 
             #endregion
 
