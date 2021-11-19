@@ -41,6 +41,7 @@ Write("{\n");
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
                 System.String str = "";
+       
 
                 if(propType.GetType() == Type.GetType(""))
                     str = "\'\'";

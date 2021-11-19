@@ -23,12 +23,12 @@ namespace SqlGen.Generators
 
             #region GetList
 
-            Item getListItem = new Item();
-            getListItem.Name = $"Get{table.TableName}List";
-            getListItem.ProtocolProfileBehavior = new ProtocolProfileBehavior() { DisableBodyPruning = true };
+            Item GetListItem = new Item();
+            GetListItem.Name = $"Get{table.TableName}List";
+            GetListItem.ProtocolProfileBehavior = new ProtocolProfileBehavior() { DisableBodyPruning = true };
             var request = new Request();
             request.Method = "GET";
-            request.Header = new object[] { };
+            request.Header = new Header[] { };
 
 
             var body = new Body();
@@ -43,19 +43,19 @@ namespace SqlGen.Generators
             url.Path = new string[] { "api", $"{table.TableName}", $"Get{table.TableName}List" };
             request.Url = url;
 
-            getListItem.Request = request;
+            GetListItem.Request = request;
 
             #endregion
 
             #region GetById
 
-            Item getByIdItem = new Item();
+            Item GetByIdItem = new Item();
 
-            getByIdItem.Name = $"Get{table.TableName}ById";
-            getByIdItem.ProtocolProfileBehavior = new ProtocolProfileBehavior() { DisableBodyPruning = true };
+            GetByIdItem.Name = $"Get{table.TableName}ById";
+            GetByIdItem.ProtocolProfileBehavior = new ProtocolProfileBehavior() { DisableBodyPruning = true };
             var getByIdrequest = new Request();
             getByIdrequest.Method = "GET";
-            getByIdrequest.Header = new object[] { };
+            getByIdrequest.Header = new Header[] { };
 
 
             var getByIdBody = new Body();
@@ -70,7 +70,7 @@ namespace SqlGen.Generators
             getByIdUrl.Path = new string[] { "api", $"{table.TableName}", $"Get{table.TableName}ById" };
             getByIdrequest.Url = getByIdUrl;
 
-            getByIdItem.Request = getByIdrequest;
+            GetByIdItem.Request = getByIdrequest;
             #endregion
 
             #region Create
@@ -82,7 +82,7 @@ namespace SqlGen.Generators
 
             var createRequest = new Request();
             createRequest.Method = "POST";
-            createRequest.Header = new object[] { };
+            createRequest.Header = new Header[] { };
 
 
             var createBody = new Body();
@@ -105,7 +105,7 @@ namespace SqlGen.Generators
             createRequest.Body = createBody;
 
             var createUrl = new Url();
-            createUrl.Raw = string.Format(@"{{url}}/api/{0}/Cretae{0}", table.TableName);
+            createUrl.Raw = string.Format(@"{{url}}/api/{0}/Create{0}", table.TableName);
             createUrl.Host = new string[] { "{{url}}" };
             createUrl.Path = new string[] { "api", $"{table.TableName}", $"Cretae{table.TableName}" };
             createRequest.Url = createUrl;
@@ -116,18 +116,69 @@ namespace SqlGen.Generators
 
             #region Update
 
+            Item UpdateItem = new Item();
+
+            UpdateItem.Name = $"Update{table.TableName}";
+            UpdateItem.ProtocolProfileBehavior = new ProtocolProfileBehavior() { DisableBodyPruning = true };
+
+            var updateRequest = new Request();
+            updateRequest.Method = "PUT";
+            updateRequest.Header = new Header[] { };
+
+
+            var updateBody = new Body();
+            updateBody.Mode = "raw";
+
+            #region json compile for body
+
+            updateBody.Raw = json.TransformText();
+
+            #endregion
+
+            updateBody.Options = new Options() { Raw = new Raw() { Language = "text" } };
+            updateRequest.Body = updateBody;
+
+            var updateUrl = new Url();
+            updateUrl.Raw = string.Format(@"{{url}}/api/{0}/Update{0}", table.TableName);
+            updateUrl.Host = new string[] { "{{url}}" };
+            updateUrl.Path = new string[] { "api", $"{table.TableName}", $"Update{table.TableName}" };
+            updateRequest.Url = updateUrl;
+
+            UpdateItem.Request = updateRequest;
+
             #endregion
 
             #region Delete
 
+            Item DeleteItem = new Item();
 
+            DeleteItem.Name = $"Delete{table.TableName}";
+            DeleteItem.ProtocolProfileBehavior = new ProtocolProfileBehavior() { DisableBodyPruning = true };
+            var deleteRequest = new Request();
+            deleteRequest.Method = "DELETE";
+            deleteRequest.Header = new Header[] { };
+
+
+            var deleteBody = new Body();
+            deleteBody.Mode = "raw";
+            deleteBody.Raw = "";
+            deleteBody.Options = new Options() { Raw = new Raw() { Language = "text" } };
+            
+
+            var deleteUrl = new Url();
+            deleteUrl.Raw =  string.Format(@"{{url}}/api/{0}/Delete{0}", table.TableName);
+            deleteUrl.Host = new string[] { "{{url}}" };
+            deleteUrl.Path = new string[] { "api", $"{table.TableName}", $"Delete{table.TableName}" };
+            deleteRequest.Url = getByIdUrl;
+
+            GetByIdItem.Request = getByIdrequest;
             #endregion
 
 
 
-            collection.Item = new Item[] { getListItem, getByIdItem, CreateItem };
+            collection.Item = new Item[] { GetListItem, GetByIdItem, CreateItem, UpdateItem,DeleteItem };
 
-            
+
 
             var postman_event = new PostmanEvent();
             postman_event.Listen = "prerequest";
@@ -136,7 +187,7 @@ namespace SqlGen.Generators
 
             Variable variable = new Variable();
             variable.Key = "url";
-            variable.Value = new Uri("https://localhost:44390");
+            variable.Value = "https://localhost:44390";
             collection.Variable = new Variable[] { variable };
 
 
