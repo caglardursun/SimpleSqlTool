@@ -17,11 +17,13 @@ Write("{\n");
         {
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
-                System.String str = "";
+                var propDefault = c.ClrTypeDefault();
+                System.String str = $"{propDefault}";
        
 
                 if(propType.GetType() == Type.GetType(""))
                     str = "\'\'";
+
                 Write("\t");Write($"\"{propName}\" : {str} ,");Write("\n");
 
         }

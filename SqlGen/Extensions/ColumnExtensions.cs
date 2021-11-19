@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,6 +112,38 @@ namespace SqlGen
                     return "byte[]";
                 case "uniqueidentifier":
                     return "Guid";
+                default:
+                    return c.DataType;
+            }
+        }
+
+
+        public static dynamic ClrTypeDefault(this Column c)
+        {
+            switch (c.DataType.ToLower())
+            {
+                case "char":
+                case "nchar":
+                case "varchar":
+                case "nvarchar":
+                    return "\"\"";
+                case "numeric":
+                case "decimal":                    
+                case "int":                    
+                case "bigint":                    
+                case "smallint":                    
+                case "tinyint":
+                    return 0;
+                case "bit":
+                    return false;
+                case "datetime":
+                case "datetime2":
+                    return DateTime.Now.ToString("yyyy-MM-dd-THH:mm:ss.000Z", CultureInfo.InvariantCulture);
+                case "binary":
+                case "varbinary":
+                    return "byte[]";
+                case "uniqueidentifier":
+                    return Guid.NewGuid().ToString();
                 default:
                     return c.DataType;
             }
