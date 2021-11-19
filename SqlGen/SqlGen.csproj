@@ -112,6 +112,7 @@
     <Compile Include="Generators\GetByIdGenerator.cs" />
     <Compile Include="Generators\GetListQueryGenerator.cs" />
     <Compile Include="Generators\JSonGenerator.cs" />
+    <Compile Include="Generators\PostmanGenerator.cs" />
     <Compile Include="Generators\RepositoryGenerator.cs" />
     <Compile Include="Generators\RestSharpGenerator.cs" />
     <Compile Include="Generators\SQLInsertGenerator.cs" />

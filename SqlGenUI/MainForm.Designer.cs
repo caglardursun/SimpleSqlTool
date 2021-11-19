@@ -271,6 +271,7 @@
             this.exportPostmanToolStripMenuItem.Name = "exportPostmanToolStripMenuItem";
             this.exportPostmanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportPostmanToolStripMenuItem.Text = "Export Postman";
+            this.exportPostmanToolStripMenuItem.Click += new System.EventHandler(this.exportPostmanToolStripMenuItem_Click);
             // 
             // MainForm
             // 

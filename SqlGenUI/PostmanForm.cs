@@ -20,11 +20,17 @@ namespace SqlGenUI
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "DLL Files | *.dll; *.DLL;";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 //Load DLL
 
             }
+        }
+
+        private void PostmanForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

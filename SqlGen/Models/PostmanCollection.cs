@@ -3,7 +3,7 @@ using Newtonsoft.Json.Converters;
 using System;
 using System.Globalization;
 
-namespace PostmanCollections
+namespace SqlGen.Models
 {
     public partial class PostmanCollection
     {
@@ -14,13 +14,14 @@ namespace PostmanCollections
         public Item[] Item { get; set; }
 
         [JsonProperty("event")]
-        public Event[] Event { get; set; }
+        public PostmanEvent[] Event { get; set; }
 
         [JsonProperty("variable")]
         public Variable[] Variable { get; set; }
     }
 
-    public partial class Event
+    [JsonObject(Title ="Event")]
+    public partial class PostmanEvent
     {
         [JsonProperty("listen")]
         public string Listen { get; set; }
@@ -153,6 +154,7 @@ namespace PostmanCollections
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
+            Formatting = Formatting.Indented,
             DateParseHandling = DateParseHandling.None,
             Converters = {
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }

@@ -32,7 +32,9 @@ namespace SqlGenUI
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonLoad = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -57,12 +59,21 @@ namespace SqlGenUI
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.richTextBox1);
             this.groupBox2.Location = new System.Drawing.Point(12, 71);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(539, 372);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Load Assembly";
+            this.groupBox2.Text = "Methods";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(6, 19);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(527, 347);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
             // PostmanForm
             // 
@@ -73,7 +84,9 @@ namespace SqlGenUI
             this.Controls.Add(this.groupBox1);
             this.Name = "PostmanForm";
             this.Text = "PostmanForm";
+            this.Load += new System.EventHandler(this.PostmanForm_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -83,5 +96,6 @@ namespace SqlGenUI
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonLoad;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

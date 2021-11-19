@@ -392,5 +392,12 @@ namespace SqlGenUI
             else
                 MessageBox.Show($"You must select both table and generate command", "",MessageBoxButtons.OK,MessageBoxIcon.Warning);
         }
+
+        private void exportPostmanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PostmanForm postmanForm = new PostmanForm();
+            postmanForm.ShowDialog();
+
+        }
     }
 }
