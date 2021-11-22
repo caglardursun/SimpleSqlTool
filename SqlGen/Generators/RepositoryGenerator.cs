@@ -1,9 +1,6 @@
 ﻿using SqlGen.Templates;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SqlGen.Generators
 {
@@ -22,13 +19,13 @@ namespace SqlGen.Generators
                 template.Session.Add("_namespace", AppSettings.Instance.Namespace);
                 template.Session.Add("table", table);
                 template.Session.Add("tableName", table.TableName);
-                template.Session.Add("tableNameToLower", table.TableName.ToLower());                
+                template.Session.Add("tableNameToLower", table.TableName.ToLower());
 
                 template.Session.Add("columns", table.InsertableColumns);
                 template.Initialize();
                 return template.TransformText();
 
-                
+
             }
             catch (Exception exc)
             {
@@ -37,6 +34,6 @@ namespace SqlGen.Generators
             }
         }
 
-        public override string ToString() => "Ef Repository Generator";        
+        public override string ToString() => "Ef Repository Generator";
     }
 }

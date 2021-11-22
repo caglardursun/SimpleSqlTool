@@ -1,10 +1,7 @@
 ﻿//using SqlGen.Templeates;
 using SqlGen.Templates;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SqlGen.Generators
 {
@@ -22,16 +19,16 @@ namespace SqlGen.Generators
 
             template.Session.Add("tableNameToLower", $"{table.TableName.ElementAt(0).ToString().ToLower()}{table.TableName.Substring(1, table.TableName.Length - 1)}");
             template.Session.Add("tableNameToPascal", table.TableName.ToPascalCase());
-            template.Session.Add("table", table);            
+            template.Session.Add("table", table);
             template.Session.Add("columns", table.InsertableColumns);
             template.Initialize();
 
             return template.TransformText();
 
-            
+
 
         }
 
-        public override string ToString() => "WebAPI Generator";        
+        public override string ToString() => "WebAPI Generator";
     }
 }

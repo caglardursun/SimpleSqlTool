@@ -1,6 +1,5 @@
 ﻿using SqlGen.Templates;
 using System.Collections.Generic;
-using System;
 using System.Linq;
 
 namespace SqlGen.Generators

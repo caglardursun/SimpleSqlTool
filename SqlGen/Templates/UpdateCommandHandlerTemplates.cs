@@ -82,7 +82,14 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write(".Business.BusinessAspects;\r\n\r\n\r\nnamespace ");
+            this.Write(".Business.BusinessAspects;\r\nusing ");
+            
+            #line 26 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Data.Entity;\r\n\r\nnamespace ");
             
             #line 28 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
@@ -182,7 +189,7 @@ namespace SqlGen.Templates
                     "\t\t\t\t\r\n\r\n\t\t\t\t\t\t\t\tvar item = _mapper.Map<Update");
             
             #line 64 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
@@ -196,14 +203,14 @@ namespace SqlGen.Templates
             this.Write(">(request.model);\r\n\r\n\t\t\t\t\t\t\t\t_");
             
             #line 66 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden
             this.Write("Repository.Update(item);\r\n\t\t\t\t\r\n\t\t\t\t\t\t\t\tawait _");
             
             #line 68 "D:\Projects\SimpleSqlTool\SqlGen\Templates\UpdateCommandHandlerTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
             #line hidden

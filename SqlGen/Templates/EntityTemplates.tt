@@ -22,7 +22,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace <#=_namespace#>.Data.Entity
 {
     <#
-    Write($"[Table(\"{tableName}\", Schema = \"{schemaName}\")]\n");
+
+    Write($"[Table(\"{tableName}\", Schema = \"{table.Schema}\")]\n");
     #>
     public class <#=tableName#> : UpdateEntity, IEntity
     {
@@ -37,22 +38,7 @@ namespace <#=_namespace#>.Data.Entity
                 
         }
         
-        if(foregnkeys.Count > 0)
-        {
-
-            foreach (var fk in foregnkeys)
-            {
-                Write("\t");
-                if(fk.FKey.IsIdentity)
-                {
-                    Write($@"public {fk.TableName} _{fk.FKey.TableName} {{ get; set; }}");Write("\n");
-                    
-                }else{
-                
-                    Write($@"public List<{fk.TableName}> {fk.FKey.TableName}s {{ get; set; }}");Write("\n");
-                } 
-            }    
-        }
+       
         #>
     }
 

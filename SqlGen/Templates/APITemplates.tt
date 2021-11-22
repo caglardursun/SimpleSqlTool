@@ -6,6 +6,8 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SqlGen" #>
 <#@ parameter name="_namespace" type="System.String" #>
+<#@ parameter name="table" type="SqlGen.Table" #>
+<#@ parameter name="options" type="SqlGen.GeneratorOptions" #>
 <#@ parameter name="tableName" type="System.String" #>
 <#@ parameter name="tableNameToLower" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
@@ -17,12 +19,21 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using <#=_namespace#>.Entities.ResponseDtos.<#=tableName#>;
 using <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Queries;
-using <#=_namespace#>.<#=tableName#>Handlers.Commands;
 using <#=_namespace#>.Entities.RequestDtos.<#=tableName#>;
 using <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands;
 
 namespace <#= _namespace #>.WebAPI.Controllers
 {
+
+
+    <#
+        var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
+        var id = columns.ElementAt(0);
+        var id_type = id.ClrTypeName();
+        var id_name = id.ColumnName;
+    #>
+             
+
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
@@ -61,9 +72,9 @@ namespace <#= _namespace #>.WebAPI.Controllers
             [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<<#=tableName#>ResponseDto>))]
             [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
             [HttpGet("Get<#=tableName#>ById")]
-            public async Task<IActionResult> Get<#=tableName#>ById(int id)
+            public async Task<IActionResult> Get<#=tableName#>ById(<#=id_type#> <#=id_name#>)
             {
-                var result = await Mediator.Send(new Get<#=tableName#>ByIdQuery() { Id = id });
+                var result = await Mediator.Send(new Get<#=tableName#>ByIdQuery() { Id = <#=id_name#> });
                 if (result.Success)
                 {
                     return Ok(result.Data);
@@ -125,10 +136,10 @@ namespace <#= _namespace #>.WebAPI.Controllers
             [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
             [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
             [HttpDelete("Delete<#=tableName#>")]
-            public async Task<IActionResult> Delete<#=tableName#>(int id)
+            public async Task<IActionResult> Delete<#=tableName#>(<#=id_type#> <#=id_name#>)
             {
                 
-                var result = await Mediator.Send(new Delete<#=tableName#>Command() { Id = id});
+                var result = await Mediator.Send(new Delete<#=tableName#>Command() { Id = <#=id_name#>});
                 if (result.Success)
                 {
                     return Ok(result.Message);

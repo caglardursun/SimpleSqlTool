@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SqlGen
 {
@@ -24,7 +20,7 @@ namespace SqlGen
                 case "char":
                 case "nchar":
                 case "varchar":
-               
+
                 case "nvarchar":
                     var len = c.CharacterMaximumLength == -1 ? max : c.CharacterMaximumLength.ToString();
                     return $"{c.DataType}({len})";
@@ -128,10 +124,10 @@ namespace SqlGen
                 case "nvarchar":
                     return "\"\"";
                 case "numeric":
-                case "decimal":                    
-                case "int":                    
-                case "bigint":                    
-                case "smallint":                    
+                case "decimal":
+                case "int":
+                case "bigint":
+                case "smallint":
                 case "tinyint":
                     return 0;
                 case "bit":

@@ -23,7 +23,7 @@ using <#=_namespace#>.DataAccess.Abstract;
 using <#=_namespace#>.Entities.Concrete;
 using <#=_namespace#>.Entities.RequestDtos.<#=tableName#>;
 using <#=_namespace#>.Business.BusinessAspects;
-
+using <#=_namespace#>.Data.Entity;
 
 namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands
 {
@@ -61,11 +61,11 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands
 							try{
 								
 
-								var item = _mapper.Map<Update<#=tableNameToLower#>RequestDto, <#=tableName#>>(request.model);
+								var item = _mapper.Map<Update<#=tableName#>RequestDto, <#=tableName#>>(request.model);
 
-								_<#=tableName#>Repository.Update(item);
+								_<#=tableNameToLower#>Repository.Update(item);
 				
-								await _<#=tableName#>Repository.SaveChangesAsync();
+								await _<#=tableNameToLower#>Repository.SaveChangesAsync();
 								return new SuccessResult(Resource.BasariliGuncellemeIslemi);
 
 							}catch(Exception exc)

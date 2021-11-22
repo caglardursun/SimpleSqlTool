@@ -23,9 +23,13 @@ namespace SqlGen.Generators
             foreach (var col in table.InsertableColumns.Where(c => !table.PrimaryKey.Contains(c) && (options.Audit || !c.IsAuditColumn())))
             {
                 if (col.IsSequenceNumber())
+                {
                     sb.AppendLine($"    [{col}] = [{col}] + 1,");
+                }
                 else
+                {
                     sb.AppendLine($"    [{col}] = {col.ParameterValue()},");
+                }
             }
 
             sb.Length -= 3;

@@ -26,6 +26,6 @@ namespace SqlGen.Generators
 
         }
 
-        public override string ToString() => "Data Transfer Object";
+        public override string ToString() => "DTO Generator";
     }
 }

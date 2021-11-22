@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SqlGen
 {
@@ -14,7 +13,9 @@ namespace SqlGen
             List<FkModel> fkModel = new List<FkModel>();
             //Not an optimal solution but for now I don't have a time for this
             if (foreignKeys == null)
+            {
                 return fkModel;
+            }
 
             foreach (ForeignKey fk in foreignKeys)
             {
@@ -30,7 +31,10 @@ namespace SqlGen
                     {
                         rCoumns.IsIdentity = !item.ForegnReferanceTable.InsertableColumns.Contains(rCoumns);
                         if (targetColumnName == rCoumns.ColumnName)
+                        {
                             fkey = rCoumns;
+                        }
+
                         columns.Add(rCoumns);
 
                     }
@@ -44,14 +48,14 @@ namespace SqlGen
         }
 
         public static string ToLeftJoins(this List<ForeignKey> foreignKeys)
-        {            
+        {
 
             StringBuilder stringBuilder = new StringBuilder();
             foreach (ForeignKey fk in foreignKeys)
             {
 
                 foreach (Column item in fk)
-                {                                                            
+                {
                     string sourceColumnName = item.ColumnName;
                     string targetColumnName = item.ReferancedColumnName;
                     string targetTableName = item.ForegnReferanceTable.TableName;

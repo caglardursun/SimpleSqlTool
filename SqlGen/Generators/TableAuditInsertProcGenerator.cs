@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 
 namespace SqlGen.Generators
@@ -45,7 +43,9 @@ namespace SqlGen.Generators
         public override string Generate(Table table, GeneratorOptions options)
         {
             if (options.Key == null)
+            {
                 return Generate(table, options.Alter);
+            }
 
             var sb = new StringBuilder();
             AppendCreateOrAlterProc(table, options, sb);
@@ -67,7 +67,7 @@ namespace SqlGen.Generators
             sb.AppendLine("    GETUTCDATE()");
             sb.AppendLine("FROM");
             sb.AppendLine($"    [{table.Schema}].[{table.TableName}] AS src");
-            sb.Append("    LEFT JOIN @recs AS recs ON ");            
+            sb.Append("    LEFT JOIN @recs AS recs ON ");
             foreach (var c in table.PrimaryKey)
             {
                 sb.Append($"src.[{c.ColumnName}] = recs.[{c.ColumnName}] AND ");

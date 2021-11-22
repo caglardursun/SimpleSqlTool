@@ -324,26 +324,47 @@ namespace SqlGenUI
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
                     sfd = Path.Combine(sfd, $"{settings.Namespace}.Entities\\Concrete\\{tablename}.cs");
                     break;
+                case "Ef Repository Generator":
+                    //Sbu.Ubys.Ebs.Entities
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.DataAccess\\Concrete\\EntityFramework\\{tablename}Repository.cs");
+                    break;
+                case "DTO Generator":
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    Directory.CreateDirectory(Path.Combine(sfd, $"{settings.Namespace}.Entities\\RequestDtos\\{tablename}"));
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Entities\\RequestDtos\\{tablename}\\{tablename}RequestDto.cs");
+                    break;
+                case "Validation Generator":
+                    //Sbu.Ubys.Ebs.Entities
+                    sfd = Path.Combine(settings.APIPath, settings.Namespace);
+                    Directory.CreateDirectory(Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\ValidationRules"));
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\ValidationRules\\{tablename}Validator.cs");
+                    break;
 
                 case "Create Command Handler Generator":
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
-                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Commands\\Create{tablename}Command.cs");
+                    Directory.CreateDirectory(Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Commands"));
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Commands\\Create{tablename}Command.cs");
                     break;
                 case "Update Command Handler Generator":
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
-                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Commands\\Update{tablename}Command.cs");
+                    Directory.CreateDirectory(Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Commands"));
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Commands\\Update{tablename}Command.cs");
                     break;
                 case "Delete Command Handler Generator":
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
-                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Commands\\Delete{tablename}Command.cs");
+                    Directory.CreateDirectory(Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Commands"));
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Commands\\Delete{tablename}Command.cs");
                     break;
                 case "Get List Query Generator":
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
-                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Queries\\Get{tablename}ListQuery.cs");
+                    Directory.CreateDirectory(Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Queries"));
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Queries\\Get{tablename}ListQuery.cs");
                     break;
                 case "Get By Id Query Generator":
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
-                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}\\Queries\\Get{tablename}byIdQuery.cs");
+                    Directory.CreateDirectory(Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Queries"));
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Queries\\Get{tablename}byIdQuery.cs");
                     break;
                 case "WebAPI Generator":
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
@@ -379,6 +400,7 @@ namespace SqlGenUI
 
         }
 
+   
 
         private void postgresToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -408,6 +430,6 @@ namespace SqlGenUI
             }
         }
 
-       
+
     }
 }

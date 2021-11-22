@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
 
 namespace SqlGen.Generators
@@ -25,9 +24,13 @@ namespace SqlGen.Generators
             foreach (var c in table.InsertableColumns.Where(c => options.Audit || !c.IsAuditColumn()))
             {
                 if (c.IsSequenceNumber())
+                {
                     sb.AppendLine($"    ISNULL(@{c}, 1),");
+                }
                 else
+                {
                     sb.AppendLine($"    {c.ParameterValue()},");
+                }
             }
             sb.Length -= 3;
             sb.AppendLine().AppendLine(")");

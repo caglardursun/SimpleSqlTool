@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SqlGen.Helper
+﻿namespace SqlGen.Helper
 {
     public class QueryHelper
     {
         #region queries ...
 
-        private static string foreignKeyColumnSql = @"
+        private static readonly string foreignKeyColumnSql = @"
                     SELECT 
            KeyColumnUsage.TABLE_NAME AS  SourceTableName 
             ,KeyColumnUsage.COLUMN_NAME AS SourceColumnName
@@ -34,18 +28,27 @@ namespace SqlGen.Helper
                 AND KeyColumnUsage2.ORDINAL_POSITION = KeyColumnUsage.ORDINAL_POSITION 
             where RefConst.CONSTRAINT_SCHEMA = @schema and KeyColumnUsage.TABLE_NAME = @table";
 
-        private static string foreignKeySql = @"select RC.UNIQUE_CONSTRAINT_NAME as ConstraintName
-                                        from INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS as RC
-                                        where exists (
-	                                        select * 
-	                                        from INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU1
-	                                        where KCU1.CONSTRAINT_CATALOG = RC.CONSTRAINT_CATALOG
-			                                        AND KCU1.CONSTRAINT_SCHEMA = RC.CONSTRAINT_SCHEMA
-			                                        AND KCU1.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
-			                                        and TABLE_SCHEMA = @schema
-			                                        and TABLE_NAME = @table)";
+        private static readonly string foreignKeySql = @"select RC.UNIQUE_CONSTRAINT_NAME as ConstraintName, KeyColumnUsage2.TABLE_NAME as ReferancedTableName
+from INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS as RC
+INNER JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS KeyColumnUsage 
+                ON KeyColumnUsage.CONSTRAINT_CATALOG = RC.CONSTRAINT_CATALOG  
+                AND KeyColumnUsage.CONSTRAINT_SCHEMA = RC.CONSTRAINT_SCHEMA 
+                AND KeyColumnUsage.CONSTRAINT_NAME = RC.CONSTRAINT_NAME 
+            INNER JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS KeyColumnUsage2 
+                ON KeyColumnUsage2.CONSTRAINT_CATALOG = RC.UNIQUE_CONSTRAINT_CATALOG  
+                AND KeyColumnUsage2.CONSTRAINT_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA 
+                AND KeyColumnUsage2.CONSTRAINT_NAME = RC.UNIQUE_CONSTRAINT_NAME 
+                AND KeyColumnUsage2.ORDINAL_POSITION = KeyColumnUsage.ORDINAL_POSITION 
+where exists (
+    select * 
+    from INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU1
+    where KCU1.CONSTRAINT_CATALOG = RC.CONSTRAINT_CATALOG
+            AND KCU1.CONSTRAINT_SCHEMA = RC.CONSTRAINT_SCHEMA
+            AND KCU1.CONSTRAINT_NAME = RC.CONSTRAINT_NAME
+            and TABLE_SCHEMA = @schema
+            and TABLE_NAME = @table)";
 
-        private static string columnSql = @"
+        private static readonly string columnSql = @"
                 select  
                 TABLE_CATALOG as TableCatalog,
                 TABLE_SCHEMA as TableSchema,
@@ -75,7 +78,7 @@ namespace SqlGen.Helper
                 and TABLE_SCHEMA = @schema
                 order by ORDINAL_POSITION";
 
-        private static string primaryKeySql = @"
+        private static readonly string primaryKeySql = @"
                 SELECT tc.CONSTRAINT_NAME as ConstraintName, ku.COLUMN_NAME as ColumnName
                 FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS tc
                 JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS ku ON tc.CONSTRAINT_TYPE = 'PRIMARY KEY' AND tc.CONSTRAINT_NAME = ku.CONSTRAINT_NAME
@@ -83,27 +86,27 @@ namespace SqlGen.Helper
                 and tc.TABLE_SCHEMA = @schema
                 order by ku.ORDINAL_POSITION";
 
-        private static string tableSql = @"select TABLE_SCHEMA as [Schema], TABLE_NAME as TableName 
+        private static readonly string tableSql = @"select TABLE_SCHEMA as [Schema], TABLE_NAME as TableName 
                                 from INFORMATION_SCHEMA.TABLES
                                 where TABLE_NAME NOT LIKE '%_AUDIT'
                                 order by TABLE_SCHEMA, TABLE_NAME";
 
-        private static string listDBSql = @"
+        private static readonly string listDBSql = @"
             select name from sys.databases where state = 0
         ";
 
-        private static string currentDbNameSql = @"
+        private static readonly string currentDbNameSql = @"
             select DB_NAME() as Name
         ";
 
         #endregion
 
-        public static string ForeignKeyColumnSql { get { return foreignKeyColumnSql; }  }
+        public static string ForeignKeyColumnSql { get { return foreignKeyColumnSql; } }
 
         public static string ForeignKeySql { get { return foreignKeySql; } }
 
         public static string ColumnSql { get { return columnSql; } }
-        public static string PrimaryKeySql { get { return primaryKeySql; }  }
+        public static string PrimaryKeySql { get { return primaryKeySql; } }
 
         public static string TableSql { get { return tableSql; } }
 

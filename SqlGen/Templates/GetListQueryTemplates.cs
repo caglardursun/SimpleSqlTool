@@ -66,66 +66,73 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write(";\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Threading;\r\nusi" +
-                    "ng System.Threading.Tasks;\r\n\r\n    \r\nnamespace ");
+            this.Write(";\r\nusing ");
             
-            #line 26 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 20 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
+            
+            #line default
+            #line hidden
+            this.Write(".Data.Entity;\r\n\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.T" +
+                    "hreading;\r\nusing System.Threading.Tasks;\r\n\r\n    \r\nnamespace ");
+            
+            #line 28 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".Business.Handlers.");
             
-            #line 26 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 28 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Handlers.Queries\r\n{\r\n    public class Get");
             
-            #line 28 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 30 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("ListQuery : IRequest<IDataResult<IEnumerable<");
             
-            #line 28 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 30 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("ResponseDto>>>\r\n    {\r\n        \r\n    }\r\n\r\n    public class Get");
             
-            #line 33 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 35 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("QueryHandler : IRequestHandler<Get");
             
-            #line 33 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 35 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("ListQuery, IDataResult<IEnumerable<");
             
-            #line 33 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 35 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("ResponseDto>>>\r\n    {\r\n            private readonly I");
             
-            #line 35 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 37 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Repository _");
             
-            #line 35 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 37 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
@@ -133,22 +140,22 @@ namespace SqlGen.Templates
             this.Write("Repository;\r\n            private readonly IMediator _mediator;\r\n            priva" +
                     "te readonly IMapper _mapper;\r\n\r\n            public Get");
             
-            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("QueryHandler(I");
             
-            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
+            #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Repository repository, IMediator mediator,IMapper mapper)\r\n            {\r\n       " +
                     "         _");
             
-            #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 43 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
@@ -157,14 +164,14 @@ namespace SqlGen.Templates
                     "_mapper = mapper;\r\n            }\r\n\r\n            [SecuredOperation(Priority = 1)]" +
                     "\r\n            public async Task<IDataResult<IEnumerable<");
             
-            #line 47 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 49 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("ResponseDto>>> Handle(Get");
             
-            #line 47 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 49 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -173,7 +180,7 @@ namespace SqlGen.Templates
                     "       \r\n                try\r\n                {\r\n\r\n                    var entie" +
                     "s = await _");
             
-            #line 53 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 55 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableNameToLower));
             
             #line default
@@ -181,14 +188,14 @@ namespace SqlGen.Templates
             this.Write("Repository.GetListAsync();\r\n\r\n                    var response = _mapper.Map<IEnu" +
                     "merable<");
             
-            #line 55 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 57 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(">, IEnumerable<");
             
-            #line 55 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 57 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -196,7 +203,7 @@ namespace SqlGen.Templates
             this.Write("ResponseDto>>(enties);\r\n\r\n                    return new SuccessDataResult<IEnume" +
                     "rable<");
             
-            #line 57 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 59 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
@@ -205,7 +212,7 @@ namespace SqlGen.Templates
                     "xc)\r\n                {\r\n\r\n                    return new ErrorDataResult<IEnumer" +
                     "able<");
             
-            #line 63 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
+            #line 65 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetListQueryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default

@@ -14,7 +14,7 @@ namespace SqlGen
 
             var result = Regex.Replace(sqlName, "(?<=[a-z0-9])[A-Z]", m => "_" + m.Value);
 
-            return result.ToLowerInvariant();       
+            return result.ToLowerInvariant();
         }
 
         public static string EmptyCheck(this string variable)

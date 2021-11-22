@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using SqlGen.Models;
+﻿using SqlGen.Models;
 using SqlGen.Templates;
+using System;
+using System.Collections.Generic;
 
 namespace SqlGen.Generators
 {
     public class PostmanGenerator : Generator
     {
-        
+
 
         public override string Generate(Table table, GeneratorOptions options)
         {
@@ -163,10 +160,10 @@ namespace SqlGen.Generators
             deleteBody.Mode = "raw";
             deleteBody.Raw = "";
             deleteBody.Options = new Options() { Raw = new Raw() { Language = "text" } };
-            
+
 
             var deleteUrl = new Url();
-            deleteUrl.Raw =  string.Format(@"{{url}}/api/{0}/Delete{0}", table.TableName);
+            deleteUrl.Raw = string.Format(@"{{url}}/api/{0}/Delete{0}", table.TableName);
             deleteUrl.Host = new string[] { "{{url}}" };
             deleteUrl.Path = new string[] { "api", $"{table.TableName}", $"Delete{table.TableName}" };
             deleteRequest.Url = getByIdUrl;
@@ -176,7 +173,7 @@ namespace SqlGen.Generators
 
 
 
-            collection.Item = new Item[] { GetListItem, GetByIdItem, CreateItem, UpdateItem,DeleteItem };
+            collection.Item = new Item[] { GetListItem, GetByIdItem, CreateItem, UpdateItem, DeleteItem };
 
 
 

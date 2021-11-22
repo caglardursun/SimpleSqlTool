@@ -109,6 +109,7 @@
     <Compile Include="Generators\DataInterfaceManager.cs" />
     <Compile Include="Generators\DataManagers.cs" />
     <Compile Include="Generators\DeleteCommandGenerator.cs" />
+    <Compile Include="Generators\FluentValidationGenerator.cs" />
     <Compile Include="Generators\GetByIdGenerator.cs" />
     <Compile Include="Generators\GetListQueryGenerator.cs" />
     <Compile Include="Generators\JSonGenerator.cs" />
@@ -194,6 +195,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UpdateCommandHandlerTemplates.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\ValidatorTemplates.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidatorTemplates.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\ViewTemplates.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -264,6 +270,10 @@
     <Content Include="Templates\UpdateCommandHandlerTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>UpdateCommandHandlerTemplates.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\ValidatorTemplates.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ValidatorTemplates.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\ViewTemplates.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

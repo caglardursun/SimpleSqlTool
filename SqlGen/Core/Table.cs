@@ -17,7 +17,9 @@ namespace SqlGen
         public void EnsureFullyPopulated(string connectionString)
         {
             if (Columns != null && ForeignKeys != null)
-                return;            
+            {
+                return;
+            }
 
             using (var cnn = new SqlConnection(connectionString))
             {
@@ -28,7 +30,9 @@ namespace SqlGen
                     da.PopulatePrimaryKey(this);
                 }
                 if (ForeignKeys == null)
+                {
                     da.PopulateForeignKeys(this);
+                }
             }
 
         }

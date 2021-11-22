@@ -1,12 +1,10 @@
 ﻿//using BusterWood.Mapper;
+using Dapper;
 using SqlGen.Helper;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
-using Dapper;
 
 namespace SqlGen
 {
@@ -14,14 +12,14 @@ namespace SqlGen
     {
         private readonly DbConnection connection;
 
-        
+
 
         public TableDataAccess(DbConnection connection)
         {
             this.connection = connection;
         }
 
-      
+
 
         public async Task<IEnumerable<Table>> LoadNonAuditTable()
         {
@@ -50,7 +48,8 @@ namespace SqlGen
         {
             var colMap = table.Columns.ToDictionary(col => col.ColumnName);
             var pkCols = LoadPrimaryKeyColumns(table.TableName, table.Schema);
-            table.PrimaryKey = new PrimaryKey {
+            table.PrimaryKey = new PrimaryKey
+            {
                 ConstraintName = pkCols.FirstOrDefault()?.ConstraintName,
                 KeyColumns = pkCols.Select(pkc => colMap[pkc.ColumnName]).ToList()
             };
@@ -82,19 +81,19 @@ namespace SqlGen
             table.ForeignKeys = fks;
         }
 
-      
+
 
         List<ForeignKey> LoadForeignKeyContraints(string table, string schema)
         {
-            
-            return connection.Query<ForeignKey>(QueryHelper.ForeignKeySql, new { table, schema }).ToList(); 
+
+            return connection.Query<ForeignKey>(QueryHelper.ForeignKeySql, new { table, schema }).ToList();
         }
 
-               
+
 
         Dictionary<string, List<KeyColumn>> LoadForeignKeyColumns(string table, string schema)
         {
-            
+
             var queryResult = connection
                 .Query<KeyColumn>(QueryHelper.ForeignKeyColumnSql, new { table, schema })
                 .ToList();
@@ -102,22 +101,22 @@ namespace SqlGen
             // var eliminate = (from data in queryResult
             //                 group data by data.ConstraintName into key
             //                 );
-            
+
             //Group by ConstraintName
             var eliminate = from data in queryResult
-                            group data by data.ConstraintName into g 
-                            select new { key = g.Key, value = g.ToList()};
+                            group data by data.ConstraintName into g
+                            select new { key = g.Key, value = g.ToList() };
             //Sıçmış sıvamışsın ... 
 
             //result = queryResult.ToDictionary<string,List<Column>>(key=> key.ConstraintName, value => value);
 
-            return eliminate.ToDictionary(h=>h.key, v=>v.value);
+            return eliminate.ToDictionary(h => h.key, v => v.value);
         }
 
 
         public Table GetTable(string table, string schema)
         {
-            Table t = connection.Query<Table>(QueryHelper.TableSql).ToList<Table>().FirstOrDefault(h=>h.TableName.Equals(table));
+            Table t = connection.Query<Table>(QueryHelper.TableSql).ToList<Table>().FirstOrDefault(h => h.TableName.Equals(table));
             t.Columns = LoadColumns(table, schema);
             return t;
         }
@@ -135,6 +134,6 @@ namespace SqlGen
         }
     }
 
-  
+
 
 }

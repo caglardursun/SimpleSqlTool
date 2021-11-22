@@ -15,7 +15,10 @@ namespace SqlGen
         public MultiGenerator(string connectionString)
         {
             if (connectionString == null)
+            {
                 throw new ArgumentNullException(nameof(connectionString));
+            }
+
             this.connectionString = connectionString;
         }
 
@@ -26,7 +29,9 @@ namespace SqlGen
             foreach (var table in tables)
             {
                 if (table.Columns == null)
+                {
                     LoadColumnsAndPrimaryKey(table);
+                }
 
                 foreach (var key in keys.Any() ? keys : new TableKey[] { null })
                 {
@@ -35,9 +40,13 @@ namespace SqlGen
                     {
                         var sqlGen = gen as SqlGenerator;
                         if (sqlGen != null)
-                           GenerateSql(sb, table, options, gen as SqlGenerator);
+                        {
+                            GenerateSql(sb, table, options, gen as SqlGenerator);
+                        }
                         else
+                        {
                             sb.AppendLine(gen.Generate(table, options));
+                        }
                     }
                 }
             }

@@ -52,37 +52,37 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write(".Entities.Concrete;\r\n\r\n\r\nnamespace ");
+            this.Write(".Data.Entity;\r\n\r\nnamespace ");
             
-            #line 21 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            #line 20 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));
             
             #line default
             #line hidden
             this.Write(".DataAccess.Concrete.EntityFramework\r\n{\r\n    public class ");
             
-            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            #line 22 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Repository : EfEntityRepositoryBase<");
             
-            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            #line 22 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(",ProjectDbContext>, I");
             
-            #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            #line 22 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("Repository\r\n    {\r\n        \r\n        public ");
             
-            #line 26 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
+            #line 25 "D:\Projects\SimpleSqlTool\SqlGen\Templates\RepositoryTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default

@@ -17,6 +17,8 @@ using <#=_namespace#>.Business.BusinessAspects;
 using <#=_namespace#>.DataAccess.Abstract;
 using <#=_namespace#>.Entities.Concrete;
 using <#=_namespace#>.Entities.ResponseDtos.<#=tableName#>;
+using <#=_namespace#>.Data.Entity;
+
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -36,7 +38,7 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Queries
             private readonly IMediator _mediator;
             private readonly IMapper _mapper;
 
-            public Get<#=tableName#>QueryHandler(I<#=tableNameToLower#>Repository repository, IMediator mediator,IMapper mapper)
+            public Get<#=tableName#>QueryHandler(I<#=tableName#>Repository repository, IMediator mediator,IMapper mapper)
             {
                 _<#=tableNameToLower#>Repository = repository;
                 _mediator = mediator;

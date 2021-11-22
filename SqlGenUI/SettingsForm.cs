@@ -1,21 +1,12 @@
-﻿using Newtonsoft.Json;
-using SqlGen;
+﻿using SqlGen;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SqlGenUI
 {
 
     public partial class SettingsForm : Form
-    {                
+    {
 
         public SettingsForm()
         {
@@ -26,7 +17,7 @@ namespace SqlGenUI
 
         private void Initialize()
         {
-         
+
 
             var settings = AppSettings.Instance;
             textBoxApiPath.Text = settings.APIPath?.EmptyCheck();
@@ -43,32 +34,33 @@ namespace SqlGenUI
                     break;
                 case SqlGenDbType.PostgreSQL:
                     comboBoxDB.SelectedIndex = 1;
-                    break;                
-            }            
+                    break;
+            }
         }
 
 
         private void buttonOpenFolderDialog_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            
-            if(folderBrowserDialog.ShowDialog() == DialogResult.OK)
-                AppSettings.Instance.APIPath = textBoxApiPath.Text = folderBrowserDialog.SelectedPath;                
-            
+
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                AppSettings.Instance.APIPath = textBoxApiPath.Text = folderBrowserDialog.SelectedPath;
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             var settings = AppSettings.Instance;
             settings.APIPath = textBoxApiPath.Text;
-            settings.DefaultDB= textBoxDB.Text;
-            settings.Password= textBoxPassword.Text;
-            settings.UserName= textBoxUserName.Text;
-            settings.ServerName= textBoxServer.Text;
-            settings.DBType = (SqlGenDbType) comboBoxDB.SelectedIndex;
+            settings.DefaultDB = textBoxDB.Text;
+            settings.Password = textBoxPassword.Text;
+            settings.UserName = textBoxUserName.Text;
+            settings.ServerName = textBoxServer.Text;
+            settings.DBType = (SqlGenDbType)comboBoxDB.SelectedIndex;
             settings.Namespace = textBoxNamespace.Text;
             settings.Save();
-            
+
             Close();
         }
 

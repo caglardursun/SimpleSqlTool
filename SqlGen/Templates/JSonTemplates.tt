@@ -9,7 +9,6 @@
 <#@ import namespace="System.Xml" #>
 <#@ import namespace="SqlGen" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
-<#@ parameter name="foregnkeys" type="System.Collections.Generic.List<FkModel>" #>
 
 <#
 Write("{\n");
@@ -23,31 +22,6 @@ Write("{\n");
 
                 Write("\t");Write($"\"{propName}\" : {str} ,");Write("\n");
 
-        }
-    if(foregnkeys.Count > 0)
-    {
-         
-         foreach (var fk in foregnkeys)
-         {
-
-                string addition = (fk.FKey.IsIdentity) ? "" : "[";
-               
-
-                Write($"\t \"{fk.TableName}\" : {addition} \n");
-                Write("\t\t{\n");
-
-                foreach(var f in fk.columns)
-                {
-
-                    var propName = f.ColumnName;
-                    Write("\t\t");Write($"\t{propName} : '', ");Write("\n");
-
-                }
-                Write("\t\t}");
-                addition = (fk.FKey.IsIdentity) ? "" : "]";
-                Write($"\n\t{addition}\n");
-         }            
-        
-    }
+        }  
 Write("}");
 #>

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SqlGen
+﻿namespace SqlGen
 {
     public class Column
     {

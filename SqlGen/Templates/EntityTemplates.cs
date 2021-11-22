@@ -43,21 +43,22 @@ namespace SqlGen.Templates
             
             #line 24 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
 
-    Write($"[Table(\"{tableName}\", Schema = \"{schemaName}\")]\n");
+
+    Write($"[Table(\"{tableName}\", Schema = \"{table.Schema}\")]\n");
     
             
             #line default
             #line hidden
             this.Write("    public class ");
             
-            #line 27 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+            #line 28 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write(" : UpdateEntity, IEntity\r\n    {\r\n    ");
             
-            #line 29 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
+            #line 30 "D:\Projects\SimpleSqlTool\SqlGen\Templates\EntityTemplates.tt"
 
         foreach (var c in columns)
         {
@@ -69,22 +70,7 @@ namespace SqlGen.Templates
                 
         }
         
-        if(foregnkeys.Count > 0)
-        {
-
-            foreach (var fk in foregnkeys)
-            {
-                Write("\t");
-                if(fk.FKey.IsIdentity)
-                {
-                    Write($@"public {fk.TableName} _{fk.FKey.TableName} {{ get; set; }}");Write("\n");
-                    
-                }else{
-                
-                    Write($@"public List<{fk.TableName}> {fk.FKey.TableName}s {{ get; set; }}");Write("\n");
-                } 
-            }    
-        }
+       
         
             
             #line default

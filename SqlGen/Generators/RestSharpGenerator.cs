@@ -1,10 +1,6 @@
 ﻿//using SqlGen.Templeates;
 using SqlGen.Templates;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SqlGen.Generators
 {
@@ -21,11 +17,11 @@ namespace SqlGen.Generators
             restSharpClient.Initialize();
 
             return restSharpClient.TransformText();
-            
+
 
         }
 
         public override string ToString() => "RestSharp Client Generator";
-        
+
     }
 }

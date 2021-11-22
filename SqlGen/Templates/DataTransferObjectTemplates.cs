@@ -38,7 +38,14 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write(".DTO.Request\r\n{\r\n    public class Update");
+            this.Write(".Entities.RequestDtos.");
+            
+            #line 16 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n{\r\n    public class Update");
             
             #line 18 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
@@ -104,87 +111,7 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
             
             #line default
             #line hidden
-            this.Write("\r\n    }\r\n\r\n    public class Create");
-            
-            #line 48 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("RequestValidator : AbstractValidator<Create");
-            
-            #line 48 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("RequestDto>\r\n    {\r\n       public Create");
-            
-            #line 50 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("RequestValidator()\r\n       {\r\n       ");
-            
-            #line 52 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
-foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
-            {
-                    var propName = c.ColumnName;
-                    var propType = c.ClrTypeName();
-                    if(!propType.EndsWith("?"))
-                    {
-                        Write("\t");
-                        Write($@"RuleFor(o=>o.{propName}).NotNull();");    
-                        Write("\n");
-                    }
-                        
-                    
-            }
-            
-            #line default
-            #line hidden
-            this.Write("       }\r\n    }\r\n\r\n    public class Update");
-            
-            #line 68 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("RequestValidator : AbstractValidator<Update");
-            
-            #line 68 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("RequestDto>\r\n    {\r\n       public Update");
-            
-            #line 70 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
-            
-            #line default
-            #line hidden
-            this.Write("RequestValidator()\r\n       {\r\n       ");
-            
-            #line 72 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
-foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
-            {
-                    var propName = c.ColumnName;
-                    var propType = c.ClrTypeName();
-                    if(!propType.EndsWith("?"))
-                    {
-                        Write("\t");
-                        Write($@"RuleFor(o=>o.{propName}).NotNull();");    
-                        Write("\n");
-                    }
-                        
-                    
-        }
-            
-            #line default
-            #line hidden
-            this.Write("       }\r\n\r\n    }\r\n}\r\n");
+            this.Write("\r\n    }\r\n\r\n    \r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         

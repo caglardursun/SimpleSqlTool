@@ -25,6 +25,8 @@ using <#=_namespace#>.Entities.Concrete;
 using <#=_namespace#>.Entities.RequestDtos.<#=tableName#>;
 using <#=_namespace#>.DataAccess.Concrete.EntityFramework;
 using <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.ValidationRules;
+using <#=_namespace#>.Entities.RequestDtos.<#=tableName#>;
+using <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.ValidationRules;
 
 namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands
 {

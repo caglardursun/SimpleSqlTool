@@ -33,7 +33,7 @@ namespace SqlGen.Templates
         {
             this.Write("\r\n");
             
-            #line 14 "D:\Projects\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
+            #line 13 "D:\Projects\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
 
 Write("{\n");
         foreach (var c in columns)
@@ -46,32 +46,7 @@ Write("{\n");
 
                 Write("\t");Write($"\"{propName}\" : {str} ,");Write("\n");
 
-        }
-    if(foregnkeys.Count > 0)
-    {
-         
-         foreach (var fk in foregnkeys)
-         {
-
-                string addition = (fk.FKey.IsIdentity) ? "" : "[";
-               
-
-                Write($"\t \"{fk.TableName}\" : {addition} \n");
-                Write("\t\t{\n");
-
-                foreach(var f in fk.columns)
-                {
-
-                    var propName = f.ColumnName;
-                    Write("\t\t");Write($"\t{propName} : '', ");Write("\n");
-
-                }
-                Write("\t\t}");
-                addition = (fk.FKey.IsIdentity) ? "" : "]";
-                Write($"\n\t{addition}\n");
-         }            
-        
-    }
+        }  
 Write("}");
 
             
@@ -95,19 +70,6 @@ private global::System.Collections.Generic.IEnumerable<Column> columns
     }
 }
 
-private global::System.Collections.Generic.List<FkModel> _foregnkeysField;
-
-/// <summary>
-/// Access the foregnkeys parameter of the template.
-/// </summary>
-private global::System.Collections.Generic.List<FkModel> foregnkeys
-{
-    get
-    {
-        return this._foregnkeysField;
-    }
-}
-
 
 /// <summary>
 /// Initialize the template
@@ -128,20 +90,6 @@ if ((columnsValueAcquired == false))
     if ((data != null))
     {
         this._columnsField = ((global::System.Collections.Generic.IEnumerable<Column>)(data));
-    }
-}
-bool foregnkeysValueAcquired = false;
-if (this.Session.ContainsKey("foregnkeys"))
-{
-    this._foregnkeysField = ((global::System.Collections.Generic.List<FkModel>)(this.Session["foregnkeys"]));
-    foregnkeysValueAcquired = true;
-}
-if ((foregnkeysValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("foregnkeys");
-    if ((data != null))
-    {
-        this._foregnkeysField = ((global::System.Collections.Generic.List<FkModel>)(data));
     }
 }
 

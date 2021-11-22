@@ -3,9 +3,6 @@
 using SqlGen.Templates;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace SqlGen.Generators
@@ -21,7 +18,7 @@ namespace SqlGen.Generators
                 var json = new JSonTemplates();
                 json.Session = new Dictionary<string, object>();
 
-                var fk = table.ForeignKeys.ToForegnTableColumns();
+                var fk = table.ForeignKeys; //.ToForegnTableColumns();
                 json.Session.Add("foregnkeys", fk);
 
 
@@ -29,8 +26,8 @@ namespace SqlGen.Generators
                 json.Initialize();
                 return json.TransformText();
 
-                
-                
+
+
             }
             catch (Exception exc)
             {
@@ -39,6 +36,6 @@ namespace SqlGen.Generators
             }
         }
 
-        public override string ToString() => "JSon Generator";        
+        public override string ToString() => "JSon Generator";
     }
 }

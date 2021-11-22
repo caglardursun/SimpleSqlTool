@@ -33,7 +33,9 @@ namespace SqlGen
                 sb.AppendLine($"ALTER PROCEDURE {procName}");
             }
             else
+            {
                 sb.AppendLine($"CREATE PROCEDURE {procName}");
+            }
         }
 
         protected void AppendCreateOrAlterTrigger(Table table, bool alter, string action, StringBuilder sb)
@@ -48,7 +50,10 @@ namespace SqlGen
                 sb.Append("ALTER");
             }
             else
+            {
                 sb.Append("CREATE");
+            }
+
             sb.AppendLine($" TRIGGER {ObjectName(table)} ON [{table.Schema}].[{table.TableName}]");
         }
 
