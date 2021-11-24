@@ -70,7 +70,7 @@ namespace SqlGen.Templates
             
             #line 23 "D:\Projects\SimpleSqlTool\SqlGen\Templates\ValidatorTemplates.tt"
 foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
-            {
+       {
                     var propName = c.ColumnName;
                     var propType = c.ClrTypeName();
                     if(!propType.EndsWith("?"))
@@ -78,39 +78,37 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
                         Write("\t");
                         Write($@"RuleFor(o=>o.{propName}).NotNull();");    
                         Write("\n");
-                    }
-                        
-                    
+                    }                    
             }
             
             #line default
             #line hidden
             this.Write("       }\r\n    }\r\n\r\n    public class Update");
             
-            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\ValidatorTemplates.tt"
+            #line 37 "D:\Projects\SimpleSqlTool\SqlGen\Templates\ValidatorTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestValidator : AbstractValidator<Update");
             
-            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\ValidatorTemplates.tt"
+            #line 37 "D:\Projects\SimpleSqlTool\SqlGen\Templates\ValidatorTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestDto>\r\n    {\r\n       public Update");
             
-            #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\ValidatorTemplates.tt"
+            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\ValidatorTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
             this.Write("RequestValidator()\r\n       {\r\n       ");
             
-            #line 43 "D:\Projects\SimpleSqlTool\SqlGen\Templates\ValidatorTemplates.tt"
+            #line 41 "D:\Projects\SimpleSqlTool\SqlGen\Templates\ValidatorTemplates.tt"
 foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
-            {
+        {
                     var propName = c.ColumnName;
                     var propType = c.ClrTypeName();
                     if(!propType.EndsWith("?"))
@@ -118,9 +116,7 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
                         Write("\t");
                         Write($@"RuleFor(o=>o.{propName}).NotNull();");    
                         Write("\n");
-                    }
-                        
-                    
+                    }                       
         }
             
             #line default

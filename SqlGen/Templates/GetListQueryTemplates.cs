@@ -217,8 +217,8 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write("ResponseDto>>(exc.InnerException.Message);\r\n                }\r\n\r\n              \r\n" +
-                    "            }\r\n    }\r\n}");
+            this.Write("ResponseDto>>(exc.InnerException.Message);\r\n                }\r\n              \r\n  " +
+                    "      }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         

@@ -64,8 +64,7 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Queries
 
                     return new ErrorDataResult<IEnumerable<<#=tableName#>ResponseDto>>(exc.InnerException.Message);
                 }
-
               
-            }
+        }
     }
 }

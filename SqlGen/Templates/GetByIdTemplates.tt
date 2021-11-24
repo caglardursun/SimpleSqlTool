@@ -33,10 +33,10 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands
     public class Get<#=tableName#>ByIdQuery : IRequest<IDataResult<<#=tableName#>ResponseDto>>
     {
         <#
-        var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
-        var id = columns.ElementAt(0);
-        var id_type = id.ClrTypeName();
-        var id_name = id.ColumnName;
+            var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
+            var id = columns.ElementAt(0);
+            var id_type = id.ClrTypeName();
+            var id_name = id.ColumnName;
         #>
         public <#=id_type#> <#=id_name#> { get; set; }              
     }
@@ -72,6 +72,4 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands
             }
         }
     }
-
-
 }

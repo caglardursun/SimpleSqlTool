@@ -22,7 +22,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace <#=_namespace#>.Data.Entity
 {
     <#
-
     Write($"[Table(\"{tableName}\", Schema = \"{table.Schema}\")]\n");
     #>
     public class <#=tableName#> : UpdateEntity, IEntity
@@ -36,10 +35,8 @@ namespace <#=_namespace#>.Data.Entity
                     Write("\t");Write($@"public {propType} {propName} {{ get; set; }}");Write("\n");
                 }
                 
-        }
-        
-       
-        #>
+        }        
+    #>
     }
 
 }

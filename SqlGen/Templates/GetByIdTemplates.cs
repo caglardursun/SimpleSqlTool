@@ -100,10 +100,10 @@ namespace SqlGen.Templates
             
             #line 35 "D:\Projects\SimpleSqlTool\SqlGen\Templates\GetByIdTemplates.tt"
 
-        var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
-        var id = columns.ElementAt(0);
-        var id_type = id.ClrTypeName();
-        var id_name = id.ColumnName;
+            var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
+            var id = columns.ElementAt(0);
+            var id_type = id.ClrTypeName();
+            var id_name = id.ColumnName;
         
             
             #line default
@@ -247,8 +247,7 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write("ResponseDto>(exc.InnerException.Message);\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n}" +
-                    "");
+            this.Write("ResponseDto>(exc.InnerException.Message);\r\n            }\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         

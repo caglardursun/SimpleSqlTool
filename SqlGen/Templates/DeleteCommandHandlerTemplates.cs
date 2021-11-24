@@ -66,15 +66,15 @@ namespace SqlGen.Templates
             
             #line default
             #line hidden
-            this.Write("Command :  IRequest<IResult>\r\n    {\r\n\r\n    ");
+            this.Write("Command :  IRequest<IResult>\r\n    {\r\n\r\n        ");
             
             #line 30 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DeleteCommandHandlerTemplates.tt"
 
-        var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
-        var id = columns.ElementAt(0);
-        var id_type = id.ClrTypeName();
-        var id_name = id.ColumnName;
-    
+            var columns = table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn()));
+            var id = columns.ElementAt(0);
+            var id_type = id.ClrTypeName();
+            var id_name = id.ColumnName;
+        
             
             #line default
             #line hidden
@@ -178,9 +178,7 @@ namespace SqlGen.Templates
                             return new SuccessResult(Resource.BasariliSilmeIslemi);
                         }
 
-                        return new ErrorResult(Resource.BasarisizSilmeIslemi);
-
-                    
+                        return new ErrorResult(Resource.BasarisizSilmeIslemi);                    
                 }
                 catch (Exception exc)
                 {
@@ -188,7 +186,7 @@ namespace SqlGen.Templates
                     return new ErrorResult(exc.InnerException.Message);
                 }
             }
-            }
+    }
 }");
             return this.GenerationEnvironment.ToString();
         }

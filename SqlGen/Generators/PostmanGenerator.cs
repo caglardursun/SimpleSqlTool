@@ -13,12 +13,12 @@ namespace SqlGen.Generators
         Update,
         Delete
     }
-    public class PostmanCreator
+    public class PostmanItemCreator
     {
-        private static PostmanCreator _instance;
-        public static PostmanCreator Instance => (_instance == null ? _instance = new PostmanCreator() : _instance);
+        private static PostmanItemCreator _instance;
+        public static PostmanItemCreator Instance => (_instance == null ? _instance = new PostmanItemCreator() : _instance);
 
-        public PostmanCreator()
+        public PostmanItemCreator()
         {
         }
         public Item CreateItem(CRUDType methodType, Table table)
@@ -35,7 +35,7 @@ namespace SqlGen.Generators
             body.Raw = "";
             body.Options = new Options() { Raw = new Raw() { Language = "json" } };
 
-            url.Host = new string[] { "{{url}}" };
+            url.Host = new string[] { @"{{url}}" };
             url.Path = new string[3] { "api", $"{table.TableName}", "" };
 
             //create json body 4 update & 
@@ -101,13 +101,12 @@ namespace SqlGen.Generators
             collection.Info.Name = $"{table.TableName} Collection";
             collection.Info.Schema = new Uri("https://schema.getpostman.com/json/collection/v2.1.0/collection.json");
 
-            var creator = PostmanCreator.Instance;
+            var creator = PostmanItemCreator.Instance;
             List<Item> items = new List<Item>();
             foreach (CRUDType c in Enum.GetValues(typeof(CRUDType)))
             {
                 items.Add(creator.CreateItem(c, table));
             }
-            
 
             collection.Item = items.ToArray();
 

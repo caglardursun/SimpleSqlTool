@@ -6,7 +6,6 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Xml" #>
 <#@ import namespace="SqlGen" #>
-
 <#@ parameter name="_namespace" type="System.String" #>
 <#@ parameter name="tableName" type="System.String" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
@@ -21,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace <#= _namespace #>.Contracts
 {
-    public interface I<#= tableName #>Manager : IRepository<<#= tableName #>> 
+    public interface I<#=tableName#>Manager : IRepository<<#= tableName #>> 
     {        
         Task<(IEnumerable<<#=tableName#>> <#=tableName#>, Pagination Pagination)> Search<#=tableName#>Async(UrlQuerySearchParameters urlQueryParameters);                  
     }

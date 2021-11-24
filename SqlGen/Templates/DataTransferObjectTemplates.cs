@@ -111,7 +111,7 @@ foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit |
             
             #line default
             #line hidden
-            this.Write("\r\n    }\r\n\r\n    \r\n}\r\n");
+            this.Write("    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         

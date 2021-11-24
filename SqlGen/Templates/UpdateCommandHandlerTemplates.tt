@@ -27,52 +27,48 @@ using <#=_namespace#>.Data.Entity;
 
 namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.Commands
 {
-
+	
+	public class Update<#=tableName#>Command : IRequest<IResult>
+	{
+			public Update<#=tableName#>RequestDto model { get; set; }	
+	}
+	
+	public class Update<#=tableName#>CommandHandler : IRequestHandler<Update<#=tableName#>Command, IResult>{
+	
+		private readonly IMapper _mapper;
+		private readonly I<#=tableName#>Repository _<#=tableNameToLower#>Repository;
+		private readonly IMediator _mediator;
 		
-	    public class Update<#=tableName#>Command : IRequest<IResult>
+		public Update<#=tableName#>CommandHandler(
+			IMapper mapper,
+			I<#=tableName#>Repository repository,
+			IMediator mediator
+		){
+				_mapper = mapper;
+				_<#=tableNameToLower#>Repository = repository;
+				_mediator = mediator;
+		}
+		
+		
+		[ValidationAspect(typeof(Update<#=tableName#>RequestValidator), Priority = 1)]
+		[SecuredOperation(Priority = 1)]
+		public async Task<IResult> Handle(Update<#=tableName#>Command request, CancellationToken cancellationToken)
 		{
-				public Update<#=tableName#>RequestDto model { get; set; }	
-
+			try{
+				
+		
+				var item = _mapper.Map<Update<#=tableName#>RequestDto, <#=tableName#>>(request.model);
+		
+				_<#=tableNameToLower#>Repository.Update(item);
+		
+				await _<#=tableNameToLower#>Repository.SaveChangesAsync();
+				return new SuccessResult(Resource.BasariliGuncellemeIslemi);
+		
+			}catch(Exception exc)
+			{
+				return new ErrorResult(exc.InnerException.Message);
+			}
 		}
-
-
-		public class Update<#=tableName#>CommandHandler : IRequestHandler<Update<#=tableName#>Command, IResult>{
-
-
-						private readonly IMapper _mapper;
-						private readonly I<#=tableName#>Repository _<#=tableNameToLower#>Repository;
-						private readonly IMediator _mediator;
-				
-						public Update<#=tableName#>CommandHandler(
-							IMapper mapper,
-							I<#=tableName#>Repository repository,
-							IMediator mediator
-						){
-								_mapper = mapper;
-								_<#=tableNameToLower#>Repository = repository;
-								_mediator = mediator;
-						}
-
-
-						[ValidationAspect(typeof(Update<#=tableName#>RequestValidator), Priority = 1)]
-						[SecuredOperation(Priority = 1)]
-						public async Task<IResult> Handle(Update<#=tableName#>Command request, CancellationToken cancellationToken)
-						{
-							try{
-								
-
-								var item = _mapper.Map<Update<#=tableName#>RequestDto, <#=tableName#>>(request.model);
-
-								_<#=tableNameToLower#>Repository.Update(item);
-				
-								await _<#=tableNameToLower#>Repository.SaveChangesAsync();
-								return new SuccessResult(Resource.BasariliGuncellemeIslemi);
-
-							}catch(Exception exc)
-							{
-								return new ErrorResult(exc.InnerException.Message);
-							}
-						}
-				
-		}
+			
+	}
 }

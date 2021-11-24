@@ -21,7 +21,7 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.ValidationRul
        public Create<#=tableName#>RequestValidator()
        {
        <#foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
-            {
+       {
                     var propName = c.ColumnName;
                     var propType = c.ClrTypeName();
                     if(!propType.EndsWith("?"))
@@ -29,9 +29,7 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.ValidationRul
                         Write("\t");
                         Write($@"RuleFor(o=>o.{propName}).NotNull();");    
                         Write("\n");
-                    }
-                        
-                    
+                    }                    
             }#>
        }
     }
@@ -41,7 +39,7 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.ValidationRul
        public Update<#=tableName#>RequestValidator()
        {
        <#foreach (var c in table.Columns.Where(c => !c.IsRowVersion() && (options.Audit || !c.IsAuditColumn())))
-            {
+        {
                     var propName = c.ColumnName;
                     var propType = c.ClrTypeName();
                     if(!propType.EndsWith("?"))
@@ -49,9 +47,7 @@ namespace <#=_namespace#>.Business.Handlers.<#=tableName#>Handlers.ValidationRul
                         Write("\t");
                         Write($@"RuleFor(o=>o.{propName}).NotNull();");    
                         Write("\n");
-                    }
-                        
-                    
+                    }                       
         }#>
        }
 
