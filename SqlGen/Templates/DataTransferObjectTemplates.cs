@@ -31,7 +31,7 @@ namespace SqlGen.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using FluentValidation;\r\n\r\nnamespace ");
+            this.Write("using System;\r\n\r\nnamespace ");
             
             #line 16 "D:\Projects\SimpleSqlTool\SqlGen\Templates\DataTransferObjectTemplates.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(_namespace));

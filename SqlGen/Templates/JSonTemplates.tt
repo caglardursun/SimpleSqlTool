@@ -17,10 +17,8 @@ Write("{\n");
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
                 var propDefault = c.ClrTypeDefault();
-                System.String str = $"{propDefault}";
-       
-
-                Write("\t");Write($"\"{propName}\" : {str} ,");Write("\n");
+                
+                Write("\t");Write($"\"{propName}\" : {propDefault} ,");Write("\n");
 
         }  
 Write("}");

@@ -6,6 +6,7 @@ using System.Globalization;
 namespace SqlGen.Models
 {
 
+
     public partial class PostmanCollection
     {
         [JsonProperty("info")]

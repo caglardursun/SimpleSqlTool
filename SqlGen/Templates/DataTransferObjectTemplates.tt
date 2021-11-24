@@ -11,7 +11,7 @@
 <#@ parameter name="options" type="SqlGen.GeneratorOptions" #>
 <#@ parameter name="table" type="SqlGen.Table" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
-using FluentValidation;
+using System;
 
 namespace <#=_namespace#>.Entities.RequestDtos.<#=tableName#>
 {

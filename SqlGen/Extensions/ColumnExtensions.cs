@@ -134,12 +134,12 @@ namespace SqlGen
                     return false;
                 case "datetime":
                 case "datetime2":
-                    return DateTime.Now.ToString("yyyy-MM-dd-THH:mm:ss.000Z", CultureInfo.InvariantCulture);
+                    return $"\"{DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.000Z", CultureInfo.InvariantCulture)}\"";
                 case "binary":
                 case "varbinary":
                     return "byte[]";
                 case "uniqueidentifier":
-                    return Guid.NewGuid().ToString();
+                    return $"\"{Guid.NewGuid().ToString()}\"";
                 default:
                     return c.DataType;
             }
