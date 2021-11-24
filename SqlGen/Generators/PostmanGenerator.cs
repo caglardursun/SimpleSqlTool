@@ -102,13 +102,14 @@ namespace SqlGen.Generators
             collection.Info.Schema = new Uri("https://schema.getpostman.com/json/collection/v2.1.0/collection.json");
 
             var creator = PostmanCreator.Instance;
-            var GetListItem = creator.CreateItem(CRUDType.GetList, table);
-            var CreateItem = creator.CreateItem(CRUDType.Create,table);
-            var GetByIdItem = creator.CreateItem(CRUDType.GetById, table);
-            var UpdateItem = creator.CreateItem(CRUDType.Update, table);
-            var DeleteItem= creator.CreateItem(CRUDType.Delete, table);
+            List<Item> items = new List<Item>();
+            foreach (CRUDType c in Enum.GetValues(typeof(CRUDType)))
+            {
+                items.Add(creator.CreateItem(c, table));
+            }
             
-            collection.Item = new Item[] { GetListItem, GetByIdItem, CreateItem, UpdateItem, DeleteItem };
+
+            collection.Item = items.ToArray();
 
             var postman_event = new PostmanEvent();
             postman_event.Listen = "prerequest";
