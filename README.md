@@ -20,4 +20,4 @@ You can filter the table list to only show tables in a specific schema via the `
 
 ### Generated code
 
-This window shows the generated code.  You can drag & drop the code to a text editor, e.g. Visual Studio or Sql Server Management Studio.
+This window shows the generated code.  
