@@ -18,12 +18,12 @@ namespace SqlGen.Generators
         private static PostmanItemCreator _instance;
         public static PostmanItemCreator Instance => (_instance == null ? _instance = new PostmanItemCreator() : _instance);
 
-        public PostmanItemCreator()
+        PostmanItemCreator()
         {
         }
-        public Item CreateItem(CRUDType methodType, Table table)
+        public PostmanItem CreateItem(CRUDType methodType, Table table)
         {
-            Item item = new Item();
+            PostmanItem item = new PostmanItem();
             item.ProtocolProfileBehavior = new ProtocolProfileBehavior() { DisableBodyPruning = true };
             var request = new Request();
             //key token stuff 4 auth & authenticaton
@@ -102,7 +102,7 @@ namespace SqlGen.Generators
             collection.Info.Schema = new Uri("https://schema.getpostman.com/json/collection/v2.1.0/collection.json");
 
             var creator = PostmanItemCreator.Instance;
-            List<Item> items = new List<Item>();
+            List<PostmanItem> items = new List<PostmanItem>();
             foreach (CRUDType c in Enum.GetValues(typeof(CRUDType)))
             {
                 items.Add(creator.CreateItem(c, table));

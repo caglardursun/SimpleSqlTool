@@ -13,7 +13,7 @@ namespace SqlGen.Models
         public Info Info { get; set; }
 
         [JsonProperty("item")]
-        public Item[] Item { get; set; }
+        public PostmanItem[] Item { get; set; }
 
         [JsonProperty("event")]
         public PostmanEvent[] Event { get; set; }
@@ -54,7 +54,8 @@ namespace SqlGen.Models
         public Uri Schema { get; set; }
     }
 
-    public partial class Item
+    [JsonObject("Item")]
+    public partial class PostmanItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
