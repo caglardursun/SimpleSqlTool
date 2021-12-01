@@ -317,6 +317,7 @@ namespace SqlGenUI
             var settings = AppSettings.Instance;
             string sfd = "";
 
+            //It's not a effective way to use string ... But it's better then nothing :/
             switch (selected_item.Trim())
             {
                 case "Data Entity Generator":
@@ -340,7 +341,6 @@ namespace SqlGenUI
                     Directory.CreateDirectory(Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\ValidationRules"));
                     sfd = Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\ValidationRules\\{tablename}Validator.cs");
                     break;
-
                 case "Create Command Handler Generator":
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
                     Directory.CreateDirectory(Path.Combine(sfd, $"{settings.Namespace}.Business\\Handlers\\{tablename}Handlers\\Commands"));
@@ -373,22 +373,17 @@ namespace SqlGenUI
                 case "Postman Generator":
                     //Check the directory if doesn't exists create one ... then write
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
-                    if (!Directory.Exists($"{sfd}\\Postman"))
-                    {
+                    if (!Directory.Exists($"{sfd}\\Postman"))                    
                         Directory.CreateDirectory($"{sfd}\\Postman");
-                    }
-
+                    
                     sfd = Path.Combine(sfd, $"Postman\\{tablename}Collections.json");
-                    break;
-                //case "Delete Command Generator":
-                //    break;
-                //case "Delete Command Generator":
-                //    break;
-                //case "Delete Command Generator":
-                //    break;
+                    break;     
                 default:
-
-                    break;
+                    //Shit, cut the crap something wrong 
+                    //Skip the file saving 
+                    MessageBox.Show("Undefined choose");
+                    return;
+                    break;//How is my unrichable break ;)
             }
 
 
@@ -420,14 +415,11 @@ namespace SqlGenUI
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (tableList.SelectedItems.Count > 0 && codeList.SelectedItems.Count > 0)
-            {
-                Save();
-            }
-            else
-            {
+            if (tableList.SelectedItems.Count > 0 && codeList.SelectedItems.Count > 0)            
+                Save();            
+            else            
                 MessageBox.Show($"You must select both table and generate command", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
         }
 
 

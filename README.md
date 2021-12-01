@@ -6,7 +6,7 @@ Generate the source code from SQL Server tables. Apis, Data Managers, Entities a
 ## History : 
 A few years ago When I was working in Pensoft, my boss Murat gave me to many CRUD regular tasks. He wants to copying and pasting. 
 When I try to write a code generator, he didn't give me any time. So I keep going on to write some of the features at home. 
-After one year later, I needed the same procedure. So I open up the project, change a few things and reusing it in my 
+After one year later, I needed the same procedure. So I desided to open up the project, change a few things and reusing it in my 
 current project.
 
 
