@@ -9,21 +9,20 @@
 // ------------------------------------------------------------------------------
 namespace SqlGen.Templates
 {
-    using System;
     using System.Linq;
     using System.Text;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Xml;
     using SqlGen;
+    using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
+    #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public partial class JSonTemplates : JSonTemplatesBase
+    public partial class AngularServiceTemplates : AngularServiceTemplatesBase
     {
 #line hidden
         /// <summary>
@@ -31,51 +30,199 @@ namespace SqlGen.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n");
+            this.Write("\r\nimport { HttpClient } from \'@angular/common/http\';\r\nimport { Injectable } from " +
+                    "\'@angular/core\';\r\nimport { Observable } from \'rxjs\';\r\nimport { environment } fro" +
+                    "m \'src/environments/environment\';\r\n\r\n\r\n@Injectable({\r\n  providedIn: \'root\'\r\n})\r\n" +
+                    "export class ");
             
-            #line 14 "D:\Projects\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
-
-Write("{\n");
-        foreach (var c in columns)
-        {
-                var propName = c.ColumnName;
-                var propType = c.ClrTypeName();
-                var propDefault = c.ClrTypeDefault();
-
-                
-                Write("\t");Write($"\"{propName}\" : {propDefault} ,");Write("\n");
-
-                
-        }  
-		
-        if(foregnkeys.Count > 0 ){
-            foreach (var c in foregnkeys)
-            {
-                    var tableName = c.ReferancedTableName;
-                
-                    Write("\t");Write($"\"{tableName}\" : [ ");Write("\n");
-                    foreach(var fkc in c.TableColumns)
-                    {
-                        var propName = fkc.ColumnName;
-                   
-
-                        Write("\t");Write($"\"{propName}\" : ,");Write("\n");            
-                
-                    }
-                    Write("\t");Write($"],");Write("\n");
-
-            } 
-        }
-        
-Write("}");
-
+            #line 25 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
             
             #line default
             #line hidden
+            this.Write("Service {\r\n\r\n    root_url: string  = environment.api_url;\r\n\r\n    constructor() { " +
+                    "\r\n    }\r\n\r\n  \r\n    get");
+            
+            #line 33 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("() : any {\r\n        return this.http.get<Observable<");
+            
+            #line 34 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("[]>>(this.root_url+\'");
+            
+            #line 34 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("/Get");
+            
+            #line 34 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("List\');\r\n    }\r\n    get");
+            
+            #line 36 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("ById(guid: string): Observable<");
+            
+            #line 36 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write(">{\r\n        return this.http.get<");
+            
+            #line 37 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write(">(this.root_url+\"");
+            
+            #line 37 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("/Get");
+            
+            #line 37 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("ById?id=\"+ guid);\r\n    }\r\n    create");
+            
+            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("(data:");
+            
+            #line 39 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("){\r\n        return this.http.post(this.root_url+\'Kisi/Create");
+            
+            #line 40 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("\',data);\r\n    }\r\n    update");
+            
+            #line 42 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("(data:");
+            
+            #line 42 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("){\r\n        return this.http.put<string>(this.root_url+\"");
+            
+            #line 43 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("/Update");
+            
+            #line 43 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(tableName));
+            
+            #line default
+            #line hidden
+            this.Write("\",data);\r\n    }\r\n  \r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\JSonTemplates.tt"
+        #line 1 "D:\Projects\SimpleSqlTool\SqlGen\Templates\AngularServiceTemplates.tt"
+
+private string @__namespaceField;
+
+/// <summary>
+/// Access the _namespace parameter of the template.
+/// </summary>
+private string _namespace
+{
+    get
+    {
+        return this.@__namespaceField;
+    }
+}
+
+private global::SqlGen.Table _tableField;
+
+/// <summary>
+/// Access the table parameter of the template.
+/// </summary>
+private global::SqlGen.Table table
+{
+    get
+    {
+        return this._tableField;
+    }
+}
+
+private global::SqlGen.GeneratorOptions _optionsField;
+
+/// <summary>
+/// Access the options parameter of the template.
+/// </summary>
+private global::SqlGen.GeneratorOptions options
+{
+    get
+    {
+        return this._optionsField;
+    }
+}
+
+private string _tableNameField;
+
+/// <summary>
+/// Access the tableName parameter of the template.
+/// </summary>
+private string tableName
+{
+    get
+    {
+        return this._tableNameField;
+    }
+}
+
+private string _tableNameToLowerField;
+
+/// <summary>
+/// Access the tableNameToLower parameter of the template.
+/// </summary>
+private string tableNameToLower
+{
+    get
+    {
+        return this._tableNameToLowerField;
+    }
+}
 
 private global::System.Collections.Generic.IEnumerable<Column> _columnsField;
 
@@ -90,16 +237,16 @@ private global::System.Collections.Generic.IEnumerable<Column> columns
     }
 }
 
-private global::System.Collections.Generic.List<ForeignKey> _foregnkeysField;
+private string _tableNameToPascalField;
 
 /// <summary>
-/// Access the foregnkeys parameter of the template.
+/// Access the tableNameToPascal parameter of the template.
 /// </summary>
-private global::System.Collections.Generic.List<ForeignKey> foregnkeys
+private string tableNameToPascal
 {
     get
     {
-        return this._foregnkeysField;
+        return this._tableNameToPascalField;
     }
 }
 
@@ -111,6 +258,76 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
+bool _namespaceValueAcquired = false;
+if (this.Session.ContainsKey("_namespace"))
+{
+    this.@__namespaceField = ((string)(this.Session["_namespace"]));
+    _namespaceValueAcquired = true;
+}
+if ((_namespaceValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("_namespace");
+    if ((data != null))
+    {
+        this.@__namespaceField = ((string)(data));
+    }
+}
+bool tableValueAcquired = false;
+if (this.Session.ContainsKey("table"))
+{
+    this._tableField = ((global::SqlGen.Table)(this.Session["table"]));
+    tableValueAcquired = true;
+}
+if ((tableValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("table");
+    if ((data != null))
+    {
+        this._tableField = ((global::SqlGen.Table)(data));
+    }
+}
+bool optionsValueAcquired = false;
+if (this.Session.ContainsKey("options"))
+{
+    this._optionsField = ((global::SqlGen.GeneratorOptions)(this.Session["options"]));
+    optionsValueAcquired = true;
+}
+if ((optionsValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("options");
+    if ((data != null))
+    {
+        this._optionsField = ((global::SqlGen.GeneratorOptions)(data));
+    }
+}
+bool tableNameValueAcquired = false;
+if (this.Session.ContainsKey("tableName"))
+{
+    this._tableNameField = ((string)(this.Session["tableName"]));
+    tableNameValueAcquired = true;
+}
+if ((tableNameValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("tableName");
+    if ((data != null))
+    {
+        this._tableNameField = ((string)(data));
+    }
+}
+bool tableNameToLowerValueAcquired = false;
+if (this.Session.ContainsKey("tableNameToLower"))
+{
+    this._tableNameToLowerField = ((string)(this.Session["tableNameToLower"]));
+    tableNameToLowerValueAcquired = true;
+}
+if ((tableNameToLowerValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("tableNameToLower");
+    if ((data != null))
+    {
+        this._tableNameToLowerField = ((string)(data));
+    }
+}
 bool columnsValueAcquired = false;
 if (this.Session.ContainsKey("columns"))
 {
@@ -125,18 +342,18 @@ if ((columnsValueAcquired == false))
         this._columnsField = ((global::System.Collections.Generic.IEnumerable<Column>)(data));
     }
 }
-bool foregnkeysValueAcquired = false;
-if (this.Session.ContainsKey("foregnkeys"))
+bool tableNameToPascalValueAcquired = false;
+if (this.Session.ContainsKey("tableNameToPascal"))
 {
-    this._foregnkeysField = ((global::System.Collections.Generic.List<ForeignKey>)(this.Session["foregnkeys"]));
-    foregnkeysValueAcquired = true;
+    this._tableNameToPascalField = ((string)(this.Session["tableNameToPascal"]));
+    tableNameToPascalValueAcquired = true;
 }
-if ((foregnkeysValueAcquired == false))
+if ((tableNameToPascalValueAcquired == false))
 {
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("foregnkeys");
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("tableNameToPascal");
     if ((data != null))
     {
-        this._foregnkeysField = ((global::System.Collections.Generic.List<ForeignKey>)(data));
+        this._tableNameToPascalField = ((string)(data));
     }
 }
 
@@ -157,7 +374,7 @@ if ((foregnkeysValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
-    public class JSonTemplatesBase
+    public class AngularServiceTemplatesBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

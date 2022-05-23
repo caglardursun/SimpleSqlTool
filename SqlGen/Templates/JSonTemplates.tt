@@ -9,6 +9,7 @@
 <#@ import namespace="System.Xml" #>
 <#@ import namespace="SqlGen" #>
 <#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
+<#@ parameter name="foregnkeys" type="System.Collections.Generic.List<ForeignKey>" #>
 
 <#
 Write("{\n");
@@ -17,9 +18,31 @@ Write("{\n");
                 var propName = c.ColumnName;
                 var propType = c.ClrTypeName();
                 var propDefault = c.ClrTypeDefault();
+
                 
                 Write("\t");Write($"\"{propName}\" : {propDefault} ,");Write("\n");
 
+                
         }  
+		
+        if(foregnkeys.Count > 0 ){
+            foreach (var c in foregnkeys)
+            {
+                    var tableName = c.ReferancedTableName;
+                
+                    Write("\t");Write($"\"{tableName}\" : [ ");Write("\n");
+                    foreach(var fkc in c.TableColumns)
+                    {
+                        var propName = fkc.ColumnName;
+                   
+
+                        Write("\t");Write($"\"{propName}\" : ,");Write("\n");            
+                
+                    }
+                    Write("\t");Write($"],");Write("\n");
+
+            } 
+        }
+        
 Write("}");
 #>

@@ -320,10 +320,14 @@ namespace SqlGenUI
             //It's not a effective way to use string ... But it's better then nothing :/
             switch (selected_item.Trim())
             {
+                case "Model Generator":
+                    sfd = Path.Combine(settings.APIPath, "Sbu.Ubys.Core", settings.Namespace);
+                    sfd = Path.Combine(sfd, $"Concrete\\{tablename.ToPascalCaseV2()}.cs");
+                    break;
                 case "Data Entity Generator":
                     //Sbu.Ubys.Ebs.Entities
                     sfd = Path.Combine(settings.APIPath, settings.Namespace);
-                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Entities\\Concrete\\{tablename}.cs");
+                    sfd = Path.Combine(sfd, $"{settings.Namespace}.Entities\\{tablename}.cs");
                     break;
                 case "Ef Repository Generator":
                     //Sbu.Ubys.Ebs.Entities
@@ -383,7 +387,7 @@ namespace SqlGenUI
                     //Skip the file saving 
                     MessageBox.Show("Undefined choose");
                     return;
-                    break;//How is my unrichable break ;)
+                 
             }
 
 

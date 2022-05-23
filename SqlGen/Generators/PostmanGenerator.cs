@@ -2,6 +2,7 @@
 using SqlGen.Templates;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SqlGen.Generators
 {
@@ -41,9 +42,11 @@ namespace SqlGen.Generators
             //create json body 4 update & 
             var json = new JSonTemplates();
             json.Session = new Dictionary<string, object>();
-            var fk = table.ForeignKeys.ToForegnTableColumns();
+            var fk = table.ForeignKeys;
+            
             json.Session.Add("foregnkeys", fk);
             json.Session.Add("columns", table.InsertableColumns);
+            
             json.Initialize();
 
             switch (methodType)

@@ -1,0 +1,46 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="SqlGen" #>
+<#@ parameter name="_namespace" type="System.String" #>
+<#@ parameter name="table" type="SqlGen.Table" #>
+<#@ parameter name="options" type="SqlGen.GeneratorOptions" #>
+<#@ parameter name="tableName" type="System.String" #>
+<#@ parameter name="tableNameToLower" type="System.String" #>
+<#@ parameter name="columns" type="System.Collections.Generic.IEnumerable<Column>" #>
+<#@ parameter name="tableNameToPascal" type="System.String" #>
+
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class <#=tableName#>Service {
+
+    root_url: string  = environment.api_url;
+
+    constructor() { 
+    }
+
+  
+    get<#=tableName#>() : any {
+        return this.http.get<Observable<<#=tableName#>[]>>(this.root_url+'<#=tableName#>/Get<#=tableName#>List');
+    }
+    get<#=tableName#>ById(guid: string): Observable<<#=tableName#>>{
+        return this.http.get<<#=tableName#>>(this.root_url+"<#=tableName#>/Get<#=tableName#>ById?id="+ guid);
+    }
+    create<#=tableName#>(data:<#=tableName#>){
+        return this.http.post(this.root_url+'Kisi/Create<#=tableName#>',data);
+    }
+    update<#=tableName#>(data:<#=tableName#>){
+        return this.http.put<string>(this.root_url+"<#=tableName#>/Update<#=tableName#>",data);
+    }
+  
+}
